@@ -3,18 +3,30 @@
 \usepackage[activeacute,spanish]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[protrusion=true,expansion=true]{microtype}
-%\usepackage{enumitem}
+\usepackage{enumitem}
 \usepackage{lmodern}
 \usepackage[latin1]{inputenc}
 \usepackage{geometry}
 \geometry{verbose,dvips,paperwidth=5in,paperheight=8in,tmargin=.65in,bmargin=.9in, left=0.80in, right=0.65in}
 \usepackage{hyperref}
 \usepackage{lettrine}
-\usepackage{paralist}
+\usepackage{titlesec}
 
-\widowpenalty=9999
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\setcounter{secnumdepth}{0} 
 \setcounter{tocdepth}{2}
-%\setlist[itemize]{leftmargin=*}
+
+\titleformat{\section}
+  {\normalfont\scshape}{\thesection}{1em}{}
+	
+\titleformat{\subsection}
+  {\normalfont\slshape}{\thesection}{1em}{}	
+	
+\widowpenalty=9999
+
+
+\setlist[itemize]{leftmargin=*, noitemsep}
 
 \makeatletter
 \def\@makechapterhead#1{%
@@ -59,7 +71,6 @@
 \begin{document}
 
 \renewcommand{\headrulewidth}{0pt}
-\renewcommand{\baselinestretch}{1}
 
 \normalsize
 
