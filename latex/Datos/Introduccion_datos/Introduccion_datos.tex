@@ -4,145 +4,51 @@
 
 
 
-\bigskip
-
-\begin{intro}
-Los datos son el elemento clave de un SIG, pues sin ellos el resto de componentes no tienen utilidad alguna. La preparación de un adecuado conjunto de datos es base para poder llevar adelante con garantías todo proyecto SIG. En este capítulo veremos las características fundamentales de los datos y de la información espacial, presentando los conceptos básicos de estos que deben tenerse siempre presentes a la hora de trabajar con un SIG
-\end{intro}
-
-\section{Introducción}
-\pagestyle{fancy}
-
-De todos los subsistemas de SIG, el correspondiente a los datos es el pilar fundamental que pone en marcha los restantes. Los datos son el combustible que alimenta a los restantes subsistemas, y sin los cuales un SIG carece por completo de sentido y utilidad.
-
-El subsistema de datos es, a su vez, el más interrelacionado, y está conectado de forma inseparable a todos los restantes. Mientras que, por ejemplo, la visualización no es por completo imprescindible para el desarrollo de procesos de análisis, no hay elemento del sistema SIG que pueda vivir si no es alimentado por datos. Los datos son necesarios para la visualización, para el análisis y para dar sentido a la tecnología y, en lo referente al factor organizativo y a las personas, el rol de estas en el sistema SIG es en gran medida gestionar esos datos y tratar de sacar de ellos el mayor provecho posible, buscando y extrayendo el valor que estos puedan tener en un determinado contexto de trabajo. Por tanto, los datos son fundamentales en un SIG, y todo esfuerzo dedicado a su estudio y a su mejor manejo será siempre positivo dentro de cualquier.trabajo con SIG.
-
-La forma en que los datos se gestionan en un SIG es un elemento vital para definir la propia naturaleza de este, así como sus prestaciones, limitaciones y características generales. En este capítulo introductorio veremos la diferencia entre los conceptos de \emph{datos} e \emph{información}, relacionados aunque distintos, y la forma en que ambos se incorporan a un SIG. Esta concepción es importante, pues fundamenta la arquitectura interna que puede adoptar un SIG y las operaciones que se construyen sobre esta.
+De todos los subsistemas de un SIG, el correspondiente a los datos es el pilar fundamental que pone en marcha los restantes. Los datos son el combustible que alimenta el SIG. El subsistema de datos es, a su vez, el más interrelacionado, y está conectado de forma inseparable a todos los restantes. 
 
 
-\section{Datos \emph{vs} Información}
+
+
+\section{Datos \emph{vs} Información. Tipos de información.}
 
 \index{Información!datos \emph{vs}}
-Existe una importante diferencia entre los conceptos de \emph{datos} e \emph{información}. Ambos términos aparecen con frecuencia y pueden confundirse, pese a que representan cosas bien diferentes. Aun así, son conceptos muy unidos, y resultan clave para entender los fundamentos de un SIG tal y como estos se desarrollan a lo largo de este libro. Un SIG es un Sistema de \emph{Información} Geográfica, pero maneja \emph{datos} geográficos, existiendo diferencias entre estos conceptos.
+Existe una importante diferencia entre los conceptos de \emph{datos} e \emph{información}. Un SIG es un Sistema de \emph{Información} Geográfica, pero maneja \emph{datos} geográficos, existiendo diferencias entre estos conceptos.
 
-Entendemos como dato al simple conjunto de valores o elementos que utilizamos para representar algo. Por ejemplo, el código 502132N es un dato. Este código por sí mismo no tiene un significado, y es necesario interpretarlo para que surja ese significado. Al realizar esa interpretación, el dato nos \emph{informa} del significado que tiene, y es en ese momento cuando podemos emplearlo para algún fin y llevar a cabo operaciones sobre él que tengan sentido y resulten coherentes con el significado propio que contiene.
+Entendemos como dato al simple conjunto de valores o elementos que utilizamos para representar algo. Por ejemplo, el código 502132N es un dato. 
 
 El dato anterior podemos interpretarlo como si fuera una referencia geográfica, y cuyo significado sería entonces una latitud, en particular 50\degree $21'$ $32''$ Norte. Si lo interpretamos como un código que hace referencia a un documento de identificación de una persona, la información que nos aporta es en ese caso completamente distinta. El dato sería el mismo, formado por seis dígitos y una letra, pero la información que da es diferente, ya que lo entendemos e interpretamos de manera distinta.
 
-La información es, por tanto, el resultado de un dato y una interpretación, y el trabajo con datos es en muchos casos un proceso enfocado a obtener de estos toda la información posible. Un dato puede esconder más información que la que a primera vista puede apreciarse, y es a través de la interpretación de los datos como se obtiene esta.
+La información es, por tanto, el resultado de un dato y una interpretación, y el trabajo con datos es en muchos casos un proceso enfocado a obtener de estos toda la información posible. 
 
-En el capítulo \ref{Geomorfometria} veremos cómo a partir de un Modelo Digital de Elevaciones\index{Modelo Digital de Elevaciones} podemos calcular parámetros tales como la pendiente, extraer el trazado de la red de drenaje o delimitar las subcuencas en que una cuenca vertiente mayor puede dividirse. El dato en este caso lo constituyen los valores que representan la elevación en los distintos puntos. La información que contienen está formada por todo ese conjunto de elementos que podemos obtener, desde la pendiente a los cursos de los ríos, pasando por todo aquello que mediante la aplicación de procesos u operaciones de análisis podamos extraer de esos datos.
+Comprender el significado y las diferencias entre datos e información permiten entender entre otras cosas que la relación entre los volúmenes de ambos no es necesariamente constante. Por ejemplo, los datos 502132NORTE o CINCUENTA VEINTIUNO TREINTAYDOS NORTE son mayores en volumen que 502132N, pero recogen la misma información espacial que este (suponiendo que los interpretamos como datos de latitud). 
 
-Comprender el significado y las diferencias entre datos e información permiten entender entre otras cosas que la relación entre los volúmenes de ambos no es necesariamente constante. Por ejemplo, los datos 502132NORTE o CINCUENTA VEINTIUNO TREINTAYDOS NORTE son mayores en volumen que 502132N, pero recogen la misma información espacial que este (suponiendo que los interpretamos como datos de latitud). Tenemos más datos, pero no más información. Podemos establecer planteamientos basados en este hecho que nos ayuden a almacenar nuestra información geográfica con un volumen de datos mejor, lo cual resulta ventajoso. Veremos algunos de estos planteamientos más adelante dentro de esta parte del libro.
+En la información geográfica se distinguen dos componentes: espacial y temática. La componente espacial hace referencia a la posición dentro de un sistema de referencia establecido, y responde a la pregunta \emph{¿dónde?}. La componente temática responde a la pregunta \emph{¿qué?}, y define la naturaleza del fenómeno que se produce en la localización indicada por la componente espacial.
 
-Aspectos como estos son realmente mucho más complejos, y el estudio de la relación entre datos e información y sus características no es en absoluto sencilla. Existe una disciplina, la \emph{ciencia de la información}\index{Información!Ciencia de la} dedicada a estudiar los aspectos teóricos relativos a la información y la forma en que esta puede contenerse en los datos. El lector interesado puede consultar \cite{Diener1989ASIS, Williams1997InfoScience} para saber más al respecto.
 
-En este capítulo de introducción a esta parte dedicada a los datos, veremos más acerca de la información que de los datos espaciales, pues la manera en que concebimos esta condiciona la forma de los datos. Será en el capítulo siguiente cuando tratemos ya los datos, abordando uno de los problemas fundamentales: la creación del dato espacial.
-
-\section{Las componentes de la información geográfica}
-\label{ComponenteInformacionGeografica}
-
-\index{Información!geográfica}
-
-Comprender la información geográfica es vital para poder capturar dicha información e incorporarla a un SIG. En líneas generales, podemos dividir esta en dos componentes principales, cada una de los cuales tiene su implicación particular en los procesos posteriores de representación que más adelante veremos.
-
-\begin{itemize}
-\item Componente espacial\index{Componente!espacial}
-\item Componente temática\index{Componente!temática}
-\end{itemize}
-
-La componente espacial hace referencia a la posición dentro de un sistema de referencia establecido. Esta componente es la que hace que la información pueda calificarse como \emph{geográfica}, ya que sin ella no se tiene una localización, y por tanto el marco geográfico no existe. La componente espacial responde a la pregunta \emph{¿dónde?}
-
-Por su parte, la componente temática responde a la pregunta \emph{¿qué?} y va invariablemente unida a la anterior. En la localización establecida por la componente espacial, tiene lugar algún proceso o aparece algún fenómeno dado. La naturaleza de dicho fenómeno y sus características particulares, quedan establecidas por la componente temática.
-
-Puede entenderse lo anterior como una variable fundamental (la componente temática), que se sirve, sin embargo, de una variable soporte (la componente espacial) para completar su significado.
-
-\index{Información!geográfica!división}
-Los tipos de división horizontal y vertical de la información que veremos más adelante implican una separación en unidades, que en la práctica puede implicar en un SIG que cada una de esas unidades quede almacenada en un lugar o fichero distinto. En el caso de las componentes temática y espacial de la información, son posibles distintos enfoques, ya que estas pueden almacenarse de forma conjunta o bien por separado. El capitulo \ref{Bases_datos} trata estos enfoques, y en él veremos con detalle cómo puede abordarse el almacenamiento de ambas componentes de la mejor forma posible, así como la evolución que se ha seguido al respecto dentro del campo de los SIG.\index{Datos!almacenamiento}
-
-Mientras que la componente espacial va a ser generalmente un valor numérico, pues son de esa naturaleza los sistemas de coordenadas que permiten expresar una posición concreta en referencia a un marco dado, la componente temática puede ser de distintos tipos:
+Mientras que la componente espacial va a ser generalmente un valor numérico, pues son de esa naturaleza los sistemas de coordenadas que permiten expresar una posición concreta en referencia a un marco dado, la componente temática puede ser numérica o alfanumérica (texto). Una variable numérica puede a su vez ser de cuatro tipos: nominal, ordinal, intervalo o razón.
 
 \index{Información!tipos}
-\begin{itemize}
 
- \item \textbf{Numérica}. A su vez, pueden señalarse los siguientes grupos:\index{Información!numérica}
-	\begin{itemize}
-	\item \textbf{Nominal}. El valor numérico no representa sino una identificación. Por ejemplo, el número de un portal en una calle, o el numero del DNI de una persona. Este tipo de variable, al igual que la de tipo alfanumérico, es de tipo cualitativo, frente a las restantes que son de tipo cuantitativo.\index{Nominal}
-	\item \textbf{Ordinal}. El valor numérico establece un orden. Por ejemplo, una capa en la que se recoja el año de fundación de las distintas ciudades contenidas en ella.\index{Ordinal}
-	\item \textbf{Intervalos}. Las diferencias entre valores de la variable tienen un significado. Por ejemplo, entre dos valores de elevación.\index{Intervalos}
-	\item \textbf{Razones}. Las razones entre valores de la variable tienen un significado. Por ejemplo, podemos decir que una precipitación media de 1000mm es el doble que una de 500mm. La pertenencia de una variable a un grupo u otro no solo depende de la propia naturaleza de la misma, sino también del sistema en que se mida. Así, una temperatura en grados centígrados no se encuentra dentro de este grupo (pero sí en el de intervalos), ya que la razón entre dichas temperaturas no vale para decir, por ejemplo, que una zona está al doble de temperatura que otra, mientras que si expresamos la variable temperatura en grados Kelvin sí que podemos realizar tales afirmaciones. El valor mínimo de la escala debe ser cero.\index{Razones}
-	\end{itemize}
-\item \textbf{Alfanumérica}\index{Información!alfanumérica}
-\end{itemize}
 
-El tipo de variable condiciona las operaciones que pueden realizarse con un dato geográfico en función de cómo sea su componente temática. Por ejemplo, carece sentido realizar operaciones aritméticas con variables de tipo ordinal o nominal, mientras que es perfectamente lógico con los restantes tipos dentro de la categoría numérica. También, como veremos en el capítulo \ref{El_Mapa}, influye en la forma de representarlo a la hora de elaborar cartografía.
+El tipo de variable condiciona las operaciones que pueden realizarse con un dato geográfico en función de cómo sea su componente temática. 
 
-Además de las componentes espacial y temática, Sinton \cite{Sinton1978Addison} añade la componente temporal y propone un esquema sistemático que permite clasificar en grupos las distintas clases de información geográfica. Según este esquema, cada una de estas componentes puede estar en uno de los siguientes tres estados posibles: \emph{fija, controlada} o \emph{medida}. Al medir una de estas componentes, es necesario controlar otra de ellas, y fijar la tercera, o bien ignorarla y no tenerla en cuenta (este era el caso explicado hasta el momento, en el cual no habíamos citado aún la componente temporal)\index{Información!geográfica!componentes y estados}
+Un concepto a tener en cuenta en relación con las componentes de la información geográfica es la \emph{dimensión}\index{Dimensión}. Los elementos que registramos pueden ir desde sencillos puntos (0D) hasta volúmenes tridimensionales (3D) (Figura \ref{Fig:Dimensiones}).
 
-Por ejemplo, si registramos la temperatura a lo largo de un periodo de tiempo para un punto concreto, la componente temporal está controlada (tomamos mediciones de temperatura con un intervalo de tiempo establecido), la componente temática (la propia temperatura) está medida, y la componente espacial está fija (el termómetro que registra los valores se encuentra siempre en un punto inmóvil)
-
-En general, la información geográfica se recoge haciendo fija la componente temporal, y midiendo o controlando las restantes en función del tipo de información de que se trate.
-
-Un concepto a tener en cuenta en relación con las componentes de la información geográfica es la \emph{dimensión}\index{Dimensión}. Los elementos que registramos pueden ir desde sencillos puntos (0D) hasta volúmenes tridimensionales (3D). Un caso particular ---y muy frecuente--- lo encontramos cuando estudiamos la forma tridimensional del terreno, pero tratando la elevación como variable temática, no como una parte más de la componente espacial. En este caso, tenemos una serie de valores de elevación (Z) localizados en el plano XY. Esto no es realmente equivalente a utilizar una componente espacial tridimensional, ya que no permite recoger en un mismo punto distintos valores (no puede, por ejemplo, modelizarse la forma de una cueva o un objeto vertical), por lo que se conoce como representación en 2.5 dimensiones (2.5D). La figura \ref{Fig:Dimensiones} muestra esquemáticamente el concepto de dimensión de los datos dentro de un SIG.\index{2.5D}
-
-\begin{figure}[!hbt] 
-\centering
-\includegraphics[width=.95\textwidth]{Introduccion_datos/Dimensiones.pdf}
-\caption{\small Dimensión de los datos geográficos}
-\label{Fig:Dimensiones} 
-\end{figure}
-
-Por ultimo, un aspecto importante de toda variable estudiada es su \emph{continuidad}.\index{Continuidad} Se entiende esta continuidad como la capacidad de la variable para tomar todos los valores dentro de un rango definido. La temperatura, la presión o la elevación son valores continuos, mientras que ninguna variable de tipo nominal puede ser continua, ya que se encuentra limitada a un numero (finito) de identificadores posibles. Por ejemplo, en el caso del número de un DNI, los valores son siempre enteros, existe el valor 1 y el valor 2, pero no los infinitos valores decimales entre ambos.
-
-La continuidad de la variable temática se puede estudiar igualmente en relación con la componente espacial. Así, existen variables que varían de forma continua en el espacio, mientras que otras no lo hacen. Se emplea aquí el concepto matemático de continuidad, es decir, que si trazáramos un perfil de la variable a lo largo de un recorrido dado, la representación de dicho perfil sería una curva que podría dibujarse sin levantar el lápiz del papel\footnote{Definiciones más rigurosas del concepto de continuidad puede encontrarse en cualquier texto básico de cálculo elemental o, por ejemplo, en \cite{wikipediaContinuidad}}
-
-Todas estas ideas referidas a las distintas variables (distintas informaciones que pretendemos recoger de una zona de estudio dada) nos servirán para detallar los diferentes enfoques de representación y almacenamiento que veremos en el próximo capítulo, y escoger en cada caso el más apropiado.
+Las diferentes formas de representar y almacenar la información, que veremos en el proximo capitulo, dependen del tipo de variable con que se trabaje.
 
 \section{División horizontal de la información geográfica}
 \label{divisionHorizontal}
 
-Además de dividir la información geográfica en componentes, también dividimos esta con criterios puramente espaciales, <<cortándola>> en unidades menores que ocupen una región de amplitud más reducida. Este es un procedimiento similar al que encontramos en un mapa impreso, ya que el territorio de un país se encuentra cartografiado en diferentes \emph{hojas}. Las razones para esto son, por una parte, los posibles distintos orígenes que los diferentes mapas pueden tener (cada región puede ser responsable de fabricar los suyos) y, especialmente, el hecho de que, de no ser así, los mapas tendrían un tamaño inmanejable. Si cartografíamos a escala\index{Escala} 1:25000 todo un país, es obvio que no podemos hacerlo en un único mapa, ya que este sería enorme.
-
-En el caso de trabajar en un SIG, no tenemos el problema del tamaño físico del mapa, ya que no existe tal tamaño. Los datos no ocupan un espacio físico, pero sí que requieren un volumen de almacenamiento, y este presenta el mismo problema. Recoger a escala 1:25000 todo un país supone un volumen de datos enorme, que es conveniente dividir para poder manejar con fluidez.
-
-En ambos casos, ya sea dentro de un SIG o no, suele resultar necesario emplear varios bloques de información (varias hojas) para cubrir un área de trabajo. En esta circunstancia, las propias características de un SIG y su forma de trabajo con los datos hacen que este proceso sea más sencillo y eficaz.
+Además de dividir la información geográfica en componentes, también dividimos esta con criterios puramente espaciales, <<cortándola>> en unidades menores que ocupen una región de amplitud más reducida. Este es un procedimiento similar al que encontramos en un mapa impreso, ya que el territorio de un país se encuentra cartografiado en diferentes \emph{hojas}. 
 
 La principal cualidad de un SIG para integrar de forma transparente datos correspondientes a zonas distintas y formar un mosaico único es la separación que existe entre datos y visualización. Los datos son la base de la visualización, pero en un SIG estos elementos conforman partes del sistema bien diferenciadas. Esto quiere decir que los datos se emplean para crear un resultado visual pero en sí mismos no contienen valores relativos a esa visualización.
 
-De este modo, es posible combinar los datos y después representarlos en su conjunto. Un proceso así no puede realizarse con un mapa ya impreso, pues este contiene ya elementos de visualización e incluso componentes cartográficos tales como una flecha indicando el Norte, una leyenda o una escala. Por ello, aunque puedan combinarse, realmente no se <<funde>> la información de cada uno de los mapas para conformar uno único. Dicho de otro modo, si tomamos cuatro hojas contiguas de una serie de mapas no podemos formar un nuevo mapa que sea indistinguible de uno cuatro veces más grande que haya sido impreso en un único pliego de papel. 
-
-En un SIG, sin embargo, sí que sucede así, y la visualización de cuatro o más bloques de datos puede ser idéntica a la que obtendría si todos esos datos constituyeran un único bloque. Empleando herramientas habituales en un SIG, y si cada uno de esos bloques está almacenado en un fichero, resulta incluso posible, unirlos todos y crear un solo fichero que los contenga.
-
-Una de las razones principales que favorecen esta combinación de datos es el hecho de que la escala nominal es en sí un elemento de representación. Como vimos en el apartado \ref{Escala}, la escala nominal relaciona el tamaño que tiene un objeto en la representación con su tamaño real, y la forma en que se recoge la información a la hora de realizar medidas de ese objeto viene condicionada por dicha escala, de tal modo que el esfuerzo desarrollado en esas mediciones sea coherente con la representación que se va a hacer posteriormente al crear el mapa.
-
-Los datos que manejamos en un SIG tiene una escala de detalle impuesta por la precisión de las mediciones, pero no una escala nominal asignada, ya que no tienen un tamaño fijo de representación en la pantalla del ordenador o el periférico correspondiente, al contrario que un mapa impreso en el que los distintos elementos ya se encuentran representados. Esto hace que combinar cartografía clásica a distintas escalas sea complejo, ya que los mapas no <<casan>> bien entre sí.
-
-En el caso de un SIG, es el usuario el que decide la escala de representación, y esta será la misma para todos los datos que se visualicen, independientemente de las características de estos. En el contexto actual de datos geográficos, es habitual encontrar situaciones en las que para una zona de terreno disponemos de información a una escala, y para otra zona contigua a esta la información disponible es a una escala distinta. Con el uso de un SIG, sin embargo, es posible trabajar sin problemas con todo el conjunto, sin preocuparse por la integración de sus distintas partes.
-
-Lógicamente, no debe dejarse de lado nunca el rigor cartográfico y, como se dijo en su momento, no olvidar que, aunque podamos representar cualquiera de esos datos a la escala que deseemos, los datos en sí no son suficientes para ello y tienen unas limitaciones impuestas por su escala inherente. Es decir, que no es  necesario preocuparse por la integración a la ahora de visualizar y gestionar los datos, pero sí a la hora de analizarlos u obtener resultados a partir de ellos. No obstante, el proceso de combinación es en cualquier caso transparente para el usuario que visualiza esos datos en un SIG, y la operación pasa de ser algo tedioso y complejo a algo prácticamente inapreciable dentro del SIG, pues es este quien se encarga de ocultar toda esa complejidad y simplemente generar las representaciones según los parámetros requeridos en cada momento.
-
-\index{Uso conjunto de distintas escalas}
-La figura \ref{Fig:Distintas_escalas_horizontal} muestra un ejemplo de lo anterior en el que puede verse cómo varias fotografías aéreas forman un mosaico que cubre una zona dada, teniendo estas distinto nivel de detalle tal y como puede apreciarse.
-
-\begin{figure}[!hbt] 
-\centering
-\includegraphics[width=.8\textwidth]{Introduccion_datos/Distintas_escalas_horizontal.png}
-\caption{\small Integración de datos en sentido horizontal. A pesar de que la escala de detalle es distinta para las fotografías aéreas de la imagen, estas se combinan sin problema en un SIG, representándose a una escala dada todas ellas de forma sencilla. Nótese la mayor definición en la parte inferior de la imagen, que se forma con imágenes tomadas a una escala distinta a la de las de la parte superior. Adviértase igualmente la distinta iluminación, ya que han sido tomadas en fecha y horas distintas.}
-\label{Fig:Distintas_escalas_horizontal} 
-\end{figure}
+De este modo, es posible combinar los datos y después representarlos en su conjunto. Un proceso así no puede realizarse con un mapa ya impreso, pues este contiene ya elementos de visualización e incluso componentes cartográficos tales como una flecha indicando el Norte, una leyenda o una escala. Por ello, aunque puedan combinarse, realmente no se <<funde>> la información de cada uno de los mapas para conformar uno único. En un SIG, posr el contrario, la visualización de cuatro o más bloques de datos puede ser idéntica a la que obtendría si todos esos datos constituyeran un único bloque. 
 
 
 \section{División vertical de la información. Capas}
 
-Uno de los grandes éxitos de los SIG es su estructura de manejo de información geográfica, que facilita todas las operaciones que se llevan a cabo con esta. El concepto de \emph{capa}\index{Capa}, imprescindible para comprender todo SIG, es una de las grandes virtudes inherentes a los Sistemas de Información Geográfica, en cuanto que favorece la correcta estructuración de la información y el trabajo con ella.
-
-La división horizontal que ya hemos visto no es algo nuevo, y la gran mayoría de los mapas clásicos cubren una porción relativamente pequeña de la superficie terrestre. Combinando distintos mapas podemos formar uno mayor que cubra una extensión más amplia, y aunque ya hemos visto que esto mismo puede realizarse con un SIG y la tarea resulta así más sencilla, no resulta una operación tan compleja y extraña en el caso de no trabajar en un entorno SIG.
-
-Más difícil, sin embargo, es combinar distintos tipos de información, como por ejemplo la contenida en un mapa topográfico y la existente en un mapa de tipos de suelo y otro de vegetación potencial. Para una misma zona, trabajaremos con varios mapas simultaneamente, y combinar estos para la realización de operaciones en las que intervengan todos ellos(supongamos, por ejemplo, calcular el área total de las zonas con un tipo de suelo dado donde la vegetación corresponde a una clase concreta y se encuentran por encima de 1000 metros) es difícil y generalmente también impreciso.
-
-En el caso de un SIG, los distintos tipos de información se pueden combinar de forma sencilla y limpia, y no aparecen los mismos problemas. Esto es así debido a que la idea de capa permite dividir la información espacial referida a una zona de estudio en varios niveles, de tal forma que, pese a coincidir sobre un mismo emplazamiento, información sobre distintas variables se encuentra recogida de forma independiente. Es decir, en función de la componente temática se establecen distintos bloques de datos espaciales.
-
-Para comprender mejor el concepto de capa, pensemos en un mapa topográfico clásico. En él vamos a encontrar elementos como curvas de nivel, carreteras, núcleos urbanos, o simbología relativa a edificios y puntos singulares (iglesias, monumentos, etc.)  Todos estos elementos en su conjunto componen el mapa, y aparecen en una misma hoja como una unidad coherente de información geográfica. No obstante, cada uno de los de estos grupos de información recogidos ---elevaciones, red viaria, núcleos urbanos, puntos de interés arquitectónico--- pueden recogerse de forma independiente, y combinarse al componer el mapa según las necesidades del momento, o bien combinarse de modo distinto o emplearse individualmente (Figura \ref{Fig:Concepto_capa}).
+En un SIG, la información espacial referida a una zona de estudio está dividida en varios niveles, de tal forma que, pese a coincidir sobre un mismo emplazamiento, información sobre distintas variables se encuentra recogida de forma independiente. Es decir, en función de la componente temática se establecen distintos bloques de datos espaciales. Cada uno de estos bloques temáticos se conoce como \emph{capa} (Figura \ref{Fig:Concepto_capa}). 
 
 \begin{figure}[!hbt] 
 \centering
@@ -151,38 +57,530 @@ Para comprender mejor el concepto de capa, pensemos en un mapa topográfico clási
 \label{Fig:Concepto_capa} 
 \end{figure}
 
-La figura es lo suficientemente gráfica como para entender la razón de que a este tipo de división la denominemos \emph{vertical}, así como el propio nombre de \emph{capa}, ya que de ella resulta una serie de diferentes niveles que se pueden superponer según el criterio particular de cada usuario de SIG.
+El concepto de \emph{capa} es imprescindible para comprender todo SIG, y  favorece la correcta estructuración de la información y el trabajo con ella. Toda la información geográfica con que trabajemos en un SIG va a ser en forma de capas. Cada una de ellas puede abrirse de forma independiente en un SIG y utilizarse por sí misma o en conjunto con otras.
 
-Toda la información geográfica con que trabajemos en un SIG va a ser en forma de capas. Cada una de estas capas puede abrirse de forma independiente en un SIG y utilizarse por sí misma o en conjunto con otras en la combinación que se desee.\index{Datos!juego de}
+Con la cartografía clásica, no es posible (o resulta difícil e impreciso) combinar distintos tipos de información, como por ejemplo la contenida en un mapa topográfico y la existente en un mapa de tipos de suelo y otro de vegetación potencial. En el caso de un SIG, los distintos tipos de información se pueden combinar de forma sencilla y limpia, y no aparecen los mismos problemas
 
-Esta forma de proceder no es exclusiva de los SIG, y antes de la aparición de estos ya existían experiencias previas en este sentido, combinándose capas de información geográfica para la realización de análisis (véase \ref{Evolucion_tecnicas}). Es, sin embargo, con la aparición de los SIG cuando esta metodología se aplica de forma regular y se establece sistemáticamente dicha estructuración de la información geográfica.
+La relevancia del concepto de capa como elemento fundamental de un SIG es enorme, pues constituye el marco básico sobre el que se van a llevar a cabo gran parte de las operaciones. Por ejemplo, vimos en el apartado dedicado a la generalización cartográfica cómo en un SIG podemos utilizar diferentes <<versiones>> de los datos correspondientes a una zona concreta, y representar una u otra de ellas en función de la escala de trabajo. Estas versiones se almacenarán como distintas capas. La capa es así la unidad fundamental no solo en términos de un área dada, sino también de una escala concreta, y permite una división de los datos óptima a todos los efectos.
 
-Así, la visualización, el análisis, y todas las acciones que se realizan sobre la información geográfica dentro de un SIG, se llevan a cabo sobre un conjunto de capas, entendiéndose cada una de ellas como la unidad fundamental de información sobre una zona dada y un tipo de información concreta.
 
-Muy habitualmente las capas se conocen también como \emph{capas temáticas} o \emph{temas}, términos bastante extendidos que hacen referencia al mismo concepto.
+La separación de la información en capas evita asimismo la redundancia de datos, ya que cada capa contiene un tipo de información concreto. En un mapa clásico se presentan siempre varias variables, algunas de ellas presentes con carácter general, tales como nombres de ciudades principales o vías más importantes de comunicación. En un SIG, al encontrarse estas variables separadas en sus correspondientes capas, es el usuario quien las combina.
 
-La relevancia del concepto de capa como elemento fundamental de un SIG es enorme, pues realmente constituye el marco básico sobre el que se van a llevar a cabo gran parte de las operaciones. Algunas de las posibilidades que brinda esta filosofía ya las conocemos. Por ejemplo, vimos en el apartado dedicado a la generalización cartográfica cómo en un SIG podemos utilizar diferentes <<versiones>> de los datos correspondientes a una zona concreta, y representar una u otra de ellas en función de la escala de trabajo. Para un tipo de información, por ejemplo los usos del suelo, estas versiones se almacenarán como distintas capas.  La capa es así la unidad fundamental no solo en términos de un área dada, sino también de una escala concreta, y permite una división de los datos óptima a todos los efectos.
+El trabajo con capas permite, por tanto, una estructura más organizada y una mayor atomización de los datos, con las consecuentes ventajas en el almacenamiento, manejo y funcionalidad que esto conlleva.
 
-Al igual que veíamos en el apartado anterior, las capas nos van a permitir la combinación de datos a distinta escala, no ya en este caso datos contiguos, sino datos correspondientes a un mismo área pero con variables distintas. Esto es de gran utilidad en el trabajo habitual, ya que no todas las variables se recogen con un mismo nivel de detalle, y el detalle con el que podemos encontrar una capa de elevaciones va a ser generalmente mucho mayor que el que cabe esperar para una capa de, digamos, litología.
 
-En realidad, y en el lenguaje habitual de trabajo con SIG, la capa no define únicamente una división vertical, sino también una horizontal. Es más sencillo visualizar la idea de capa con un esquema como el de la figura \ref{Fig:Concepto_capa}, en el que las distintas variables se <<apilan>> en capas de información superpuestas. Sin embargo, las divisiones horizontales en un mosaico de datos también se consideran como capas distintas en un SIG, pese a contener una misma variable y un mismo tipo de información. Por tanto, y aunque la división vertical sea la que verdaderamente define la idea de capa, cuando hablamos de una capa de datos en un SIG nos referimos a un <<trozo>> de toda la información disponible, que implica una sección en la dimensión vertical (la de las variables existentes que pueden estudiarse) y un recorte en la horizontal (la de la superficie geográfica).
+\section{Modelos para almacenamiento de información geográfica}
+\label{Tipos_datos}
 
-Las capas pueden emplearse también para incorporar en cierta forma la variable temporal si se considera que la dimensión vertical es el tiempo. Aunque no es la manera más adecuada, y en la actualidad el manejo del tiempo es uno de los principales problemas a resolver en el diseño de los SIG, podemos trabajar con varias capas que representen una misma información y una misma zona, pero en instantes distintos. Esto no es distinto a trabajar con mapas clásicos correspondientes a diferentes instantes, salvo que en el caso de capas cada elemento de la información se encuentra separado a su vez.
+El proceso de convertir un área geográfica y la información acerca de ella en un dato susceptible de ser incorporado a un SIG puede dividirse en tres fases:
 
-Por último, es importante el hecho de que la separación de la información en capas evita la redundancia de datos, ya que cada capa contiene un tipo de información concreto. En un mapa clásico se presentan siempre varias variables, algunas de ellas presentes con carácter general, tales como nombres de ciudades principales o vías más importantes de comunicación. Es decir, que un mapa de usos de suelo o un mapa geológico van a contener otras variables, que en ocasiones se añaden a este para enriquecerlo. Unas curvas de nivel, por ejemplo, permitirán una mejor interpretación de esa geología.
+\begin{itemize}
+ \item Establecimiento de un \textbf{modelo geográfico}. Es decir, un modelo conceptual de la realidad geográfica y su comportamiento.
+\item Establecimiento de un \textbf{modelo de representación}. Es decir, una forma de recoger el anterior modelo conceptual y sus características propias, reduciéndolo a una serie finita de elementos.
+\item Establecimiento de un \textbf{modelo de almacenamiento}. Es decir, un esquema de cómo almacenar los distintos elementos del modelo de representación.
+\end{itemize}
+\index{Modelo!geográfico}\index{Modelo!de representacion}\index{Modelo!de almacenamiento}
 
-Al dividir toda la información en capas, podemos combinar curvas de nivel y geología, añadir otros elementos, o bien representarlas de forma aislada, algo que no resulta posible si los datos de los que disponemos ya vienen unidos inseparablemente, como sucede en el caso de la cartografía impresa. La división en capas ofrece un mayor número de posibilidades distintas de trabajo y, como iremos viendo a lo largo de gran parte de este libro, también mayores posibilidades de análisis y proceso.
 
-En resumen, el trabajo con capas permite una estructura más organizada y una mayor atomización de los datos, con las consecuentes ventajas en el almacenamiento, manejo y funcionalidad que esto conlleva.
 
+Los dos modelos geográficos principales son los campos y las entidades discretas. 
+
+En el modelo de campos se establece que cada punto del espacio tiene un valor para una variable dada. En general, esto quiere decir que a cada par de coordenadas $(x, y)$ le corresponde un valor $t$ de la variable, aunque tambien puede plantearse como modelo tridimensional ---a cada terna $x, y, z$ le corresponde un valor $t$--- o para ciertas variables como un modelo en el que se asocian varias variables ---por ejemplo, para el caso de la velocidad del viento, a cada coordenada (x, y) le corresponderá un par de valores que expresen el vector velocidad en ese punto---. Los campos son ideales para modelizar variables que varían de forma continua en el espacio, entre ellas la practica totalidad de variables físicas del medio, tales como temperatura del aire, presión atmosférica, elevación, etc.
+
+En modelo de entidades discretas no asocia a cada punto geográfico un valor, sino que concibe un entorno geográfico como un espacio vacío sobre el que se sitúan distintos elementos (entidades) que lo van rellenando. Cada una de dichas entidades posee unas características propias, constantes para toda ellas, que son las que conferirán sus propiedades particulares a los puntos que se sitúen en su interior.
+
+El modelo de entidades discretas es más adecuado para el caso de variables no continuas (por ejemplo, la presencia de vías de comunicación o zonas urbanizadas), ya que la forma en que se presentan coincide en cierta medida con dichas entidades como unidades mínimas. 
+
+Los \emph{modelos de representación}, también denominados \emph{modelos de datos} sirven para convertir la información del espacio (de acuerdo con el modelo conceptual) en una serie de valores finitos a almacenar.
+
+Los modelos de representación que se utilizan principalmente en un SIG son dos: modelo raster y modelo vectorial.
+
+\subsection{Modelo ráster}
+
+El modelo ráster se basa en una división sistemática del espacio, la cual cubre todo este, caracterizándolo como un conjunto de unidades elementales, cada una de ellas con un valor asociado. Lo más habitual es una división en una malla de celdas cuadradas o rectangulares. Conociendo la orientación de la malla y las dimensiones de cada una de las celdas, así como las coordenadas de al menos una de ellas, es posible conocer las coordenadas del resto en virtud de su estructura regular. Con esto, conocemos los valores de la variable en todos los puntos del espacio cubierto por la capa. El tamaño de celda es un parámetro relacionado con la escala de trabajo de la capa, ya que define la resolución de esta y está en función de la precisión con que se han tomado los datos correspondientes.
+
+
+La figura \ref{Fig:Raster_closeup} muestra un ejemplo de una malla ráster con valores de elevación.
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.4\textwidth]{Tipos_datos/Raster_closeup.png}
+\caption{\small Celdas de una malla ráster con sus valores asociados.}
+\label{Fig:Raster_closeup} 
+\end{figure}
+
+Una capa raster puede contener varios valores para cada celda. Por ejemplo
+
+El número de valores distintos recogidos para cada celda coincide con el número de las denominadas \textbf{bandas}. Una banda continen un único valor en una capa raster. Puede entenderse una capa raster de más de una banda como un conjunto de capas (cada banda sería una subcapa de ese conjunto), teniendo en todas ellas la malla de celdas las mismas características espaciales, y presentandose el conjunto como un único elemento.
+
+El ejemplo más claro de uso del modelo raster lo encontramos en las imágenes. Una imagen digital se compone de una malla de elementos (denominados \textbf{píxeles}, cada uno de los cuales tiene un color asociado). El conjunto de estos píxeles forman la imagen completa. Lo más habitual es que las imágenes contengan 3 bandas, correspondientes a las intensidades de los colores rojo, verde y azul, las cuales al combinarse permiten obtener el color de cada píxel.
+
+
+\subsection{Modelo vectorial}
+
+El modelo vectorial, por su parte, no divide el espacio completamente, sino que lo define mediante una serie de elementos geométricos con valores asociados, siendo la disposición de estos no sistemática, sino guardando relación con los objetos geográficos presentes en la zona de estudio.
+
+Existe un gran paralelismo entre el modelo de campos y el modelo raster, así como entre el modelo de entidades discretas y el vectorial, aunque no son conceptos idénticos. En general, el modelo raster es más adecuado para recoger variables continuas, y el vectorial para variable no continuas, pero ambos pueden emplearse para recoger cualquier tipo de variable (vease la Figura \ref{Fig:Esquemas_modelos_representacion}, aunque el dato final puede no ser óptimo según el caso.
+
+
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.9\textwidth]{Tipos_datos/Esquemas_modelos_representacion.pdf}
+\caption{\small Comparación entre los esquemas del modelo de representación vectorial (a) y ráster (b).}
+\label{Fig:Esquemas_modelos_representacion} 
+\end{figure}
+
+
+
+\subsection{Modelo ráster}
+\label{Modelo_raster}\index{Raster!modelo}
+
+En el modelo ráster, la zona de estudio se divide de forma sistemática en una serie de unidades mínimas (denominadas habitualmente \emph{celdas}), y para cada una de estas se recoge la información pertinente que la describe.  Se puede ver esto en detalle en la figura \ref{Fig:Raster_closeup}, que muestra aumentada una porción la malla ráster de elevaciones de la figura \ref{Fig:MDE_modelos_representacion}, de modo que los límites de las celdas se hacen patentes y puede además representarse en cada una de ellas su valor asociado.
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.4\textwidth]{Tipos_datos/Raster_closeup.png}
+\caption{\small Celdas de una malla ráster con sus valores asociados.}
+\label{Fig:Raster_closeup} 
+\end{figure}
+
+Aunque la malla de celdas puede contener información sobre varias variables, lo habitual es que trate una única variable. Es decir, que se tenga un único valor para cada una de las celdas.
+
+
+
+\subsection{Modelo vectorial}
+
+El otro modelo principal de representación es el modelo vectorial. En este modelo, no existen unidades fundamentales que dividen la zona recogida, sino que se recoge la variabilidad y características de esta mediante entidades geométricas, para cada una de las cuales dichas características son constantes. La forma de estas entidades (su frontera), se codifica de modo explicito, a diferencia del modelo ráster, donde venía implícita en la propia estructura de la malla.
+
+Si el modelo ráster era similar al modelo conceptual de campos, el vectorial lo es al de entidades discretas, pues modeliza el espacio geográfico mediante una serie de primitivas geométricas que contienen los elementos más destacados de dicho espacio. Estas primitivas son de tres tipos: puntos, líneas y polígonos.\index{Primitivas geométricas}
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.95\textwidth]{Tipos_datos/Primitivas_vectoriales.pdf}
+\caption{\small Primitivas geométricas en el modelo de representación vectorial y ejemplos particulares de cada una de ellas con atributos asociados}
+\label{Fig:Primitivas_vectoriales} 
+\end{figure}
+
+Utilizando puntos, líneas o polígonos, puede modelizarse el espacio geográfico si se asocia a estas geometrías una serie de valores definitorios. La componente espacial de la información queda así en la propia primitiva (recoge la forma, posición y otras propiedades espaciales), y la componente temática queda en dichos valores asociados (Figura \ref{Fig:Primitivas_vectoriales}).
+
+A la hora de definir las formas geométricas básicas, todas ellas pueden reducirse en última instancia a puntos. Así, las lineas son un conjunto de puntos interconectados en un determinado orden, y los polígonos son líneas cerradas, también expresables por tanto como una serie de puntos. Todo elemento del espacio geográfico queda definido, pues, por una serie de puntos que determinan sus propiedades espaciales y una serie de valores asociados.
+
+Una única entidad (para la cual existirá un único conjunto de valores asociados) puede contener varias primitivas. Así, en un mapa mundial en que cada entidad represente un país, y tal y como se ve en la figura \ref{Fig:Casos_particulares_poligonos}, países como Canadá estarán representados por más de un polígono, pues no puede recogerse todo su territorio mediante uno único. Todos estos polígonos constituyen una única entidad, ya que todos perteneces al mismo país y tendrán el mismo conjunto de valores asociados.
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.85\textwidth]{Tipos_datos/Casos_particulares_poligonos.png}
+\caption{\small Casos particulares de polígonos: a) varios polígonos disjuntos en una misma entidad (en este caso, mismo país), b) Polígonos con islas (huecos).}
+\label{Fig:Casos_particulares_poligonos} 
+\end{figure}
+
+\index{Polígono!con huecos}\index{Entidades!multiples}
+
+Otro caso particular en las capas de polígonos son aquellos polígonos con islas (huecos). En este caso, se registran de la misma forma que en el caso de varios polígonos disjuntos. Se recogen los propios huecos como polígonos independientes, pero recogiendo de algún modo también la circunstancia de que estos polígonos no se \emph{suman} a los polígonos existentes en esa entidad, sino que se \emph{restan}. Así es, por ejemplo, para el caso del área total de polígonos de una única entidad, ya que el área del hueco debe ser restada de la total.
+
+En la figura anterior, vemos como Sudáfrica presenta esta situación, ya que dentro del territorio del país hay zonas aislada que no pertenece a Sudáfrica, como por ejemplo la que constituye el Reino de Lesotho.\index{Sudafrica}\index{Lesotho, Reino de}
+
+Como se muestra en la figura \ref{Fig:Poligonos_con_huecos}, el conjunto del territorio ocupado por Sudáfrica y las zonas interiores que no pertenecen al país no puede verse como un conjunto de polígonos sin más. Para representar Sudáfrica de forma aislada es necesario <<restar>> del polígono que engloba todo el territorio los polígonos respectivos a los países interiores. De no hacerlo así, un cálculo sencillo tal y como el del área de dicho país arrojará un resultado erróneo, pues considerará igualmente estas zonas interiores.
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.6\textwidth]{Tipos_datos/Poligonos_con_huecos.png}
+\caption{\small Los huecos de un polígono han de considerarse como parte de este.}
+\label{Fig:Poligonos_con_huecos} 
+\end{figure}
+
+En realidad, los huecos se registran como polígonos disjuntos que pertenecen a la entidad, aunque en lugar de representar un territorio que se añade, representan uno que se <<quita>>. Una forma habitual de hacer esto es almacenar las coordenadas de los vértices de estos polígonos interiores en sentido inverso, de tal modo que su área es negativa. De esta forma, la suma total del área de los polígonos de la entidad es igual al área buscada\footnote{La fórmula empleada para el cálculo del área de un polígono se expone en la página \pageref{Eq:Area_poligono}}.
+
+\index{Polígono!área de}
+
+Dentro de un SIG, una capa vectorial puede contener un único tipo de primitiva. Así, tenemos capas vectoriales de puntos, de líneas y de polígonos, respectivamente. La elección de uno u otro tipo de capa para registrar una variable o conjunto de ellas ha de ser función del tipo de fenómeno que se pretende modelizar con dicha capa o la precisión necesaria, entre otros factores. 
+
+Por ejemplo, una capa de puntos puede representar un conjunto de ciudades, cada una de ellas definida como un único punto. Sin embargo, puede emplearse una capa de polígonos y no recoger una única coordenada (correspondiente, por ejemplo, al centro de la ciudad), sino el contorno o los límites administrativos de esta. Dependiendo del caso, será más apropiado elegir una u otra alternativa.
+
+De igual modo, la capa de vías representada en la figura \ref{Fig:Vias_modelos_representacion} es una capa de líneas. Cada línea, como elemento teórico de ancho nulo, representa el eje de la vía. Si se requiere una mayor precisión en la definición de la superficie de rodadura de dichas vías, una capa de polígonos puede ser utilizada en lugar de una de líneas.
+
+Lo anterior tiene una evidente relación con los conceptos de escala\index{Escala} y generalización\index{Generalización!cartográfica} que vimos en el capítulo \ref{Fundamentos_cartograficos}.
+
+No debe pensarse que las capas vectoriales, sean del tipo que sean, se emplean únicamente para recoger fenómenos o elementos cuya forma coincide con la de las primitivas geométricas (es decir, puntos para recoger elementos puntuales, líneas para aquellos elementos con una dimensión mucho menor que la otra, y polígonos para el caso de superficies). Además de los ejemplos anteriores, debemos recordar que el modelo vectorial también sirve para representar campos y recoger variables tales como la elevación.
+
+Así, en los ejemplos de la figura \ref{Fig:MDE_modelos_representacion} encontramos capas de puntos, lineas (curvas de nivel) y polígonos (TIN), todas ellas empleadas para representar la variable elevación. En ocasiones se emplean las primitivas para recoger objetos reales de forma similar, mientras que en otros casos sirven para plantear un modelo lógico y recoger variables que no se asemejan de modo alguno a las formas geométricas registradas.
+
+A propósito de la capa de puntos regulares, cabe pensar que es similar en concepto y forma a la malla ráster, ya que es regular. Sin embargo, existen dos diferencias importantes: en primer lugar, en la capa de puntos hay zonas en blanco, de las que no sabemos su elevación, mientras que en la malla ráster las celdas tienen una superficie y cubren en su conjunto todo el espacio. En segundo lugar, si tenemos esa capa de puntos en un SIG, esta va a contener las coordenadas particulares de cada punto, ya que en sí las capas vectoriales no son regulares (pueden guardar alguna regularidad, pero no necesariamente), y por tanto es necesario, como hemos visto, registrar explícitamente sus coordenadas. De modo similar podríamos hacer una capa de polígonos cuadrados, pero seguiría sin ser una malla ráster, más aún si careciera de un elemento que veremos en breve: la topología. \index{Topología}
+
+\subsubsection{La componente temática en el modelo vectorial}
+
+La forma en la que los modelos de representación separan las dos componentes de la información geográfica hemos visto que es bien distinta. En el modelo ráster se tiene un conjunto de valores (la componente temática), los cuales guardan una estructura dada, la cual por sí misma establece su disposición en el espacio (la componente espacial). En el vectorial, por su parte, la componente espacial se recoge explícitamente según una serie de puntos, la cual puede ser más o menos compleja en función de la complejidad de la entidad a representar o el detalle con que se recoja. A este conjunto de puntos se le relaciona después con una serie de valores, que son los que definen las propiedades de la entidad.
+
+Estos valores, los \emph{atributos}, a diferencia del caso ráster, suelen ser múltiples. Por ejemplo, dada una capa vectorial de países, podemos recoger valores asociados a cada país tales como su superficie, su población, el Producto Interior Bruto, el nombre de su capital o el idioma que se habla. Todo este conjunto de valores se asocian a una única copia de la componente espacial, y esta no debe repetirse para recoger cada uno de esos parámetros. En el modelo ráster, si tenemos $n$ capas distintas, en realidad estamos almacenando $n$ veces la componente espacial.
+\index{Atributos!de una capa vectorial}
+
+Por esta estructura particular, la componente temática se presta especialmente a almacenarse en una base de datos, siendo en la actualidad las más extendidas las denominadas \emph{bases de datos relacionales}. Estas bases de datos se \emph{enlazan} a la componente espacial y permiten una serie de operaciones(ver capítulo \ref{Consultas}) y un manejo ventajoso de los \emph{atributos}. Existen, por tanto, dos realidades: la relativa a la componente geográfica y la base de datos que gestiona los atributos, la cual permite análisis y operaciones independientes, del mismo modo que si no existirá una localización asociada a dichos atributos. Estas realidades pueden estar muy separadas, gestionándose en aplicaciones distintas y almacenándose en ficheros diferentes, con lo cual existe una división formal mucho más acusada que en el caso de las capas ráster, que se asemejan más a unidades de información autocontenidas.
+
+En el caso de las capas ráster, no es necesario recurrir a una base de datos, y simplemente la representación del conjunto de valores de la variable en las distintas celdas sirve para el almacenamiento, análisis y manejo de la información. Como indica \cite{Heywood1998Longman}, esta forma de \emph{conectar} las componentes espacial y temática es apta para el análisis, pero el manejo de los atributos requiere la presencia de una base de datos.\index{Base de datos}
+
+El establecimiento de las bases de datos, su manejo y su implementación dentro de un SIG es un tema altamente complejo. La forma en que el manejo de la componente temática y la gestión de la base de datos se establecen, así como la imbricación de la una en la otra, es la materia exclusiva del capítulo \ref{Bases_datos}, donde todos estos temas se desarrollarán con profundidad.
+
+\subsubsection{Topología}
+\label{Topologia}
+
+\index{Topología}
+
+Un elemento particular del modelo de representación vectorial es la \emph{topología}. En términos matemáticos la topología estudia las características de los objetos geométricos que no varían al aplicar una transformación topológica tal como, por ejemplo, una transformación afín\index{Transformación!afín}. Si tomamos un mapa y lo distorsionamos, los ángulos, las superficies y las distancias se ven afectadas. Sin embargo, otras propiedades tales como la adyacencia entre elementos o las relaciones entre estos se conservan. Por ejemplo, si una ciudad está dentro de una determinada provincia en un determinado mapa, no existe forma de distorsionar esta para lograr que dicha ciudad se encuentre fuera de la provincia.
+
+En el ámbito de los SIG se entiende la topología desde un punto de vista menos estricto y más funcional. En general, se dice que una capa de información tiene topología si en ella se almacenan de algún modo las relaciones entre los distintos elementos que la componen. En caso contrario, la capa es de tipo puramente cartográfico, ya que los elementos que contiene no presentan relación entre sí, o al menos esta relación no está almacenada junto a la propia información de estos elementos.
+
+En una capa ráster, las relaciones topológicas vienen implícitas en el propio modelo ráster, y son ajenas a la información como tal, dependiendo de la estructura de la malla de datos en sí. En el modelo vectorial, sin embargo, se recoge la información relativa a cada elemento de forma individual, y si las relaciones existentes no se registran de modo explicito, no se tendrá posteriormente información sobre ellas.
+
+Disponer de topología en una capa vectorial es de gran importancia a la hora de llevar a cabo ciertos tipos de análisis, así como otros tales como la edición de los propios datos geográficos. La topología no aporta beneficio a la hora de representar una capa, pero sí a la hora de llevar a cabo análisis sobre ella \cite{Herring1987Autocarto}. 
+
+En la figura \ref{Fig:Topologia_edicion} se puede observar la diferencia existente entre editar una capa de polígonos con topología y una sin ella. En el primer caso, la información contenida en la capa antes de su edición nos informa no solo de la forma de cada polígono, sino también del hecho de que ciertos polígonos comparten bordes comunes y de que el conjunto de ellos cubre el espacio de forma completa (constituyen una teselación\index{Teselación}). Así, al modificar un punto en uno de los polígonos, todos aquellos polígonos adyacentes que comparten dicho punto modifican también su perímetro. Las capacidades de edición implementadas en el Sistema de Información Geográfica hacen uso de la información topológica a la hora de editar geometrías. En el segundo caso, sin embargo, esta información no existe, y no se pueden alterar los polígonos adyacentes, perdiéndose la teselación completa del espacio.
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.6\mycolumnwidth]{Tipos_datos/Topologia_edicion.pdf}
+\caption{\small Diferencias entre la edición (desplazamiento de un punto) no disponiendo de topología (a) o con ella (b).}
+\label{Fig:Topologia_edicion} 
+\end{figure}
+
+La topología es en este caso un elemento que contribuye a la calidad de los datos, pues mantiene la coherencia espacial de estos y evita la aparición de elementos tales como polígonos de muy pequeño tamaño, frecuentes en la digitalización de entidades debido a las pequeñas imprecisiones que se presentan en el proceso, y que causan la presencia de falsos solapes entre polígonos.
+
+No obstante, no todos los SIG incorporan capacidades de manejo y análisis de capas vectoriales con topología, y son menos aún los que implementan capacidades para crear dicha topología. En general, estas han quedado reservadas a las aplicaciones de alta gama, y el manejo de información vectorial en los SIG de escritorio no incluye de forma general lo relativo a la topología.
+
+Otro ejemplo de proceso en el que se hace necesario el disponer de capas con topología es el análisis de redes (este se detalla en el capítulo\index{Redes!análisis de} \ref{Analisis_redes}). Un mero conjunto de elementos geométricos (líneas en este caso), no nos da información sobre los posibles enlaces entre las vías que quedan representadas. Los puntos donde se cruzan dos vías pueden ser cruces o rotondas (es decir, puede pasarse de una vía a otra, existiendo conexión entre ellas), o bien pasos elevados o subterráneos donde una de las vías pasa por encima de la otra (y por tanto no existe comunicación entre ambas). Las circunstancias son muy distintas en función del tipo de cruce que exista, y por ello es imprescindible conocer esta información para efectuar un análisis de redes correcto. 
+
+Otro elemento que no se puede recoger sin topología son las direcciones de circulación. Habrá vías que puedan recorrerse en ambos sentidos, mientras que habrá otras que solo permitan movimiento de tráfico en una dirección. Saber en qué dirección podemos recorrer una vía es vital para poder plantear cualquier tipo de análisis, y esta es una información de la que no disponemos si nuestra red viaria no ha sido representada mediante un modelo con topología.
+
+Estas circunstancias se recogen de forma esquemática en la figura \ref{Fig:Topologia_vias}
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.6\mycolumnwidth]{Tipos_datos/Topologia_vias.pdf}
+\caption{\small Capa de vías de comunicación sin topología (a) o con ella (b). Los puntos en este segundo caso indican conexiones entre vias, y son una representación visible de la topología existente. Las flechas indican la dirección de circulación y, al igual que sucede con las conexiones, solo están presentes si existe topología}
+\label{Fig:Topologia_vias} 
+\end{figure}
+
+
+Aunque, como se ha mencionado, las capas ráster en cierta forma contienen información topológica (se conoce la relación de adyacencia entre las distintas celdas), esta es \emph{débil}, y no suficiente para análisis complejos como el de redes donde existen distintos elementos como los mencionados cruces o las direcciones de circulación. Aparte de la inherente peor disposición del modelo de representación para recoger una entidad espacial tal como una red, el modelo ráster no es óptimo para recoger la necesaria información topológica al respecto. Existen algunos intentos de adaptarlo a estas circunstancias (véase, por ejemplo \cite{Husdal2000MsC}), pero en general no se encuentran implementados de forma habitual.
+
+\index{Topología!sobre capas ráster}
+
+\subsubsection{Modelo vectorial sin topología (\emph{spaguetti})}
+
+\index{Spaguetti@\emph{Spaguetti}}
+
+El modelo de datos vectorial almacena la información geográfica mediante una serie de entidades geométricas (lineas, puntos, polígonos), y una información asociada (los atributos). La forma en que estas geometrías se recogen es, no obstante, única, y en función del enfoque adoptado, permitirá el almacenamiento o no de propiedades topológicas relativas a dichas geometrías. Se tienen así \emph{submodelos} de representación, cada uno de ellos con un esquema distinto de almacenamiento de los elementos individuales que constituyen una capa ráster.
+
+Con independencia del submodelo, en todo caso las entidades se recogen mediante las coordenadas de sus puntos, pues como ya se vio toda entidad es reducible a un conjunto de puntos. La diferencia estriba en la forma en que dichos puntos se asocian a la representación de una entidad dada. Para el caso de una capa de puntos, no existe diferencia alguna, pero en el caso de líneas o polígonos sí la hay.
+
+En el tipo más simple, se recogen únicamente las propiedades geométricas de cada entidad, almacenando para cada una de ellas el conjunto de puntos individuales que la componen. Esto aporta toda la información necesaria sobre la entidad, pero deja de lado la topología. Algunas propiedades topológicas pueden calcularse, tales como saber si un punto esta contenido dentro de un polígono o si dos rectas se cruzan, pero para otras no se dispone de información suficiente. Así, aunque podamos saber si dos líneas se cruzan, no podemos saber si este cruce implica una conexión real entre ellas de forma que pueda pasarse de la una a la otra o no, como vimos en la figura \ref{Fig:Topologia_vias}.
+
+Esta forma de recoger las entidades vectoriales es similar a la que encontramos en un mapa clásico, en el cual podemos conocer la forma de un área dada o el recorrido que sigue una determinada carretera, pero no las relaciones existentes. Únicamente disponemos del trazo con el que se han dibujado estos elementos. Por esta razón, y como se ha dicho, un modelo vectorial sin topología es perfectamente válido para la representación de cualquier tipo de información en formato vectorial, pero no tanto para su análisis.
+
+El almacenamiento de entidades basado en una mera lista de coordenadas de cada entidad se conoce popularmente como \emph{spaghetti}, pues si pensamos en una capa de lineas sin topología que se entrecruzan en el espacio, esta se asemejan en cierta forma a un caótico plato de \emph{spaguettis} sin orden ni relación entre ellos.
+
+La mayor ventaja de este modelo es su simplicidad, razón por la cual es la habitual en muchos de los SIG más populares. Para muchos usuarios, es suficiente trabajar con datos vectoriales sin topología, pues las labores frecuentes que desarrollan, tales como consultas (capítulo \ref{Consultas}) o creación de mapas derivados, no requiere conocer las relaciones topológicas existentes.\index{Consultas}
+
+Gran parte de las operaciones que se desarrollan en un SIG no requieren topología, y por ello no es necesario asumir siempre el coste que implica trabajar con ella (mayor complejidad en general). Es por ello que incluso aquellos SIG que sí poseen la capacidad de trabajar con topología, también disponen de formas de trabajar sin ella, empleando datos que carecen de topología. Esto es así también debido a que mucha información disponible no incluye topología, ya que o bien esta no se incorporó en el momento de la digitalización, o bien el formato de fichero en el que se almacenó no soportaba la inclusión de topología. 
+
+En otros casos, la propia naturaleza de la variable que recogemos puede requerir ser almacenada sin topología, o bien puede ser que no existan relaciones topológicas que representar. Una capa de polígonos en las cuales se recojan las áreas de influencia de unos determinado fenómenos puntuales pueden perfectamente solaparse. No existe en este caso esa relación que hace que el conjunto de polígonos que las representan cubra la totalidad del espacio y cada punto pertenezca a una sola entidad. En este caso, un punto puede estar afectado por uno, varios o ninguno de dichos fenómenos puntuales, y por tanto pertenecer a una, varias o ninguna de las entidades poligonales que representan sus respectivas áreas de afección. Al modificar una de ellas (por ejemplo, si el fenómeno puntual que la origina varía su intensidad), las demás geometrías no deberían verse afectadas. No existe como tal una relación que deba recogerse en forma de topología.
+
+\subsubsection{Con topología}
+
+La alternativa al modelo vectorial sin topología (el que denominábamos \emph{spaguetti}) es el almacenamiento explícito de las relaciones topológicas, recogiendo las coordenadas de los puntos que constituyen cada entidad, pero no mediante una simple lista para cada una de ellas. Recogiendo de forma individual toda la información espacial correspondiente a cada entidad, la topología se pierde, pues no se considera al conjunto de entidades como un conjunto en el cual existen relaciones internas, sino como una simple colección de cosas. Para recoger la topología es necesario considerar todos los puntos que constituyen las entidades, y después \emph{formar} las entidades a partir de ese todo de puntos, considerando en el proceso que un mismo punto puede pertenecer a varias entidades. Esto es lo que se denomina frecuentemente un \emph{diccionario de puntos}, ya que contiene las definiciones de estos (sus coordenadas) y en base a ellos se construyen las distintas geometrías. \index{Diccionario de puntos}
+
+Esta forma de considerar el conjunto de entidades evita, además, la redundancia en los datos.\index{Redundancia} Por ejemplo, para el caso mostrado en la figura \ref{Fig:Topologia_edicion}, y en caso de no tener topología, el punto que es movido está almacenado dos veces, una por cada polígono. Al desplazarlo, solo se modifica una copia de dicha coordenada, la que pertenece al polígono editado, mientras que la otra permanece en su lugar. Si se dispone de topología, este punto se almacena una única vez, y al desplazarse se modifican las fronteras de todos los elementos (lineas o polígonos, según el caso) cuya frontera incluye dicho punto.
+
+La denominación de \emph{diccionario de puntos} que se mencionaba anteriormente es muy reveladora en este sentido. Si los puntos son como las palabras de un diccionario y los polígonos como frases o párrafos, basta pensar en lo poco práctico que sería escribir una frase en la que debiera definirse cada palabra al introducirla en dicha frase. Resulta mucho más adecuado (y ahorra esfuerzos al escritor), utilizar las palabras simplemente, y después definir estas en un diccionario en caso de que el lector no las conozca y necesite una referencia. Con el caso de los puntos sucede algo similar.
+
+Existen diversos modelos para almacenar tanto las propias geometrías como sus relaciones inherentes, dos de los cuales se muestran en la figura \ref{Fig:Modelos_topologia} mediante sendos ejemplos en los que se codifican polígonos y líneas.
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.8\textwidth]{Tipos_datos/Modelos_topologia.pdf}
+\caption{\small Dos modelos para representar la topología de líneas y polígonos. a) DIME, b) arco--nodo.}
+\label{Fig:Modelos_topologia} 
+\end{figure}
+
+El primero de estos modelos es un modelo de carácter histórico denominado DIME (\emph{Dual Independent Map Encoding})\index{Dual Independent Map Encoding}, desarrollado originalmente por el \emph{US Bureau of the Census}\index{US Bureau of the Census}, y posteriormente mejorado en el modelo TIGER, empleado para la digitalización de cartografía urbana. El segundo es el modelo \emph{arco--nodo}, probablemente el más difundido y popular en la actualidad, aunque a este respecto los planteamientos existentes son muy variados.\index{Modelo!arco--nodo}
+
+En este modelo existen dos unidades fundamentales: Los nodos, que son puntos donde se \emph{conectan} varias líneas; y los \emph{arcos}, que son lineas entre dos nodos. Estas líneas no han de ser rectas, ya que pueden contener en su recorrido \emph{vértices}. Los vértices son en realidad los puntos que solo pertenecen a una entidad, mientras que los nodos pertenecen a varias de ellas.\index{Vértices}\index{Arco}
+
+Una capa de líneas se describe como un conjunto de arcos y nodos, de forma que, atendiendo a los nodos como enlaces entre las líneas, se pueden conocer las relaciones entre ellas. En el caso de polígonos, estos se forman con conjuntos de arcos que delimitan las fronteras. Los polígonos que son adyacentes comparten uno o más arcos, quedando establecida así mediante ellos la relación topológica.
+
+En el caso del modelo DIME, sin embargo, vemos que cada linea recta entre dos puntos se trata como una unidad, es decir, que todos los vértices son considerados como nodos y los arcos se componen siempre de una sola línea. El arco es en realidad un segmento. En ambos casos, no obstante, cada arco tiene un inicio y un final ---y por tanto una dirección---, y puede definirse un lado derecho y otro izquierdo según se avanza en dicha dirección. Como puede verse, también en ambos modelos se recoge explícitamente qué polígono, en caso de haber alguno, se sitúa a cada lado del arco.
+
+La información que se recoge según estos modelos, vemos que se divide en bloques según los distintos niveles, desde los puntos, que han de recogerse en un diccionario de puntos (aunque este no queda reflejado en las tablas de la figura), pasando por los segmentos o arcos, y hasta los polígonos, definidos estos en base a los anteriores.
+
+Con independencia del modelo, y sin entrar en más detalles, todos estos elementos en conjunto sirven para recoger las relaciones existentes entre los elementos, de tal modo que pueden llevarse a cabo también aquellas operaciones que no dependen exclusivamente de la posición, sino asimismo de otra serie de propiedades.
+
+Dentro de los modelos existentes, encontramos asimismo variaciones en función de la tarea principal que se desee realizar. La eficiencia de cierto tipo de cálculos puede aumentarse notablemente si se elige un modelo de representación óptimo, como podemos ver si analizamos una de las operaciones más comunes: el cálculo de rutas óptimas entre dos puntos (los detalles sobre este cálculo se exponen en el capítulo \ref{Costes}, aquí por el momento únicamente mostraremos sus implicaciones en los modelos de representación).
+
+
+\index{Ruta óptima}
+
+Para calcular la ruta óptima entre dos puntos dados de una red necesitamos conocer qué nodos de la red están conectados entre sí y por qué vías están conectados, ya que las características de estas condicionan el movimiento. La información necesaria para este cálculo puede almacenarse perfectamente según un modelo arco--nodo como el que ya conocemos, pero considerando las particularidades del análisis que queremos realizar, existen otros modelos más apropiados. 
+
+Por ejemplo, se puede tener en cuenta que los vértices de un nodo no tienen relevancia alguna. Si el tránsito se realiza entre dos nodos, a efectos del cálculo es indiferente que el tramo que los une tenga unos u otros vértices. Lo único que importa es saber que existe un tramo que los conecta y las características de ese tramo como, por ejemplo, el tiempo que cuesta recorrerlo o si conecta el nodo A con el B y el B con el A o solo lo hace en una de las direcciones anteriores. Por ello, en el caso del análisis de redes, la clave reside en almacenar de forma eficiente los nodos y las relaciones, pues estos son los elementos esenciales para efectuar los cálculos
+
+Algunos modelos empleados comúnmente para el almacenamiento de redes son los siguientes \cite{NCGIA}:
+
+\begin{itemize}
+\item Matriz de incidencias arco--nodo
+\item Matriz de adyacencias nodo--nodo
+\item Listas de adyacencia
+\item Estrella directa e inversa\footnote{Forward and reverse star}
+\end{itemize}
+
+\index{Matriz!de incidencias}\index{Matriz! de adyacencias}\index{Listas de adyacencia}\index{Estrella directa e inversa}\index{Forward and reverse star}
+
+La matriz de adyacencias nodo--nodo es sumamente sencilla, ya que simplemente, para un número $n$ de nodos, contiene una matriz de tamaño $n\times n$, en la que cada elemento ($i,j$) indica la existencia o no de conexión entre los nodos $i$ y $j$ y la naturaleza de dicha conexión. Si el elemento es igual a cero indica que no existe posibilidad de desplazarse directamente del nodo $i$ al nodo $j$. En caso contrario, el valor es igual a la propiedad que se desee recoger del tramo, por ejemplo el tiempo que se tarda en recorrer o la velocidad máxima a la que puede hacerse ese recorrido.
+
+La gran ventaja de este método es su gran sencillez, que deriva en sencillas implementaciones de los algoritmos correspondientes.
+
+El método de estrella directa e inversa, por su parte, no es tan sencillo (una descripción algo más detallada puede encontrarse en \cite{NCGIA}), pero, no obstante, es el más eficaz \cite{Ahuja1993Prentice}, y sus tiempos de cálculo asociados son los menores de entre todos los anteriores. 
+
+Más allá de los detalles particulares del modelo de representación, lo importante es tener presente que existen diversas formas de representar el dato geográfico, y que cada una de ellas tiene sus ventajas e inconvenientes en relación con la función que los datos hayan de desempeñar.
+
+\subsubsection{TIN}
+\label{TIN}
+
+Hemos visto cómo una capa vectorial con topología nos sirve para modelizar ventajosamente elementos como una red de vías o una teselación\index{Teselación} del espacio en, por ejemplo, diferentes clases de usos de suelo. Además de esto, la incorporación de topología sirve para mejorar la representación de campos mediante modelos vectoriales, permitiendo la aparición de modelos como los TIN, ya presentados con anterioridad. 
+
+Un TIN\index{Triangulated Irregular Network (TIN)} \cite{Peuker1978ASP} es una red formada por un conjunto de triángulos interconectados, cada uno de los cuales representa a una zona de características homogéneas en lo que a la variable estudiada respecta. Debido a esto, y como puede verse en la figura \ref{Fig:MDE_modelos_representacion}, el número de triángulos varía según las características propias de la zona. 
+
+En aquellos lugares en los que se dé una gran variación (en caso de recoger el relieve será en las áreas más abruptas), se utiliza un gran número de triángulos para recoger toda esa variabilidad. Cuando, por el contrario, los valores no varían de forma tan notable (zonas de relieve más llano), pueden emplearse menos triángulos. Puesto que cada triángulo está formado, como todo polígono, por puntos, podemos decir que se necesitan menos puntos para almacenar un terreno si este es llano que si este es muy abrupto.
+
+Cada triángulo tienen unas propiedades constantes, como corresponde al modelo vectorial. En particular, se considera habitualmente que todos los puntos dentro de un mismo triángulo constituyen un plano, con una pendiente y una orientación fija por tanto.
+
+La topología del modelo permite llevar a cabo análisis diversos sobre un TIN, ya que para cada triángulo se tiene conocimiento de cuáles son los adyacentes a este, y es en el análisis de dichos adyacentes en el que se basan gran parte de los algoritmos. Este análisis resulta sencillo de implementar en una capa ráster, pues la propia estructura de la misma informa directamente de las celdas circundantes, pero en el caso vectorial requiere la presencia de topología para plantear un esquema similar de operación. 
+
+El análisis de los TIN no se desarrolla en detalle en este libro, pero resulta interesante recalcar en este punto que resulta posible de igual modo, y ello es debido a la presencia de topología en la propia estructura del modelo de representación.
+
+Las particularidades del TIN hacen que existan sub--modelos principales para almacenar el conjunto de triángulos, distintos del habitual arco--nodo, y pensados específicamente para responder a las necesidades que los TIN demandan como modelos vectoriales para representar variables continuas (en este sentido, es algo muy similar al caso que veíamos anteriormente de las redes). Estos modelos son dos, principalmente:
+
+\begin{itemize}
+ \item Almacenamiento de los triángulos uno por uno, cada uno con las coordenadas de todos sus tres puntos (coordenadas tridimensionales, no planas) y un código de identificación, y almacenamiento de los códigos de los triángulos adyacentes.
+\item Almacenamiento de los vértices y un código para cada uno de ellos, así como los códigos de los vértices a los que se encuentra conectado, en un orden establecido (horario o antihorario).
+\end{itemize}
+
+Más información sobre TIN puede encontrarse en \cite{Mark1975GA}. La creación de TIN se trata con más detalle en el capítulo \ref{Creacion_capas_vectoriales}.
+
+\subsection{Raster \emph{vs} vectorial}
+
+Resulta obvio que las diferencias entre los modelos ráster y vectorial son muy notables, y que cada uno de ellos posee sus propias ventajas e inconvenientes. Desde los primeros tiempos de los SIG, ha existido una clara tendencia a separar ambas realidades en la implementación, de tal modo que los primeros SIG manejaban datos en formato ráster o bien en formato vectorial, pero no ambos. En cierta medida, parecía existir un conflicto entre ambos modelos, el cual ha perdurado aún hoy en algunos conceptos. Con el paso del tiempo, no obstante, la separación ráster--vectorial ha cambiado notablemente, y ha quedado claro que un SIG eficaz debe ser capaz de manejar todo tipo datos geográficos con independencia del modelo de datos empleado. 
+
+La comparación entre ambos modelos resulta necesaria para hacer un uso correcto de ellos, eligiendo en cada caso el más adecuado, y combinándolos de la manera óptima. Algunos aspectos a los cuales puede atenderse para comparar uno y otro modelo son los siguientes:
+
+\begin{itemize}
+\item \textbf{Planteamiento}. Íntimamente ligados con los modelos conceptuales del espacio geográfico, los planteamientos de los modelos de representación ráster y vectorial son diferentes en su naturaleza. El modelo ráster hace más énfasis en aquella característica del espacio que analizamos (\emph{qué} y \emph{cómo}), mientras que el modelo vectorial da prioridad a la localización de dicha característica (\emph{dónde})
+ \item \textbf{Precisión}. El modelo ráster tiene su precisión limitada por el tamaño de celda. Las entidades menores que dicho tamaño de celda no pueden recogerse, y la variación espacial que sucede dentro del espacio de la celda tampoco. 
+
+Asimismo, existe una imprecisión en las formas. El detalle con el que puede recogerse la forma de una entidad geográfica según el modelo vectorial es, en la práctica, ilimitado, mientras que, como puede verse en la imagen \ref{Fig:Imprecision_raster}, el modelo ráster restringe las formas a ángulos rectos, ya que la unidad base es un cuadrado. 
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.5\mycolumnwidth]{Tipos_datos/Imprecision_raster.png}
+\caption{\small Imprecisión de forma en el modelo de representación ráster. La división del espacio en unidades cuadradas impide la representación fiel de entidades tales como curvas como la mostrada en trazo rojo en la figura.}
+\label{Fig:Imprecision_raster} 
+\end{figure}
+
+El perímetro de una entidad geográfica estará compuesto por líneas horizontales o verticales exclusivamente y, además, su longitud y la superficie que encierra serán respectivamente múltiplos del tamaño de celda y el área de dicha celda. Esta es la principal razón por la cual, si el uso principal que se le va a dar a una capa es su representación gráfica, deba optarse por el modelo vectorial. En caso contrario, y salvo que la resolución sea suficientemente alta, los mapas creados mostraran la falta de resolución y podrán distinguirse las unidades mínimas de la capas ráster (al igual que pasa en una imagen digital \emph{pixelada}), teniendo un aspecto que no es el propio de un mapa, tal y como estamos acostumbrados a usarlo.
+
+El hecho de que dentro de una celda el valor de la variable recogida sea constante, da lugar a ambigüedades como la mostrada en la figura \ref{Fig:Ambiguedad_raster}, donde una celda está ocupada por dos valores distintos, pero solo puede asignársele uno de ellos, debiendo establecerse algún criterio sistemático para llevar esto a cabo.
+
+Un hecho similar sucede en el ejemplo de la capa de vías. Algunas celdas son atravesadas por más de una vía, pero esa información se pierde, ya que el tamaño de celda no es suficiente para recogerla. La celda en cuestión aparece como celda de vía, pero no sabemos cuántas diferentes la atraviesan, ni tampoco si entre ellas están enlazadas o no.
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.4\mycolumnwidth]{Tipos_datos/Ambiguedad_raster.pdf}
+\caption{\small Ambigüedad en la asignación de valores a una celda en una capa ráster, debido al tamaño de esta, que condiciona la precisión con la que puede recogerse la realidad existente sobre el terreno.}
+\label{Fig:Ambiguedad_raster} 
+\end{figure}
+
+Hay que tener en cuenta, no obstante, que la precisión de la representación vectorial es, precisamente, de la representación como tal, es decir, del modelo, pero no del dato en sí que tenemos en dicho formato vectorial, el cual depende de otros condicionantes tales como la escala de trabajo. Existe siempre incertidumbre en los datos, y el modelo de almacenamiento no excluye esta circunstancia. Los aspectos relativos a la calidad de los datos, tanto para datos ráster como vectoriales, se desarrollan en profundidad en el capítulo \ref{Calidad_datos}.
+\item \textbf{Volumen de almacenamiento}. El número de elementos a almacenar es, en general, muy superior en el caso del modelo ráster. Esto es así debido a que toda la superficie a recoger se divide en las mismas unidades, independientemente de la complejidad de la variable en cada punto o de la necesidad de estudiarla con mayor o menor detalle en unos puntos que en otros. Para variables que se conciban mejor según un modelo conceptual de entidades discretas, el modelo vectorial resulta más adecuado, ya que todas las zonas sin entidades no es necesario registrarlas de modo explicito, mientras que en el modelo ráster estas deben registrarse de igual modo que aquellas en las que sí existe información relevante.
+Los modelos de almacenamiento ráster que veremos en el siguiente punto solucionan en parte el problema de los grandes volúmenes de datos del modelo ráster, y son un elemento importante en la implementación eficiente del mismo.
+\item \textbf{Complejidad}. La regularidad y sistematicidad de las mallas ráster hacen sencillo el implementar algoritmos de análisis, muy especialmente aquellos que implican el uso combinado de varias capas. Cuando estas capas están en formato ráster y existe coincidencia entre sus mallas de celdas, el análisis conjunto de estas resulta inmediato. Por el contrario, la irregularidad espacial de las capas vectoriales hace que la implementación de los mismos algoritmos sea sumamente más compleja si se trabaja con estas capas.
+
+La sencillez de las capas ráster, tanto en su concepto como en su implementación, se ve apoyada además por el hecho de que una capa ráster se puede asemejar a una matriz, y por tanto aplicar sobre ella una serie de herramientas y elementos matemáticos en muchos casos bien conocidos y de fácil comprensión.
+
+Existe de igual forma una distinta complejidad en términos de proceso y cálculo. Los algoritmos sobre una base ráster pueden ser costosos en términos de tiempo por la necesidad de aplicarlos sobre un número muy elevado de celdas y un gran volumen de datos (véase el punto anterior). Por el contrario, los algoritmos sobre una base vectorial son costosos debido a que las operaciones matemáticas que implican son más complejas y requieren mayores número de cálculos (aunque los volúmenes manejados puedan también ser notables).
+\end{itemize}
+
+Mas allá de las anteriores diferencias, a la hora de planificar un trabajo dentro de un SIG y elegir los datos que emplearemos y el modelo de representación ideal, lo importante es entender que no existe un modelo de representación idóneo de forma global, sino que esta idoneidad depende de muchos factores, como por ejemplo:
+
+\begin{itemize}
+ \item \textbf{Tipo de variable o fenómeno a recoger}. Como ya sabemos, algunas variables, en función de su variabilidad y comportamiento espacial, son más adecuadas para el modelo vectorial, mientras que otras lo son para el modelo ráster. Por ejemplo, en el caso de variables que requieran una intensidad de muestreo distinta según la localización (variables que resulta interesante estudiar con más detalle en unos puntos que en otros) puede resultar más lógico recogerlas de forma vectorial, pues el modelo ráster implica una intensidad de muestreo constante a lo largo del área estudiada.
+\item \textbf{Tipo de análisis o tarea a realizar sobre dicha variable}. El uso que demos a una capa temática condiciona en gran medida el modelo de datos idóneo. Por ejemplo en el caso de una capa de elevaciones, su análisis se lleva mejor a cabo si esta información está recogida según el modelo ráster. Sin embargo, si el objetivo principal es la visualización de esa elevación en conjunto con otras variables, unas curvas de nivel pueden resultar más adecuadas, ya que, entre otras cosas, no interfieren tanto con otros elementos a la hora de diseñar un mapa con todas esas variables.
+\item \textbf{Contexto de trabajo}. Por ejemplo, si queremos trabajar con imágenes, esto nos condiciona al empleo de datos ráster, ya que resulta mucho más sencillo combinarlos con las imágenes, las cuales siempre se presentan como capas ráster. 
+\end{itemize}
+
+Así, en el desarrollo de un trabajo pueden aparecer circunstancias que hagan más adecuado utilizar el modelo ráster y otras en las que el modelo vectorial sea más idóneo. En tal caso, deben combinarse ambas, pues es de esta forma como se obtendrán mejores resultados. Un usuario de SIG no debe limitarse a trabajar de forma general con un único modelo de datos, con independencia del tipo de tarea que desempeñe, pues en cualquier caso ambos modelos de datos pueden aportar alguna ventaja.
+
+Por último, es importante tener en cuenta que existen procedimientos para convertir entre los formatos ráster y vectorial, de forma que el disponer de datos en un modelo de representación particular no implica que debamos desarrollar nuestro trabajo sobre dichos datos directamente, sino que podemos efectuar previamente una conversión. Los capítulos \ref{Creacion_capas_raster} y \ref{Creacion_capas_vectoriales} tratan estos temas en profundidad.
+
+\section{Modelos de almacenamiento}
+\label{Modelos_almacenamiento}
+
+\index{Modelo!de almacenamiento}
+Los modelos de almacenamiento son el ultimo escalón en la cadena de etapas distintas que llevan desde la realidad existente al conjunto de simples valores numéricos que almacenamos y manejamos en un SIG y que modelizan dicha realidad. Los modelos de representación definen una forma de recoger la realidad mediante unidades básicas (sean estas celdas en una malla, o bien primitivas geométricas definidas de una u otra manera), mientras que los modelos de almacenamiento plantean básicamente un esquema de cómo convertir dichas unidades en valores numéricos de la forma más eficiente. Es decir, cómo \emph{escribir} dichos valores en un soporte digital o guardarlos en la memoria del ordenador de la mejor manera posible.
+
+Los modelos de almacenamiento deben atender principalmente a dos necesidades básicas, que son las que definirán su idoneidad para cada tarea y tipo de dato:
+
+\begin{itemize}
+ \item Minimizar el espacio ocupado por los datos.
+\item Maximizar la eficiencia de cálculo.
+\end{itemize}
+
+La primera necesidad es especialmente importante, pues, como ya se ha dicho, los datos ráster son con frecuencia muy voluminosos. Un modelo de representación que minimice el tamaño de los datos, unido a un manejo óptimo de memoria, son requisitos de suma importancia para todo SIG que maneje datos ráster, máxime considerando los grandes volúmenes de datos que hoy en día se manejan, tales como los correspondientes a imágenes de alta resolución.
+
+La necesidad de maximizar la eficiencia de cálculo afecta principalmente a las representaciones vectoriales ya que en ellas las operaciones son complejas. La forma en que se estructuran los valores de cada entidad ha de minimizar el numero de accesos necesarios a estos, para de este modo obtener un mejor rendimiento en todas las operaciones de análisis.
+
+\subsection{Modelos para representaciones ráster}
+
+El principal problema relativo al almacenamiento de capas ráster se presenta para el conjunto de valores de las distintas celdas, que constituye la parte más voluminosa de la información recogida. Las coordenadas de las celdas de referencia o el tamaño de celda, por su escaso volumen, no conllevan dificultad alguna, y es en el almacenamiento de la malla de celdas en sí donde se encuentran las diferencias entre unos y otros modelos.
+
+La forma más inmediata de almacenar una capa ráster es simplemente almacenar sus valores uno a uno, en una estructura similar a la que la propia capa representa. Para el caso más habitual de capas con celdas cuadradas, sabemos que la malla de datos correspondiente se puede asimilar a una matriz, con las implicaciones que esto tiene a la hora de su manejo. Así, la forma más directa de recoger una malla de datos ráster es mediante una matriz de datos. Esta forma de almacenamiento tiene las siguiente ventajas \cite{Egenhofer1991Maguire}:
+
+\index{Matriz!de datos (modelo almacenamiento)}
+
+\begin{itemize}
+ \item \textbf{Formato muy intuitivo}. La mayoría de desarrolladores está familiarizado con el concepto de matriz y con las operaciones de calculo matricial que pueden aplicarse sobre estas.
+\item \textbf{Sencillez en la implementación}. Los lenguajes de programación soportan sin problemas el uso de matrices bidimensionales y una serie de operaciones básicas sobre ellas.
+\item \textbf{Estructura}. Las mismas operaciones pueden aplicarse sobre todos los valores de la matriz de igual modo (todas las posiciones de la matriz son \emph{iguales} desde este punto de vista), lo que simplifica la implementación de operaciones.
+\item \textbf{Iterabilidad}. Resulta igualmente sencillo recorrer la matriz e iterar sobre la misma, lo cual refuerza lo anterior y simplifica aún más la implementación de todo tipo de procesos.
+\end{itemize}
+
+No obstante, el almacenamiento de todos los valores de forma idéntica ignora el hecho de que pueden existir valores similares en zonas concretas, que pueden recogerse de formas mucho más óptimas que una serie de números iguales. En otras palabras, y de modo similar a como ocurre con el propio modelo de representación ráster, la estructura regular que confiere las ventajas es también la responsable de la mayor parte de los inconvenientes.
+
+Como veremos en el capítulo \ref{Analisis_espacial}, las zonas próximas entre sí (es decir, en el caso de una capa ráster, las celdas próximas entre sí), tienden a tener valores similares, en lo que se conoce como \emph{autocorrelación espacial}. No considerar este hecho lleva al almacenamiento de información redundante, y ese es precisamente el principal problema del almacenamiento directo de una capa ráster mediante una matriz. Almacenando explícitamente todos los valores de la malla se desperdicia en muchos casos una gran cantidad de espacio (sea este en memoria, disco u otro soporte cualquiera).\index{Autocorrelación espacial}
+
+Podemos ver dos ejemplos claros de esto en las figuras \ref{Fig:Vias_modelos_representacion} y \ref{Fig:Malla_raster_rotada}. En la primera, existen únicamente dos valores: los correspondientes a las celdas sobre las que se sitúa una vía, o los correspondientes a las celdas donde estas no aparecen. Estos últimos ocupan la gran mayor parte de la capa, y lo hacen en bloque, de tal forma que almacenándolos individualmente se acaba teniendo una matriz de datos donde la practica totalidad de ellos son idénticos. Como es fácil de entender, este forma de proceder no es la más adecuada, al menos en términos de volumen de almacenamiento.
+
+En la segunda imagen, las zonas que aparecen como consecuencia de la rotación de la imagen no contienen datos (esto es, contendrán el valor arbitrario que codifica la falta de datos). Estas zonas también constituyen grandes bloques de celdas contiguas, con lo que el almacenamiento de todos los valores también es una solución altamente redundante, especialmente en estas zonas fuera de la imagen como tal.
+
+La solución más habitual para considerar la redundancia de valores y lograr una compresión eficaz de los datos es la técnica denominada \emph{Run--Length Encoding}. \index{Run--Length Encoding}Esta técnica sencilla codifica una serie de $n$ valores idénticos como un par de valores, el primero de los cuales representa el valor dicho que se repite $n$ veces, y el segundo es el número de veces que se repite, esto es, $n$. 
+
+Así, si la primera fila de la capa de vías en formato ráster no aparece ninguna celda de vía, todas las celdas de dicha fila contendrán el valor con que se codifica la ausencia de estas (sea, por ejemplo, el valor 0). El almacenamiento directo de todos los valores de la fila requeriría tantos valores como columnas existan (sea $n$ el ancho de la fila), mientras que utilizando \emph{Run--Length Encoding}, bastaría con almacenar el par (0, $n$).
+
+A la hora de tratar el conjunto de todas las celdas, se define un orden en el que recorrerla, denominado \emph{orden de barrido} o \emph{de escaneo} (Figura \ref{Fig:Orden_escaneo}), de tal modo que la matriz bidimensional queda reducida a una cadena de valores, es decir, a un vector unidimensional. Los distintos \emph{trozos} de esa cadena se van codificando según el esquema anterior, de tal modo que cuando aparecen muchos valores iguales consecutivos, estos pueden sustituirse ventajosamente por un único par de valores.\index{Orden!de barrido}\index{Orden!de escaneo}
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.75\mycolumnwidth]{Tipos_datos/Ordenes_escaneo.pdf}
+\caption{\small Ordenes de escaneo. a) fila a fila sin retorno, b) fila a fila con retorno.}
+\label{Fig:Orden_escaneo} 
+\end{figure}
+ 
+La forma más sencilla de recorrer la imagen es hacerlo por filas, empezando por la fila superior y desplazándose de derecha a izquierda (Figura \ref{Fig:Orden_escaneo}a). No obstante, el salto que se produce al final de cada fila suele implicar una discontinuidad en los valores. Invirtiendo la dirección del recorrido en cada fila, se tiene el orden mostrado en la figura \ref{Fig:Orden_escaneo}b, el cual suele tener como resultado mayores niveles de compresión de datos, ya que la cadena resultante de recorrer la imagen contiene \emph{trozos} generalmente de mayor tamaño.
+
+Un esquema de barrido más complejo es el basado en el denominado \emph{orden de Morton} \cite{Morton1966IBM}. El orden de Morton (también conocido como \emph{orden Z}), se basa en una curva de carácter recursivo, que recorre las celdas de la matriz siguiendo tramos en forma de Z, de ahí el nombre. En la primera iteración se divide el conjunto de celdas en cuatro bloques, los cuales se recorren siguiendo el antedicho recorrido en Z. Si los bloques contienen a su vez más de una celda, se siguen subdividiendo a su vez de forma idéntica, y así hasta que no pueda continuarse este proceso.\index{Orden!Z}
+
+La matriz que contiene los valores de orden de Morton (el orden en que se visita cada celda según el esquema anterior), se conoce como \emph{Matriz de Morton}, la cual ya citamos por su importancia histórica en el capítulo \ref{Historia}.\index{Matriz!de Morton}\index{Orden!de Morton}\index{Morton!matriz de}\index{Morton!orden de}
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.4\mycolumnwidth]{Tipos_datos/Orden_Morton.pdf}
+\caption{\small Un ejemplo sencillo de barrido de una capa ráster según órdenes de Morton. Los valores en las celdas no indican los valores de la variable, sino el orden en que se visita dicha celda según este esquema de barrido}
+\label{Fig:Orden_Morton} 
+\end{figure}
+
+Un ejemplo de este orden de barrido aplicado a una pequeña matriz puede verse en la figura \ref{Fig:Orden_Morton}.
+
+Una estructura más avanzada son los denominados \emph{Quadtrees} o árboles cuaternarios. Estas estructuras también dividen el espacio en cuadrantes sucesivamente, pero lo hacen con más profundidad en aquellas zonas que así lo requieran por contener mayor número de elementos y necesitar mayor resolución. En el caso de una capa ráster, se requerirá más detalle siempre que todas las celdas dentro de un cuadrante no tengan el mismo valor. En el caso más extremo, se ha de descender hasta el nivel de una sola celda, pero puede ser que un bloque de celdas contiguas tenga el mismo valor, en cuyo caso el cuadrante correspondiente las engloba a todas y las define con dicho único valor, sin necesidad de subdividirse más. De este modo, se adapta el modelo de almacenamiento a la propia estructura de la capa y al comportamiento que en esta muestra la variable estudiada.
+\index{Quadtree}
+
+Un ejemplo gráfico de un árbol cuaternario puede encontrarse en la figura \ref{Fig:Quadtree}. Los arboles cuaternarios son empleados también en los \emph{índices espaciales}, asociados a representaciones vectoriales, que veremos en \ref{Indices_espaciales} (de hecho, puede apreciarse que la figura anterior representa la aplicación de un árbol cuaternario a un conjunto de puntos, no a una capa ráster, aunque el concepto es el mismo y su aplicación a este segundo caso se realiza como ya se ha mencionado previamente).
+
+Los quadtrees son estructuras complejas, y no profundizaremos más en su descripción dentro de este capítulo. Para el lector interesado, la definición original de esta estructura de datos puede encontrarse en \cite{Finkel1974Acta}. 
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.4\mycolumnwidth]{Tipos_datos/Quadtree.pdf}
+\caption{\small Ejemplo de un árbol cuaternario. En las zonas con más variabilidad (mayor densidad de puntos), los cuadrantes se subdividen hasta una profundidad mayor. La estructura es tal que cada cuadrante tiene dentro a lo sumo un punto. (Tomado de Wikipedia)}
+\label{Fig:Quadtree} 
+\end{figure}
+
+Es importante reseñar que cuando la capa ráster contiene una información tal como una red viaria, la cual es susceptible de presentar valores idénticos en celdas contiguas, la codificación de tipo \emph{Run--Length} ---con cualquiera de los esquemas de barrido anteriores--- es ventajosa. Sin embargo, no lo es tanto cuando se trabaja con otro tipo de variables. 
+
+En una capa con valores de elevación, las celdas próximas tendrán valores parecidos pero no idénticos, con lo que no podrá sacarse partido a esta forma de almacenamiento. Más aún, en estos casos el volumen ocupado por los datos no solo no disminuye, sino que aumenta. Es por ello que los SIG han de implementar igualmente la capacidad de poder trabajar con uno u otro modelo de almacenamiento según los casos, bien sea por elección directa del usuario o tomándose de forma automática el que el propio sistema considere más adecuado en cada ocasión.
+
+Aunque el mayor problema de las capas ráster es su gran volumen, también existen diversas alternativas enfocadas a mejorar la velocidad de acceso a datos y el rendimiento de las operaciones sobre estas capas. Estas alternativas afectan a las imágenes con múltiples bandas, ya que estas, como dijimos, se recogen en un único fichero, en el cual se incorpora toda la información de las distintas bandas.\index{Bandas}
+
+La forma en la que las bandas se tratan dentro del fichero y el modo en que se ordenan los píxeles de las distintas bandas, ambas definen el esquema de almacenamiento, presentando cada uno de ellos una serie de ventajas de rendimiento en función de la actividad principal que se vaya a desarrollar con la imagen. Tres son los esquemas principales:
+
+\index{Band Sequential (BSQ)}
+\index{Band Interleaved by Lines (BIL)}
+\index{Band Interleaved by Pixel (BIP)}
+\index{Pixel}
+
+\begin{itemize}
+	\item \emph{Band Sequential} (BSQ). Los valores se almacenan por bandas. Es decir, primero todos los píxeles de la banda 1, después los de la banda 2, y así sucesivamente. Este tipo de esquema da prioridad a la componente espacial, ya que permite acceder rápidamente a todo el espacio cubierto por una banda, puesto que los píxeles de dicha banda se encuentran almacenados en posiciones contiguas.
+	\item \emph{Band Interleaved by Pixel} (BIP). Los valores se almacenan ordenados por posiciones de píxel. Es decir, primero se almacenan todos los valores correspondientes al píxel (0, 0)\footnote{Es una terminología habitual empezar a contar en cero en lugar de en uno las coordenadas fila/columna de una imagen} (en todas las bandas existentes), después los correspondientes al (0,1)\footnote{Es habitual recorrer la imagen por filas, de forma que la coordenada (0,1) representa la primera fila y la segunda columna}, y así sucesivamente.
+	En caso de que lo que interese sea, para un píxel dado, conocer toda la información disponible (su valor en todas las bandas), el esquema BIP es más ventajoso, ya que permite accesos rápidos a este tipo de información, sin necesidad de <<saltar>> de un valor a otro como sucedería en el caso del esquema BSQ. A nivel de acceso, se prima la información espectral sobre la espacial.
+	\item \emph{Band Interleaved by Lines} (BIL). Es un esquema intermedio en el que se recogen los valores por filas. Esto es, primero la fila 1 de la banda 1, luego la de la banda 2, y así sucesivamente. Posteriormente se recoge la fila 2 para todas las bandas, y de este modo hasta cubrir toda la imagen. Se trata de un esquema intermedio entre los anteriores, permitiendo un acceso rápido tanto a la información espacial como a la información espectral de las bandas.
+\end{itemize}
+
+La figura \ref{Fig:Esquemas_almacenamiento_bandas} se muestra un ejemplo muy sencillo de los anteriores esquemas. Para una imagen de $2\times 2$ celdas y dos bandas, se recoge el orden en que se almacenaría capa valor según cada uno de dichos esquemas.
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.5\mycolumnwidth]{Tipos_datos/Esquemas_almacenamiento_bandas.pdf}
+\caption{\small Esquemas de almacenamiento para imágenes multibanda. Los números indican el orden en que se almacena cada valor.}
+\label{Fig:Esquemas_almacenamiento_bandas} 
+\end{figure}
+
+\subsection{Modelos para representaciones vectoriales}
+
+Al igual que para el modelo ráster, existen para el modelos vectorial diferentes alternativas a la hora de almacenar los elementos que componen una capa. En realidad, ya hemos visto dentro de este capítulo algo que se asemeja a un modelo de almacenamiento, pues los modelo topológicos como DIME o el modelo \emph{arco--nodo}\index{Arco--nodo}, o los detallados para el caso particular de las redes, todos son en realidad esquemas de almacenamiento para el conjunto de \emph{piezas} que componen esa estructura topológica que se quiere almacenar. No obstante, también tienen algo de modelos de representación, pues existe variación en la forma en que conciben las partes de cada entidad (arcos entre dos nodos con o sin vértices intermedios, según el modelo). 
+
+En realidad, la razón por la que se han presentado en una sección anterior es porque de ese modo ayudaban a comprender mejor la existencia o no de topología en una representación, y ese aspecto resulta más importante para el estudio de los SIG que los modelos de almacenamiento. Estos, como se ha dicho, están a un nivel más bajo y alejado del usuario.
+
+En general, los modelos de datos vectoriales no buscan tanto la disminución de volumen de los datos como la obtención de una mayor eficacia en las operaciones y una simplificación de estas. Lógicamente, si los datos tienen un volumen menor, el tiempo que cualquier operación sobre ellos implica también ser menor. Aún así, la diferencia principal para este tipo de datos reside en la disminución de la complejidad en que estos se almacenan, disminuyendo las operaciones a realizar, así como la  complejidad de la implementación de los correspondiente algoritmos (ambas habitualmente elevadas).
+
+Para mejorar el rendimiento de las operaciones que trabajan con datos vectoriales, un factor clave es mejorar el acceso a los datos, de forma que, cuando se necesite acceder a unos datos concretos, estos puedan <<encontrarse>> de forma fácil. Por este motivo, un elemento importante en la representación de los datos vectoriales son los denominados \emph{índices espaciales}.\index{Indice@Índice!espacial}
+
+El concepto de índice cuando se habla de datos es similar al concepto de índice referido a un libro como este. Aquí tienes un ejemplo muy sencillo para que lo comprendas mejor: si vas al principio de este libro, puedes ver su índice y saber dónde empieza este capítulo, de forma que si estas interesado en modelos relacionados con la información geográfica, sabes rápidamente que es en este bloque de páginas donde debes buscar lo que te interesa. Si no existiera ese índice, tendrías que ir revisando todas las páginas hasta que llegaras al principio de capítulo y te dieras cuenta de que aquí es donde está lo que buscas. De igual modo, si vas al final de este libro y buscas el término \emph{índices espaciales}, verás que aparece esta página junto con otras en las que aparece dicho término. Si no tuvieras ese índice, tendrías que revisar palabra por palabra para saber en qué partes de este libro se habla de índices espaciales.
+
+Estos sencillos ejemplos muestran situaciones similares a las que aparecen en el uso habitual de un SIG, en las cuales trabajamos sobre una parte del total de los datos. Igual que buscamos un capítulo o un único término, podemos querer, por ejemplo, todas las entidades de una capa que están en una zona particular del espacio. Disponer de un índice acelera el proceso de localizar esas entidades que nos interesan. Por trabajar con información espacial, tales índices se denominan índices espaciales.
+
+Muchos de los procesos que veremos en la parte dedicada al análisis necesitan este tipo de índices para poder ejecutarse con un rendimiento adecuado. A medida que veamos estos procesos, se comprenderá mejor por qué la existencia de índices espaciales resulta necesaria e incluso imprescindible cuando disponemos de datos de gran volumen. En el capítulo \ref{Consultas} veremos información más detallada sobre la utilidad de los índices espaciales, ya que estos son vitales para la realización de consultas espaciales, que son tratadas en dicho capítulo.\index{Consultas}
+
+Como ya hemos dicho, el objetivo de este tipo de estructuras para representar los datos espaciales no es disminuir el tamaño, sino mejorar el rendimiento de las operaciones sobre ellos. De hecho, y al contrario que en el caso de los modelos de representación ráster, en este caso no disminuye el espacio que ocupan los datos, sino todo lo contrario, ya que este aumenta. Un índice espacial es información adicional que incrementa la utilidad de dichos datos. Exactamente del mismo modo que el índice de este libro, que no sustituye al texto que ahora mismo estas leyendo, sino que se añade a este y te ayuda a manejarte a través de él y sacarle más partido.
+
+La creación del índice espacial supone la creación de una estructura espacial en la cual se contienen objetos más simples que las propias entidades geométricas, estructuradas a su vez de forma también más sencilla que recogiendo sus coordenadas, y con un orden característico. Como hemos dicho, este índice espacial no sustituye al dato espacial, sino que lo complementa, optimizando la búsqueda de información dentro de este.
+
+Existen dos enfoques principales para los índices espaciales: continuos y discretos \cite{Guting1994VLDB}. Los continuos utilizan las coordenadas mismas de las entidades, simplificando la forma de estas, mientras que en los discretos la simplificación se aplica al espacio, discretizando este. En ambos, las entidades que se emplean son rectangulares en la mayoría de los casos. La figura \ref{Fig:Tipos_indices_espaciales} muestra la aproximación de una geometría poligonal que se obtiene en ambos tipos de modelos. 
+\index{Indice@Índice!espacial!tipos}
+
+\begin{figure}[!hbt]   
+\centering
+\includegraphics[width=.7\mycolumnwidth]{Tipos_datos/Tipos_indices_espaciales.pdf}
+\caption{\small Aproximación continua (a) y discreta (b) para un índice espacial.}
+\label{Fig:Tipos_indices_espaciales} 
+\end{figure}
+
+En el caso continuo, se sustituye toda la complejidad del polígono por simplemente cuatro puntos: aquellos que conforman el rectángulo dentro del que este se inscribe. En el caso discreto, se reduce el polígono a unas cuantas celdas de una malla. Realizar comprobaciones sobre estas estructuras resulta mucho más sencillo, y por ello se emplean para realizar aproximaciones que simplifican las operaciones\footnote{Este proceso, conocido como \emph{filtrado y refinamiento}, lo veremos en detalle en el capítulo \ref{Consultas}}.\index{Filtrado y refinamiento}
+
+Supongamos que utilizamos un índice espacial del primer tipo y queremos saber qué polígonos de una capa se intersecan con otro dado. Para comprobar qué polígonos se intersecan con este, en primer lugar podemos comprobar los solapes existentes entre sus rectángulos. Si los rectángulos no se solapan, es inmediato ver que los polígonos tampoco, con lo que no es necesario ya operar con ellos. Ver si dos rectángulos se solapan es casi inmediato, mientras que esta misma operación para polígonos complejos requiere un numero mucho mayor de operaciones.
+
+Debido al uso de rectángulos como elementos básicos, las estructuras que se emplean están específicamente diseñadas para contener o bien rectángulos (en el caso de entidades de líneas o de polígonos) o puntos (en el caso de entidades puntuales). Estas estructuras no son nuevas para nosotros, ya que hemos visto algunas de ellas en este mismo capítulo. Por ejemplo, para el caso de una aproximación continua sobre una capa de puntos, los arboles cuaternarios (\emph{quadtrees}) son una estructura de datos adecuada. Esta aplicación ya la vimos, de hecho, en la figura \ref{Fig:Quadtree}.
+
+Como seguramente ya hayas advertido, los enfoques continuo y discreto se corresponden a primera vista con las ideas correspondientes a los modelos de datos ráster y vectorial (aunque los índices espaciales de los que estamos hablando son para capas vectoriales). Es por ello que las estructuras que hemos visto para el almacenamiento de datos ráster pueden utilizarse también para recoger las distintas celdas de un índice espacial discreto. Así, la división en celdas hace necesario un orden de escaneo\index{Orden!de escaneo}. El orden de Morton que ya conocemos se aplica en este caso, entre otros.\index{Orden!de Morton}
+
+Una vez más, las estructuras de datos de todos estos índices espaciales suponen un elemento demasiado especifico para los contenidos de este libro, por lo que no se profundizará en su teoría. No obstante, estos son numerosos, ya que se trata de un área muy desarrollada. Referencias como \cite{Buchmann1990Springer} aportan descripciones más extensas para el lector interesado.
+
+En caso de querer profundizar en los aspectos más técnicos de la representación del dato geográfico en general, tanto en formato ráster como vectorial, \cite{Worboys2004CRC} ofrece información muy extensa al respecto.
 
 \section{Resumen}
 
+El proceso de almacenar la realidad y reducirla a un conjunto de valores numéricos manejables por un ordenador implica tres etapas fundamentales: creación de un modelo conceptual, adopción de un modelo de representación y codificación del anterior según un modelo de almacenamiento. Estos procesos dan lugar a la creación de las denominada \emph{capas geográficas}, unidades fundamentales de información dentro de un SIG.
 
-Los datos son una de las piezas más importantes del sistema SIG. Entendemos por dato un conjunto de valores o elementos que representan algo. La interpretación correcta de esos datos los dota de significado y produce \emph{información}.
+Dos son los modelos conceptuales más importantes: campos y entidades discretas. Estos a su vez se identifican en líneas generales con los dos principales modelos de representación: ráster y vectorial.
 
-La información geográfica tiene dos componentes: una componente temática y una componente geográfica. Estas van unidas y conforman una unidad única de información geográfica, aunque pueden separarse y analizarse por separado. Mientras que la componente geográfica tiene un carácter fundamentalmente numérico, la componente temática puede incluir una o varias variables y estas ser de naturaleza muy variada.
+En el modelo ráster el espacio se divide sistemáticamente en unidades mínimas denominadas celdas, habitualmente de forma cuadrada. En el modelo vectorial se almacenan las distintas entidades geográficas a través de las coordenadas de los puntos que las componen. El concepto de \emph{topología} es importante en el modelo vectorial, y en función de la forma en que se recojan las coordenadas de cada entidad, se almacenará o no la información topológica. El modelo arco--nodo es el más habitual para representar la topología.
 
-La información geográfica se divide horizontal y verticalmente. Las unidades mediante que incorporamos esta información a un SIG se conocen como \emph{capas}, y son uno de los elementos primordiales en la estructura de manejo de datos de todo SIG. El trabajo con capas más hace transparente la gestión de la información geográfica en un SIG, permite una mejor integración de distintos datos, y es la base para muchas operaciones, algunas de las cuales iremos viendo en capítulos sucesivos.
+La ultima etapa es la que conlleva el almacenamiento de los modelos de representación, convirtiendo los elementos base de estos en valores numéricos manejables por el ordenador. Cada modelo de representación tiene sus particulares modelos de almacenamiento, los cuales tratan de maximizar el rendimiento de las operaciones realizadas sobre los datos espaciales, al tiempo que reducen el espacio que dichos datos ocupan.
 
 \pagestyle{empty}
