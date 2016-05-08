@@ -2,80 +2,25 @@
 \chapter{Fuentes principales de datos espaciales}
 \label{Fuentes_datos}
 
- 
 
-\bigskip
 
-\begin{intro}
-Una vez conocemos los modelos de representación y sabemos cómo almacenar la información geográfica, es momento de estudiar los distintos métodos que nos permiten llevar a la práctica el proceso de creación del dato geográfico, y los orígenes desde los que estos se generan. En este capítulo analizaremos las principales fuentes existentes, sus fundamentos  y características, y cómo son los datos que se obtienen a partir de ellas.
 
-Para seguir el contenido de este capítulo, es importante tener una buena comprensión de todo lo descrito en el capítulo \ref{Tipos_datos}, en especial lo relativo a modelos de representación.
-\end{intro}
+No hace tanto tiempo, toda la información que se manejaba dentro de un SIG tenía su origen en un mapa en papel, el cual debía \emph{prepararse} para adaptarse a la naturaleza propia del SIG. El dato geográfico se obtenía a partir de la \textbf{digitalización} de cartografía, es decir, convertir los datos geográficos en formato impreso en datos en formato digital que un SIG pudiera manejar. 
 
-\section{Introducción}
-\pagestyle{fancy}
+Un SIG implica una aplicación informática, y esta se alimenta en última instancia exclusivamente de datos digitales. Los datos geográficos digitales tienen una serie de ventajas frente a los analógicos (además del mero hecho de que podemos incorporarlos a nuestro SIG), y suponen, como sucede en muchos otros campos, un salto cualitativo importante. Entre estas ventajas, que son a su vez comunes a otros ámbitos,  destacan la sencillez de actualización, la facilidad de distribución (en especial con la aparición de Internet), el menor espacio físico necesario para su almacenamiento, la facilidad y precisión del análisis, y la facilidad de mantenimiento (el dato digital no se degrada, lo que se degrada es su soporte, pero es sencillo replicar el dato sin pérdida de calidad)
 
-El origen de los datos con los que trabajamos en un SIG puede ser sumamente variado y presentarse asimismo en formas diversas. La metodología seguida en la recolección de datos condiciona directamente la forma en que estos datos llegan a nosotros, y por tanto el uso que les podemos dar dentro de un SIG o las operaciones que debemos realizar con ellos de cara a poder adaptarlos para la realización de un trabajo concreto.
+Hoy en día las técnicas de adquisición de datos han evolucionado y permiten crear datos que pueden ser directamente integrados en un SIG. Distinguimos así \textbf{fuentes de datos primarias} y \textbf{secundarias}. 
 
-No hace tanto tiempo, toda la información que se manejaba dentro de un SIG tenía su origen en un mapa en papel, el cual debía \emph{prepararse} para adaptarse a la naturaleza propia del SIG. El desarrollo de los SIG ya había comenzado a dar sus frutos y se obtenían los primeros programas, pero eran necesarios datos para utilizarlos. Sin embargo, los datos geográficos de los que se disponía no se encontraban en formato digital, por lo que no eran adecuados para su uso dentro de un SIG.
+Las fuentes de datos primarias son aquellas cuyos datos podemos emplear en un SIG, ya que estos, en su forma original, ya son susceptibles de ser sometidos a las operaciones de manejo y análisis que incorporan los SIG. Por su parte, las fuentes de datos secundarias generan datos que no pueden emplearse en un SIG sin un proceso de adaptación previo, siendo el dato derivado el que utilizamos en un SIG, no el original. 
 
-Una tarea básica en esos tiempos era la digitalización de cartografía\index{Digitalización}, es decir, convertir los datos geográficos en formato impreso en datos en formato digital que un SIG pudiera manejar. La disponibilidad de datos digitales era baja, pero, como resulta lógico pensar, sí que existía una gran cantidad de datos geográficos en otros formatos tales como mapas, cartas de navegación, fotografías aéreas, etc. La tecnología ha ido avanzando y ya se producen datos directamente en formato digital, considerando específicamente la existencia de los SIG como herramientas básicas de manejo de datos geográficos. No obstante, los datos en formato impreso, así como las técnicas que se emplearon en su creación, siguen siendo válidas, y sirven igualmente para crear datos geográficos que podemos emplear en un SIG.
+En este capítulo, veremos las distintas fuentes de datos con las que podemos trabajar un en SIG.
 
-Hoy en día, la situación es bien distinta a la de aquellos primeros tiempos, y puede afirmarse que los orígenes a partir de los cuales se generan los datos geográficos son muy diversos. Esto es así porque aunan técnicas recientes y más adaptadas al entorno de los SIG con métodos clásicos que, no obstante, no han perdido su vigencia y valor. En la actualidad, la recolección de datos geográficos es un ámbito complejo con muchas alternativas, las cuales deben integrarse dentro de un SIG para permitir que este despliegue todo su potencial sobre dichos datos. Todo este conjunto de técnicas de adquisición de datos conforman un amplio abanico de posibilidades de las cuales el usuario de SIG debe nutrirse para trabajar siempre en las mejores condiciones posibles, maximizando la precisión y alcance de su trabajo.
-
-Integrar dentro del trabajo con un SIG todas las fuentes de datos disponibles es una tarea que requiere un conocimiento detallado de estas, con objeto de poder establecer la mejor manera de combinarlas, y elegir en cada caso la mejor opción de las disponibles. A lo largo de este capítulo veremos las principales técnicas existentes para la creación de datos geograficos en un formato apto para su uso en un SIG, centrándonos en los pormenores de proceso y las particularidades de los datos generados en cada caso. Para ello, veremos todo el conjunto de fuentes de las cuales pueden provenir los datos con los que trabajamos en un SIG, desde las más modernas hasta las más antiguas, así como las metodologías que permiten convertir las formas no digitales en datos aptos para su uso en dicho SIG. El objetivo es que, al final del capítulo, se conozcan con detalle todas las formas en las que los datos geográficos pueden presentarse, se entiendan estas completamente con independencia de su origen, y se sepan utilizar y combinar todas las fuentes de datos, extrayendo lo mejor de cada una de ellas.
-
-\section{Datos digitales y datos analógicos}
-\label{Datos_digitales_y_analogicos}
-
-La principal diferencia que se presenta desde la aparición de los SIG es la necesidad de utilizar datos digitales. Un SIG implica una aplicación informática, y esta se alimenta en última instancia exclusivamente de datos digitales. Esta es la razón por la que debemos alimentar nuestro SIG con una serie de valores numéricos, y llegar a ellos a partir de la realidad que se pretende modelizar implica toda una serie de etapas, las cuales ya vimos con detalle en el capítulo \ref{Tipos_datos}
-
-Gran parte de los datos geográficos que se producen actualmente son en formato digital. Otros, a pesar de producirse hoy en día, no lo son directamente. Y junto a estos tenemos, como ya sabemos, todos los datos (que no son pocos) generados con anterioridad y que se presentan en diversas formas. Pero si deseamos trabajar con ellos en un SIG, de un modo u otro todos habrán de acabar siendo digitales.
-
-Los datos geográficos digitales tienen una serie de ventajas frente a los analógicos (además del mero hecho de que podemos incorporarlos a nuestro SIG), y suponen, como sucede en muchos otros campos, un salto cualitativo importante. Entender las ventajas frente a los datos analógicos ayuda a comprender un poco más la importancia de los SIG y la relevancia que cobran en el manejo de los datos geográficos. Estas ventajas pueden resumirse en las siguientes:\index{Ventajas datos digitales}
-
-\begin{itemize}
- \item \textbf{Sencillez de actualización}. La cartografía digital es editable, y esto simplifica enormemente la introducción cambios. Si en una capa con información catastral cambia la frontera de una parcela, basta modificar esta frontera. En un mapa analógico habría que rehacer todo el mapa y volver a imprimirse. 
-
-Además, y gracias a la división en capas, pueden actualizarse a distintos ritmos las distintas variables, pues son independientes y pueden modificarse por separado.
-
-Haciendo una analogía con el mundo editorial, piénsese en un diario impreso, con una única edición al día, en la que se ha de esperar al día siguiente para introducir todas las noticias que se vayan produciendo durante esa misma jornada. En su equivalente digital, la información se actualiza prácticamente en tiempo real, y podemos conocer las noticias mucho antes, pues es más sencillo actualizar esa página que volver a poner la imprenta en marcha.
-
-Es asimismo muy importante el hecho de que, gracias a los sistemas que centralizan el acceso a los datos, esta edición y actualización de datos pueden hacerla varias personas de modo concurrente. Esto no resulta posible en el caso de cartografía impresa, donde frecuentemente se encuentra el problema de que una cartografía de uso interno en una organización (por ejemplo, un ayuntamiento que guarda un inventario de su mobiliario urbano) ha sido editada por varias personas (el operario que sustituye un elemento de ese mobiliario luego lo registra en su inventario, y en un instante distinto otro operario puede añadir en su propio mapa la localización de un nuevo elemento añadido), siendo necesario después unir todas las modificaciones, lo cual no siempre resulta sencillo o incluso posible. 
-
-Si varias personas trabajan con cartografía impresa de una zona, cada una de ellas tendrá su propio mapa. Con la cartografía digital, todos pueden obtener la cartografía de un repositorio central, de tal modo que si la editan, están editando una única versión, y no es necesario después poner en común todas sus aportaciones para crear una nueva cartografía actualizada.
-
-\item \textbf{Facilidad de distribución}. Resulta más sencillo y menos costoso distribuir cartografía digital que analógica, ya que esto se puede hacer rápidamente por Internet, por ejemplo. Volviendo al ejemplo del diario, las noticias se actualizan y se ponen en Internet, de donde cada lector las descarga de inmediato. El diario impreso requiere una cadena de distribución más costosa, desde la imprenta hasta el punto de venta.
-\item \textbf{Espacio de almacenamiento}. Se generan actualmente ingentes volúmenes de datos que además, y gracias a que son más fáciles de actualizar, se producen con una frecuencia mucho mayor. No obstante, un soporte digital puede almacenar una enorme cantidad de estos ocupando una fracción del espacio físico. En un ordenador dotado de una buena capacidad de almacenamiento caben los contenidos de una cartoteca y los de la hemeroteca de ese diario del que hablamos. Las mismas cartoteca y hemeroteca en formato impreso requieren edificios enteros.
-\item \textbf{Facilidad y precisión de análisis}. Como ya veremos en la parte correspondiente, el salto cualitativo que se da en el campo del análisis es enorme. Podemos hacer con los datos geográficos digitales cosas que no eran posibles con los analógicos y, mejor aún, podemos automatizar estos análisis. Asimismo, la precisión es mayor, ya que depende únicamente de los datos y la precisión intrínseca de estos, pero no de la operación de análisis (piénsese en un mapa impreso y una serie de operarios midiendo la longitud de un río sobre él. Es probable que lleguen a resultados similares pero no idénticos. Con cartografía digital, cualquier operario, y en cualquier SIG ---suponiendo que implementan todos las mismas fórmulas--- llegaría al mismo resultado exacto).
-\item \textbf{Facilidad de mantenimiento}. Aunque no se introduzcan modificaciones y no se actualicen los datos, el formato digital hace más fácil su conservación. La degradación del soporte no degrada directamente el dato en sí, haciéndole perder calidad. La degradación del soporte analógico (el papel), sí que lo hace. Además, los datos digitales pueden replicarse con suma facilidad, por lo que su persistencia está garantizada en mayor medida y a un menor coste que la de los datos analógicos.
-\end{itemize}
-
-Así pues, disponemos para nuestro trabajo en nuestro SIG de datos analógicos y datos digitales, siendo estos últimos los que necesitamos en última instancia, y que presentan las ventajas anteriormente descritas frente a los primeros. En las siguientes secciones, veremos con detalle todos los distintos tipos de datos geográficos, tanto digitales como analógicos, la forma en que se obtienen, sus características, cómo se incorporan a un SIG, y en general todo aquello que resulte de interés para una mejor comprensión y uso posterior de los mismos. 
-
-\section{Fuentes primarias y fuentes secundarias}
-
-Como hemos visto, algunos datos que utilizamos en un SIG son de tipo analógico, mientras que otros son de tipo digital. En algunos casos (generalmente en los analógicos), estos datos no han sido tomados pensando en su utilización en un SIG, y nos van a servir de base para obtener otros que sí pueden emplearse directamente dentro de un SIG. Por el contrario, existen otros datos que ya han sido recogidos considerando su utilización dentro de un Sistema de Información Geográfica, y la forma en la que se presentan ya es adecuada para incorporarlos en este y trabajar con ellos.
-
-En base a lo anterior, se define una forma distinta de clasificar los datos espaciales con los que trabajamos en un SIG: datos primarios (o procedentes de una fuente primaria) y datos secundarios (o procedentes de una fuente secundaria) \cite{Jackson1991Longman}.
-
-Los datos primarios son aquellos que podemos emplear en un SIG y que, en su forma original, ya son susceptibles de ser sometidos a las operaciones de manejo y análisis que incorporan los SIG. En este grupo encontramos las imágenes digitales o los datos obtenidos con GPS\index{GPS}, todos ellos recogidos ya en origen de forma adecuada para su empleo directo en un SIG.
-
-Por su parte, los datos secundarios derivan de algún otro tipo de dato previo, el cual no es adecuado para su empleo en un SIG. Entre estos incluimos las versiones digitales de los mapas clásicos (veremos en breve cómo se lleva a cabo esa conversión de un documento analógico a uno digital\index{Conversión!analógico--digital}), así como los datos procedentes de un muestreo o levantamiento tradicional. Otros provenientes de cartografía impresa, tales como capas de elevaciones, también se incluyen en este grupo.
-
-Al desarrollar las fuentes de datos en este capítulo, se tratarán tanto fuentes primarias como secundarias, y en el caso de estas últimas se tratarán a su vez las formas en las que a partir de estas pueden derivarse datos digitales que puedan ya ser incorporados a un SIG.
 
 \section{Teledetección}\index{Teledetección}
 
-La primera fuente de datos que trataremos en este capítulo es la teledetección. Entendemos por teledetección el estudio y medida de las características de una serie de objetos (en nuestro caso elementos de la superficie terrestre) sin que exista contacto físico \cite{Curran1991Longman,Lillesand1997Wiley,Chuvieco1996Rialp}. Para ello, se miden las perturbaciones que el objeto provoca en su entorno, principalmente las de tipo electromagnético.
+La primera fuente de datos que trataremos en este capítulo es la teledetección. Entendemos por teledetección el estudio y medida de las características de una serie de objetos (en nuestro caso elementos de la superficie terrestre) sin que exista contacto físico. Para ello, se miden las perturbaciones que el objeto provoca en su entorno, principalmente las de tipo electromagnético.
 
-Tradicionalmente, la teledetección se ha estudiado como una materia complementaria pero en cierto modo separada de los Sistemas de Información Geográfica. Ello es debido principalmente a que se trata de una materia muy extensa cuyo desarrollo se ha producido en cierta parte de forma ajena al de los SIG. No obstante, a medida que ambos campos se han ido desarrollando, la convergencia entre SIG y teledetección se ha ido haciendo cada vez más evidente. No solo las aplicaciones SIG incorporan elementos para el manejo, tratamiento y análisis de datos procedentes de la teledetección, sino que las formulaciones de ambos ámbitos contienen elementos similares.
-
-La teledetección es hoy en día un elemento clave para la formación en SIG, y como tal debe incluirse en un libro como este. Los bloques tradicionales en los que se divide el temario fundamental de la teledetección no incorporan únicamente el registro de la información y la creación de los datos, sino también su proceso posterior, interpretación y tratamiento. Este último no se trata, sin embargo, en este capítulo, sino en la parte dedicada al análisis, integrado junto con otras formulaciones similares para proceso de imágenes.
-
-La teledetección es, como decimos, una fuente de datos primordial en los SIG, y el verdadero aprovechamiento de los productos actuales de la teledetección solo se da con el concurso de los SIG y sus capacidades de análisis y manejo de datos. No obstante, y atendiendo a la definición dada, los procesos de teledetección aplicados al ámbito cartógráfico y el análisis espacial se remontan a tiempo atrás, concretamente a la mitad del siglo XIX. Fue entonces cuando se tomaron las primeras fotografías aéreas uniendo el recién desarrollado campo de la fotografía junto con la utilización de globos aerostáticos como medio para situar el aparato fotográfico a una altura suficiente que permitiera obtener las imágenes.
-
-Las fotografías aéreas fueron el primer producto de la teledetección, pero hoy en día existen otros  que, basados en esa misma idea de registro de información, pueden ser empleados como fuentes de datos espaciales dentro de un SIG. Para comprenderlos, estudiemos algo más en detalle los elementos del proceso de teledetección, los cuales se representan de forma esquemática en la figura \ref{Fig:Elementos_teledeteccion}. Estos elementos son los siguientes:
+Un sistema de teledetección cuenta con los siguientes elementos (Figura \ref{Fig:Elementos_teledeteccion}):
 
 \begin{figure}[!hbt]   
 \centering
@@ -84,194 +29,55 @@ Las fotografías aéreas fueron el primer producto de la teledetección, pero hoy e
 \label{Fig:Elementos_teledeteccion} 
 \end{figure}
 
-\index{Teledetección!elementos}
 
 \begin{itemize}
 	\item \textbf{Una fuente de radiación (A)}\index{Fuente de radiación}. Puede ser de origen natural o artificial. La radiación emitida por dicha fuente llega al terreno y sufre una perturbación causada por los elementos de este, siendo esta perturbación el objeto de estudio de la teledetección. Los propios objetos pueden ser también emisores ellos mismos de radiación.
 	\item \textbf{Unos objetos (B) que interaccionan con la radiación} o la emiten, según lo anterior.
 	\item \textbf{Una atmósfera (C)} por la que se desplaza la radiación, tanto desde la fuente hasta el objeto como desde el objeto hasta el receptor. La atmósfera también interactúa con la radiación, introduciendo igualmente perturbaciones en ella.
-	\item \textbf{Un receptor (D) que recoge la radiación} una vez esta ha sido perturbada o emitida por los objetos. El receptor va a generar como producto final una imagen (en términos de un SIG, una capa ráster), en cuyas celdas o píxeles\index{Pixel} se va a contener un valor que indica la intensidad de la radiación. Estos valores son valores enteros que indican el nivel de dicha radiación dentro de una escala definida (habitualmente valores entre 1 y 256), y se conocen dentro del ámbito de la teledetección como \emph{Niveles Digitales}\index{Niveles Digitales}.
+	\item \textbf{Un receptor (D) que recoge la radiación} una vez esta ha sido perturbada o emitida por los objetos. El receptor va a generar como producto final una imagen (en términos de un SIG, una capa ráster), en cuyas celdas o píxeles se va a contener un valor que indica la intensidad de la radiación. Estos valores son valores enteros que indican el nivel de dicha radiación dentro de una escala definida (habitualmente valores entre 1 y 256), y se conocen dentro del ámbito de la teledetección como \textbf{Niveles Digitales}.
 \end{itemize}
 
 A lo largo de este apartado veremos con detalle estos elementos. Para estudiar los dos primeros, estudiaremos los fundamentos físicos relativos a la radiación y a la la interacción entre esta y la materia, mientras que para el estudio del sistema receptor analizaremos los elementos de este en dos componentes por separado: sensores y plataformas. 
 
-La interacción de la atmósfera interesa de cara a eliminar su efecto, ya que lo que resulta de interés en general son los objetos en la superficie terrestre, no la atmósfera como tal. Eliminar esta influencia de la atmósfera es parte de los procesos posteriores que se realizan con la imagen y que incluyen también, como se mencionó anteriormente, la interpretación y otros procedimientos diversos sobre esta. Todos ellos no son tratados en este capítulo sino, tal y como se dijo, en un capítulo independiente dentro de la parte de procesos.
+La interacción de la atmósfera interesa de cara a eliminar su efecto, ya que lo que resulta de interés en general son los objetos en la superficie terrestre, no la atmósfera como tal. Eliminar esta influencia de la atmósfera es parte de los procesos posteriores que se realizan con la imagen, y que se detallan en los capítulos dedicados al análisis de imágenes en lugar de en este.
 
 \subsection{Fundamentos físicos}
 
-Es necesario conocer los conceptos fundamentales sobre la radiación y su interacción con la materia (los objetos de la superficie terrestre) para poder entender cómo, utilizando la radiación de una fuente dada, se crea una imagen como resultado final en un proceso de teledetección.
+La radiación electromagnética es producto de las alteraciones en los campos eléctrico y magnético, las cuales generan ondas correspondientes a cada uno de los campos magnético y eléctrico. Estas ondas se desplazan a la velocidad de la luz, y se pueden describir con los parámetros habituales, tales como la longitud de onda o la frecuencia. El rango de longitudes de onda cubierta por la radiación electromagnética se conoce como \textbf{espectro electromagnético}.
 
-\subsubsection{La radiación electromagnética}\index{Radiación electromagnética}
+El espectro se subdivide en regiones en función de su longitud de onda, tales como (de menor a mayor longitud de onda) los rayos $\gamma$, los rayos X, la región ultravioleta, la región visible, la región infraroja, o las microondas  
 
-La radiación electromagnética es una de las cuatro fuerzas fundamentales de la naturaleza\footnote{Las otras tres son la gravitatoria, la interacción nuclear débil y la interacción nuclear fuerte} y deriva del campo electromagnético, el cual es ejercido por las partículas cargadas eléctricamente. Para explicar esta existen dos modelos conocidos como \emph{modelo ondulatorio} y \emph{modelo de partículas}. Según el primero, que será en el que profundicemos algo más, la radiación electromagnética es producto de las alteraciones en los campos eléctrico y magnético, que generan dos ondas ortogonales entre sí, correspondientes a cada uno de los campos anteriores (Figura \ref{Fig:Radiacion_electromagnetica}).\index{Modelo!ondulatorio}\index{Modelo!de partículas}
+La radiación emitida por una fuente de radiación es alterada por la presencia de los distintos objetos, ya que estos \textbf{absorben, transmiten} o \textbf{reflejan} esta.
 
-\begin{figure}[!hbt]   
-\centering
-\includegraphics[width=.75\textwidth]{Fuentes_datos/Onde_electromagnetique.pdf}
-\caption{\small Ondas correspondientes a los campos magnético y eléctrico, ortogonales entre sí (Tomado de Wikipedia). }
-\label{Fig:Radiacion_electromagnetica} 
-\end{figure}
+Estos tres fenómenos se dan en diferente proporción en función de las características del objeto y de la radiación. La parte que  interesa a efectos de la teledetección es aquella que se refleja en el objeto, ya que esta es la que posteriormente puede recogerse y emplearse para la generación de las imágenes.
 
-Estas ondas se desplazan a la velocidad de la luz, y se pueden describir con los parámetros habituales, tales como la longitud de onda o la frecuencia\footnote{Se supone que el lector tiene cierta familiaridad con estos conceptos físicos básicos. En caso contrario, una referencia que puede encontrarse en la red es \cite{webbookOndas}}. Una mayor longitud de onda (y, por tanto una menor frecuencia) tiene asociada una menor energía de la radiación.\index{Longitud!de onda}
+Como ya se dijo en el capítulo \ref{Introduccion_datos}, las imágenes como capas ráster presentan habitualmente la particularidad de tener varias bandas. En lugar de un único valor para cada celda, existen $n$ valores, uno por cada banda. La imagen recoge la intensidad de la radiación dentro de una amplitud dada del espectro, y a su vez subdivide esta en distintas franjas. Los Niveles Digitales de cada banda corresponden a la intensidad dentro de una de esas franjas del espectro en particular.
 
-La radiación electromagnética puede cubrir de forma continua todo un amplio rango de valores de longitudes de onda. Este rango se conoce como \emph{espectro electromagnético}\index{Espectro electromagnético}. Pese a la continuidad de sus valores, es habitual agruparlos en regiones, discretizando la amplitud del espectro, ya que las radiaciones en longitudes de onda similares presentan a su vez comportamientos similares en muchos sentidos. En la figura \ref{Fig:Espectro_electromagnetico} se muestra un esquema del espectro electromágnético y sus principales regiones de interés.
+Puesto que cada objeto refleja la radiación de diferentes longitudes de onda de modo distinto, esto puede considerarse como una propiedad del objeto. Se tiene así el concepto de \textbf{firma espectral}, que es la respuesta característica de un tipo de objeto dentro del espectro electromagnético. 
 
-\begin{figure}[!hbt]   
-\centering
-\includegraphics[width=\textwidth]{Fuentes_datos/Electromagnetic_spectrum-es.pdf}
-\caption{\small Espectro electromagnético y sus principales regiones de interés (Tomado de Wikipedia).}
-\label{Fig:Espectro_electromagnetico} 
-\end{figure}
-
-Dentro de estas regiones, son de destacar las siguientes:
-
-\begin{itemize}
-	\item \textbf{Rayos $\gamma$}  $<$0.03 $nm$.
-	\item \textbf{Rayos X} (0.03 $nm$ - 3 $nm$).
-	\item \textbf{Ultravioleta} (3 $nm$ - 0.3 $\mu$).
-	\item \textbf{Visible} (0.3 $\mu$ - 0.7 $\mu$). Se corresponde con las radiaciones que pueden ser detectadas por el ojo humano o por aparatos tales como una cámara fotográfica común. Observando la figura \ref{Fig:Espectro_electromagnetico} puede apreciarse que esta región representa una porción muy pequeña del total del espectro. Existen muchas otras regiones que no podemos <<ver>> pero que, empleando la tecnología adecuada, sí que pueden aprovecharse para crear imágenes dentro de un proceso de teledetección, siendo de gran utilidad para el estudio de numerosos procesos.
-
-\index{Rayos!X}\index{Rayos!gamma}\index{Región!visible del espectro}\index{Región!ultravioleta}
-
-	Las distintas longitudes de onda dentro de esta región son las responsables de los distintos colores que percibimos. Así, por ejemplo, el azul se corresponde con el rango entre 0.4 $\mu$ y 0.5 $\mu$, mientras que el verde lo hace con el rango entre 0.5 $\mu$ y 0.6 $\mu$
-	\item \textbf{Infrarrojo cercano} (0.7 $\mu$ - 1.3 $\mu$).
-	\item \textbf{Infrarrojo medio}  (1.3 $\mu$ - 8 $\mu$).
-	\item \textbf{Infrarrojo lejano o térmico} (8 $\mu$ - 14 $\mu$). Dentro de esta región se encuentran principalmente las radiaciones emitidas por los cuerpos debido a su temperatura\footnote{Esta emisión se calcula según la denominada \emph{ley de Stefan--Boltzmann}. Puede encontrarse más al respecto en \cite{webSBoltzman}}.
-	\item \textbf{Microondas} (1 $mm$ - 25 $cm$).
-\end{itemize}
-
-\index{Región!infrarroja}\index{Microondas}
-
-En el capítulo \ref{Procesado_imagenes} estudiaremos para qué tipo de análisis resulta útil cada una de las regiones del espectro, cuando veamos como analizar las imágenes procedentes de la teledetección.
-
-Como ya se dijo en el capítulo \ref{Tipos_datos}, las imágenes como capas ráster presentan habitualmente la particularidad de tener varias bandas\index{Bandas}. En lugar de un único valor para cada celda, existen $n$ valores, uno por cada banda. Esto es así porque la imagen recoge la intensidad de la radiación (recordemos que esto se denominaba Nivel Digital) dentro de una amplitud dada del espectro, y a su vez subdivide esta en distintas franjas. Los Niveles Digitales de cada banda corresponden a la intensidad dentro de una de esas franjas del espectro en particular.
-
-\subsubsection{Interacción entre radiación y materia}
-
-La radiación emitida por una fuente de radiación es alterada por la presencia de los distintos objetos, que interactúan con ella. Independientemente de su procedencia, para toda radiación se dan tres fenómenos fundamentales al alcanzar un objeto:
-
-\begin{itemize}
-	\item \textbf{Absorción}. El objeto toma la energía de la radiación.
-	\item \textbf{Transmisión}. La radiación atraviesa el objeto y continua su camino.
-	\item \textbf{Reflexión}. la radiación <<rebota>> en el objeto y vuelve al espacio.	
-\end{itemize}
-
-\index{Absorción}\index{Tansmisión}\index{Reflexión}
-
-Estos tres fenómenos se dan en diferente proporción en función de las características del objeto y de la radiación. Para una longitud de onda dada, existe, pues, un porcentaje de la radiación que es absorbida por el objeto, otra que se transmite a través de él y otra que es reflejada. La parte que  interesa a efectos de la teledetección es aquella que se refleja en el objeto, ya que esta es la que posteriormente puede recogerse y emplearse para la generación de las imágenes.
-
-La proporción en la que los tres procesos anteriores se dan en un objeto no es la misma para todas las radiaciones. Un objeto puede absorber una gran parte de la radiación dentro de una región del espectro y sin embargo reflejar la mayoría de ella en una región distinta. Es por ello que, en función del análisis que se desee realizar, debe trabajarse con imágenes que traten una u otra región.
-
-Igualmente, una imagen con varias bandas contiene información sobre la intensidad de la radiación reflejada en distintas partes del espectro. Puesto que cada objeto refleja de forma diferente la radiación en cada una de esas partes, pueden igualmente emplearse para identificar objetos particulares si se conoce la respuesta de estos en determinadas bandas. Por ejemplo, si sabemos que los objetos que buscamos reflejan gran cantidad de radiación en todas las longitudes de onda excepto en un rango concreto. Aparece así el concepto de \emph{firma espectral} como la respuesta característica de un tipo de objeto dentro del espectro electromagnético. Veremos mucho más al respecto en el capítulo \ref{Procesado_imagenes}, así como en el \ref{Estadistica_avanzada}, donde estudiaremos una aplicación habitual de dichas firmas espectrales.\index{Firma espectral}
-
-Además de la interacción con los objetos que se pretenden estudiar, la radiación interactúa con la atmósfera. Esta interacción afecta al resultado y es una variable a considerar en ciertas operaciones posteriores con las imágenes. Veremos más sobre la interacción entre radiación y atmósfera en el apartado \ref{Correccion_imagenes}, cuando tratemos esas operaciones.
 
 \subsection{Sensores y plataformas}
 
-En un sistema de teledetección, dos son los elementos tecnológicos principales que lo definen: el \emph{sensor} y la \emph{plataforma}. \index{Sensor}\index{Plataforma}
+En un sistema de teledetección, dos son los elementos tecnológicos principales que lo definen: el \textbf{sensor} y la \textbf{plataforma}. 
 
-El sensor es el elemento que incorpora la capacidad de <<leer>> la radiación electromagnética y registrar su intensidad dentro de la una zona concreta del espectro. En palabras más sencillas, es el aparato que nos permite <<tomar>> la imagen, y puede ir desde una simple cámara fotográfica hasta un sensor más especializado capaz de tomar cientos de bandas en una región del espectro de gran amplitud.
+El sensor es el elemento que incorpora la capacidad de <<leer>> la radiación electromagnética y registrar su intensidad dentro de la una zona concreta del espectro. Puede ir desde una simple cámara fotográfica hasta un sensor más especializado.
 
-La plataforma, por su parte, es el medio en el que se sitúa el sensor y desde el cual se realiza la observación. Los dos tipos principales de plataformas son aquellas situadas dentro de la atmósfera terrestre (aviones en su mayoría, aunque también en otros medios tales como globos aerostáticos) y aquellas situadas fuera de la atmósfera (a bordo de satélites)
+Los sensores se denominan \textbf{pasivos} aprovechan las fuentes de radiación existentes en la naturaleza (fundamentalmente el Sol) y se limitan a recoger la radiación de dichas fuentes reflejada por los elementos del medio, o \textbf{activos} sí emiten radiación, y recogen dicha radiación tras ser reflejada por dichos elementos. Para entender este concepto de un modo de un modo sencillo, podemos decir que una cámara fotográfica es un sensor pasivo, mientras que una camara fotográfica con \emph{flash} es un sensor activo. La radiación emitida por los sensores activos no ha de ser necesariamente luz visible (como en el caso del flash), sino que pueden emitir en otras secciones del espectro.
 
-Las características de estos dos elementos definen las del sistema en su conjunto, así como las propiedades de sus productos derivados y la utilidad que estos presentan.
+Tecnologías como el \textbf{radar} o el \textbf{LiDAR} (similar al radar pero con pulsos de laser en lugar de ondas de radio), se basan en sensores activos. En el caso del LiDAR, permite obtener imagenes que no tiene un caracter visual, sino que contienen en sus valores la elevación de los objetos, pudiendo así emplearse para cartografiar el relieve.
 
-\subsubsection{Plataformas}
 
-La plataforma es el medio en el que se transporta el sensor, y condiciona las mediciones efectuadas por este, ya que establece la distancia a la que el sensor se sitúa del elemento registrado (la superficie terrestre). Esta distancia puede ser del orden de algunos centenares de metros o unos pocos kilómetros, o bien de muchos kilómetros. En el primer caso, la plataforma más habitual es el avión, mientras que en el segundo caso lo más frecuente es el uso de satélites.
+La plataforma, por su parte, es el medio en el que se sitúa el sensor y desde el cual se realiza la observación.  A bordo de una plataforma pueden montarse varios sensores.
 
-Los aviones son las plataformas clásicas a bordo de las cuales se montaban originariamente las cámaras empleadas para la realización de fotografías aéreas. No obstante, hoy en día pueden montarse igualmente otros sensores más complejos y modernos a bordo de aeronaves. 
+Los dos tipos principales de plataformas son aquellas situadas \textbf{{dentro de la atmósfera} terrestre (aviones en su mayoría) y aquellas situadas \textbf{fuera de la atmósfera} (a bordo de satélites).
 
-Las ventajas del empleo de aviones como plataformas de teledetección son las relacionadas con la disponibilidad de la plataforma, que es mucho mayor que en el caso de emplear satélites. Podemos (dentro de lo razonable) escoger cómo, cuándo y dónde efectuar un vuelo y tomar imágenes, mientras que en caso de satélites la disponibilidad viene condicionada por numerosos factores y es muy reducida.
+Los aviones tienen la ventaja de su \texbtf{disponibilidad}, ya que pueden pilotarse y de este modo permiten cubrir cualquier lugar de la tierra en cualquier momento.
 
-Respecto a los inconvenientes, pueden citarse entre ellos la inestabilidad de la plataforma y la dependencia de las condiciones del clima, que pueden afectar a la propia estabilidad y a la calidad de los resultados, o incluso impedir la realización del vuelo. Por ser plataformas de baja altura, no pueden abarcar superficies tan amplias como los satélites, requiriendo más tiempo para cubrir una zona dada.
+A diferencia de un avión, un satélite no puede dirigirse a voluntad (no puede pilotarse), y su movimiento es una característica inherente que viene definida por una serie de parámetros. Estos parámetros se conocen como \textbf{{parámetros orbitales} pues definen la órbita descrita por el satélite en torno a la Tierra. 
 
-Por su parte, los satélites artificiales presentan unas características distintas como plataformas de teledetección, siendo muy útiles para la teledetección sobre la superficie terrestre. Es habitual que a bordo de un mismo satélite coexistan diversos sensores, de forma que una única plataforma transporta varios de ellos.
-
-A diferencia de un avión, un satélite no puede dirigirse a voluntad (no puede pilotarse), y su movimiento es una característica inherente que viene definida por una serie de parámetros. Estos parámetros se conocen como \emph{parámetros orbitales} pues definen la órbita descrita por el satélite en torno a la Tierra. \index{Parámetros orbitales}\index{Orbita@Órbita}
-
-Por una lado, las órbitas pueden clasificarse en función de su eje de rotación en tres tipos:
-
-\begin{itemize}
-	\item \textbf{Ecuatoriales}, si se sitúan en el mismo plano en el ecuador terrestre.
-	\item \textbf{Polares}, si se sitúan en un plano que contiene al eje de rotación terrestre.
-	\item \textbf{Semipolares}, si la órbita es oblicua al eje de rotación
-\end{itemize}
-
-Con un criterio distinto, atendiendo a la forma en que se produce el movimiento, distinguimos dos tipos de órbitas para un satélite:
-
-\begin{itemize}
-	\item \textbf{Geosíncronas}. El satélite se sitúa sobre un punto fijo de la Tierra y su movimiento sigue al de rotación de esta. Es decir, no existe movimiento relativo entre dicho punto de la superficie terrestre y el satélite. Todas las imágenes que se toman desde el satélite tendrán así el mismo encuadre y cubrirán una extensión idéntica. La altura del satélite es fija, siendo esta de 35.786 Km, ya que esta altura hace que la velocidad del satélite se corresponda con la de rotación de la Tierra.
+Las órbitas pueden clasificarse en función de su eje de rotación así como en función de su movimientos. En este último caso tenemos órbitas \textbf{geosíncronas} (el satélite se sitúa sobre un punto fijo de la Tierra y su movimiento sigue al de rotación de esta) o \textbf{heliosíncronas} (mientras el satélite recorre la órbita, la Tierra efectúa su movimiento de rotación, lo cual hace que a cada vuelta de la órbita se cubran zonas distintas) 
 	
-	\index{Orbita@Órbita!Geosíncrona}
 	
-	La ventaja de este tipo de satélites es que, por situarse siempre sobre un punto y siempre teniendo visión sobre una zona dada, se pueden actualizar con mucha frecuencia las imágenes. El inconveniente principal radica en el hecho de que las zonas alejadas del punto sobre el que se sitúa el satélite tendrán mala cobertura, y existirán zonas no cubiertas de las que no resultará posible obtener imágenes con los sensores montados a bordo de dicho satélite. Pese a que un sensor sobre un satélite con órbita geosíncrona cubrirá una gran porción de la superficie terrestre (debido a la elevada altura a la que ha de situarse para tener dicha órbita), no resulta posible, como es lógico, cubrir toda ella y hacerlo además en las mismas condiciones en todas las zonas.
-	
-	\item \textbf{Heliosíncronas}. Las órbitas heliosíncronas son generalmente polares. Mientras el satélite recorre la órbita, la Tierra efectúa su movimiento de rotación, lo cual hace que a cada vuelta de la órbita se cubran zonas distintas. De esta forma, se consigue dividir la totalidad de la superficie terrestre en bandas que se van recorriendo sucesivamente hasta que el satélite vuelve a situarse en el mismo punto inicial. Las órbitas están diseñadas de tal manera que ese regreso al punto inicial se produce a la misma hora solar exacta que en el anterior ciclo, de forma que las imágenes tomadas en un punto dado son registradas siempre a la misma hora y en condiciones similares de iluminación. Para que sea posible realizar una órbita de este tipo, el satélite debe situarse entre 300 y 1500 Km de altura.
-	
-	La figura \ref{Fig:Orbita_landsat} muestra un ejemplo de la forma en que un satélite con una órbita heliosíncrona barre toda la superficie de la Tierra.
-	
-	\index{Orbita@Órbita!Heliosíncrona}
-	
-\begin{figure}[!hbt]   
-\centering
-\includegraphics[width=.8\textwidth]{Fuentes_datos/Orbita_landsat.png}
-\caption{\small Esquema de barrido de un satélite con órbita heliosíncrona. Tomado de \cite{webLandsat}}
-\label{Fig:Orbita_landsat} 
-\end{figure}
-	
-	Debido al movimiento que causa las distintas franjas, los satélites con este tipo de órbitas pueden cubrir toda la superficie terrestre, algo que no es posible con los de órbita geosíncrona. No obstante, una vez que se toma una imagen de una zona, la plataforma no regresa a ella hasta que se concluye todo el ciclo, habiendo transcurrido un periodo de tiempo que se conoce como \emph{periodo o intervalo de revisita}. Debido a ello, la actualización de las imágenes no puede ser tan inmediata como en el caso de satélites geosíncronos. \index{Periodo de revisita}
-\end{itemize}
-
-\subsubsection{Sensores} \label{Sensores}
-
-Montado a bordo de cualquiera de los tipos de plataformas que hemos visto en el apartado anterior, el sensor es el encargado de registrar la radiación electromágnética procedente de la zona estudiada y <<tomar>> la imagen.
-
-Existen diversas formas de clasificar los sensores. Una división básica es la que distingue sensores \emph{activos} y sensores \emph{pasivos}. Como ya sabemos, la radiación que recoge el sensor es el resultado de una fuente de radiación electromagnética, cuyas emisiones interactúan con el medio, que refleja una parte de las radiaciones que le llegan. Los sensores pasivos aprovechan las fuentes de radiación existentes en la naturaleza (fundamentalmente el Sol) y se limitan a recoger la radiación de dichas fuentes reflejada por los elementos del medio, o la que estos elementos emiten por sí mismos. El sensor no produce ningún tipo de radiación de por sí. Por el contrario, los sensores activos sí emiten radiación, y recogen dicha radiación tras ser reflejada por los elementos del medio.
-
-\index{Sensores!tipos}
-
-La diferencia fundamental entre estos dos tipos de sensores es que los activos pueden funcionar en cualquier instante y no dependen de la condiciones atmosféricas o el momento del día. De la misma forma que no podemos tomar una fotografía de noche sin luz, y no podemos ver el suelo desde un avión cuando hay nubes, no podemos utilizar un sensor pasivo en esas condiciones para tomar una imagen. Sin embargo, sí podemos hacer una fotografía de noche si disponemos de un flash, ya que la propia cámara emite la luz que necesita. La filosofía de un sensor activo es en cierta medida similar al caso de la cámara con flash.
-
-Los sensores activos emiten su propia radiación, por lo que no es necesario que existan fuentes externas (no es necesaria la luz solar). Asimismo, los elementos atmosféricos tales como las nubes, que afectan a la radiación visible, no afectan a otros tipos de radiación, permitiéndoles una operatividad total en la gran mayoría de condiciones. Por ello, los sensores activos suelen trabajar en el rango de microondas (frente a los sensores pasivos, que lo hacen en las regiones del visible y el infrarrojo principalmente), ya que estas son capaces de atravesar la atmósfera en prácticamente todas las condiciones, presentando así ventajas frente a los sensores pasivos en este aspecto.
-
-Aunque el producto habitual de la teledetección son las imágenes, entendidas estas como algo \emph{visual}, algunos sensores no forman tales imágenes, y los valores que recogen no son las intensidades de la radiación reflejada por el terreno en una longitud de onda dada. Es decir, no se corresponderían con el concepto de Nivel Digital ya presentado. Este tipo de resultados son habituales en los sensores de tipo activo, en los que la radiación que el propio sensor emite es recogida tras reflejarse en el terreno, pero la variable que se mide de ella no es su intensidad sino, por ejemplo, el tiempo que tarda en regresar. Planteamientos como estos permiten la generación de capas de datos que no son imágenes como tales, como es el caso de las capas de elevación (Modelos Digitales de Elevaciones), ya que el tiempo de retorno está directamente relacionado con la distancia recorrida por la radiación, y este con el relieve del terreno.\index{Modelo Digital de Elevaciones}
-
-Estos sensores, no obstante, operan de un modo similar a lo que ya conocemos, y se consideran igualmente dentro del ámbito de la teledetección, pues se adscriben a la definición de esta dada al principio de este apartado. Veremos igualmente ejemplos de algunos de ellos cuando veamos más adelante algunos sensores de particular relevancia, ya que tienen una gran importancia en la actualidad para la generación de cartografía variada, como por ejemplo la ya citada de elevaciones.
-
-El radar \footnote{Acrónimo de \emph{Radio Detection and Ranging}, detección y medición a partir de ondas de radio} es la tecnología más importante dentro de este grupo. El sensor envía pulsos de radio, y posteriormente recoge estos midiendo su intensidad y pudiendo calcular también la distancia al objeto. \index{Radar}
-
-Puesto que la región de microondas en la que trabaja el radar es amplia, esta se divide a su vez en bandas. Los sensores de radar pueden trabajar con diferentes bandas de entre estas, las cuales tienen asignada una nomenclatura estandarizada. Además de esto, también puede trabajarse con diferentes polarizaciones de la señal de radio, obteniéndose resultados distintos en cada caso, lo que hace posible una mayor riqueza de resultados. \index{Microondas}
-
-El radar es una técnica muy compleja cuyo estudio requiere el conocimiento de unos fundamentos teóricos propios que exceden el ámbito de este capítulo, y no profundizaremos más en ellos. Para el lector interesado,	en la dirección Web \cite{webRadarCanada} puede encontrarse información muy abundante sobre teledetección basada en radar.
-
-Una técnica más moderna pero similar al radar es el denominado LiDAR \footnote{Acrónimo de \emph{Light Detection and Ranging}, detección y medición de distancias a partir de luz}, que emplea pulsos de láser. El LiDAR es en la actualidad la tecnología más avanzada para la creación de cartografía de elevaciones, y dentro de este campo ha supuesto una verdadera revolución, ya que obtiene resoluciones muy elevadas, tanto horizontales como verticales (resolución en los valores de elevación calculados)\index{LiDAR}.
-
-Los sistemas modernos de LiDAR son capaces de proporcionar además varios retornos, de modo que, si el sensor sobrevuela una zona arbolada, se tiene información sobre la distancia a la copa y la distancia al suelo, ya que parte del láser atraviesa la copa y alcanza el terreno. Este tipo de resultados supone un salto cualitativo con respecto a los obtenidos con otras tecnologías. Esto permite no solo estudiar el terreno, sino derivar otros parámetro tales como la altura de la vegetación \cite{Andersen2001PrecForestry}. Asimismo, debido a su precisión, permite recoger elementos del terreno que con otros sistemas no resulta posible registrar, tales como edificios. A modo de ejemplo, la figura \ref{Fig:LiDARWTC} muestra un modelo del World Trade Center el 27 de septiembre de 2001, creado a partir de datos LiDAR. \index{World Trade Center}
-
-\begin{figure}[!hbt]   
-\centering
-\includegraphics[width=.5\textwidth]{Fuentes_datos/LiDARWTC.png}
-\caption{\small Modelo del World Trade Center realizado a partir de datos LiDAR tomados el día 27 de septiembre de 2001 (Fuente: NOAA/U.S. Army JPSD)}
-\label{Fig:LiDARWTC} 
-\end{figure}
-
-En la terminología del LiDAR, la imagen correspondiente al primer retorno (el de los puntos más altos) se conoce como Modelo Digital de Superficie (MDS), mientras que el correspondiente a la altura del suelo se conoce como Modelo Digital de Elevaciones (MDE). Veremos mucho acerca de MDE en posteriores capítulos de este libro. \index{Modelo Digital de Superficie}\index{Modelo Digital de Elevaciones}
-
-En \cite{Kraus2001IASPRS} puede encontrarse una buena descripción del proceso de creación de estas capas de elevación partir de datos LiDAR.
-
-Además de la división entre activos y pasivos, otra forma de clasificar los sensores es en función de la forma en la que registran la imagen. Algunos sensores poseen un único detector de radiación que no cubre todo el ancho de la franja del terreno que se pretende recoger. Por medio de espejos oscilantes, se envía a este detector la radiación procedente de los distintos puntos a lo ancho de esa franja, de forma que se van recogiendo los distintos píxeles de la imagen uno a uno, recorriendo esta de un lado a otro (Figura \ref{Fig:Tipos_sensores}a). Estos sensores se denominan \emph{de barrido}. 
-
-Los denominados sensores \emph{de empuje} (Figura \ref{Fig:Tipos_sensores}b) eliminan la necesidad de utilizar espejos móviles, ya que poseen un número mayor de detectores que permiten cubrir todo el ancho de la imagen. Por ello, esta se va registrando no píxel a píxel, sino línea a línea.
-
-\index{Sensores!de empuje}\index{Sensores!de barrido}
-
-\begin{figure}[!hbt]   
-\centering
-\includegraphics[width=.8\textwidth]{Fuentes_datos/Tipos_sensores.pdf}
-\caption{\small Esquema de funcionamiento de un sensor de barrido (a) y uno de empuje (b)}
-\label{Fig:Tipos_sensores} 
-\end{figure}
 
 \subsubsection{Resoluciones}
 
