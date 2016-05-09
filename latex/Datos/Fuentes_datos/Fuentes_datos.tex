@@ -103,30 +103,14 @@ A la hora de utilizar imágenes de teledetección, debe considerarse qué tipo de r
 
 \section{Cartografía impresa. Digitalización}
 
-\index{Digitalización}
+Existe gran cantidad de cartografía en formato no digital, tales como mapas impresos o fotografías aéreas antiguas en formato analógico. 
 
-La primera fuente de cartografía de la que se disponía en las etapas iniciales de los SIG era la  cartografía impresa. No se trataba de elementos creados pensando en su utilización dentro de un SIG y, de hecho, su estructura no es, como veremos, la más adecuada para ser incorporados como datos de trabajo en un SIG. Se trata, por tanto, de una clara fuente secundaria de datos espaciales. Aun así, esta fuente era la fuente principal de información cartográfica disponible entonces, y su uso ha sido desde esos tiempos una constante dentro del ámbito SIG.
+La \textbf{digitalización} de esta cartografía, necesaria para su uso en un SIG, supone la creacion de capas raster o vectoriales a partir de ella. En este último caso, implica la \textbf{disgregación} de la información que contiene, ya que en un mapa clasico se presentan distintas informaciones que en el uso común de un SIG se almacenan en capas independientes.
 
-A pesar de que hoy en día disponemos de otras fuentes cartográficas, la cartografía impresa sigue siendo básica para trabajar con un SIG, ya que existe mucha información que todavía solo se encuentra en este formato. De una u otra forma, es probable que un proyecto SIG implique en algún punto de su desarrollo la necesidad de recurrir a cartografía impresa y tratar esta para su inclusión dentro de un SIG.
+La digitalización puede ser \textbf{manual} o \textbf{automática}.
 
-Cuando hablamos de cartografía impresa, no hay que pensar únicamente en mapas o planos, sino también en imágenes tales como fotografías aéreas, las cuales, dependiendo de su antigüedad, pueden encontrarse disponibles tan solo en formato impreso, como hemos visto. Mientras que resulta posible adquirir estas en formato digital cuando se trata de fotografías más actuales, la tomadas por métodos analógicos correspondientes a vuelos más antiguos solo pueden adquirirse por regla general como un producto impreso.
 
-Los procesos que permiten obtener un producto digital a partir de esas imágenes son costosos en tiempo y dinero, y es por ello que no todos los proveedores de estas ofrecen la posibilidad de adquisición de un producto digital. En esta sección veremos esos procesos, tanto si partimos de un mapa o plano como si partimos de una imagen o cualquier otro documento impreso que pueda contener información cartográfica, susceptible de ser convertida en una o varias capas según se requieren para el trabajo en un SIG.
 
-Ya conocemos los dos modelos de datos con los que trabajamos en un SIG: el modelo ráster y el modelo vectorial. Tanto mapas como fotografías aéreas pueden servir como fuente de información para crear o bien capas ráster o bien capas vectoriales, ya que la información que contienen puede de igual modo representarse según uno u otro modelo (debe recordarse que, como se mencionó en el capítulo \ref{Tipos_datos}, puede convertirse una capa ráster en vectorial y viceversa mediante algoritmos que detallaremos más adelante en este libro).\index{Conversión!ráster--vectorial}
-
-Un mapa o plano sobre un soporte impreso, sin embargo, dista considerablemente de ese concepto de capa con el que trabajamos en un SIG. Suele contener información sobre distintas variables, tales como carreteras, elevación, núcleos urbanos, uso de suelo, y todas ellas en un único elemento cartográfico. Esas variables, que en un SIG manejaríamos como capas independientes, se presentan como un conjunto que, según el uso que queramos darle, va a ser mucho más conveniente disgregar en base a esas distintas variables.
-
-Si pensamos en una fotografía aérea, esta puede considerarse como una simple imagen dentro de un SIG, y como vimos en el capítulo \ref{Tipos_datos}, las imágenes se adaptan al modelo de representación ráster. Por otra parte, en esa imagen existirán elementos tales como carreteras, ríos o árboles, los cuales se representan mejor según el modelo vectorial. En función de qué información nos interese tener dentro de un SIG o el modelo de representación preferente que queramos manejar, las operaciones que debemos llevar a cabo serán unas u otras.
-
-Este conjunto de operaciones posibles se conocen como de \emph{digitalización}, y en función de la forma en que se desarrollen podemos distinguir los siguientes tipos:
-
-\begin{itemize}
-	\item Digitalización automática 
-	\item Digitalización manual
-\end{itemize}
-
-\index{Digitalización!tipos}
 
 En la digitalización automática, el sistema (informático o mecánico) se encarga de generar los elementos digitales que ya podremos incorporar a un SIG, ahorrando trabajo al operador al automatizar la tarea. Este tipo de digitalización es muy habitual para el caso de obtener un resultado ráster mediante el proceso de \emph{escaneo}\index{Escaneo}. También resulta posible automatizar la digitalización para el caso vectorial, aunque requiere cierta labor por parte del operario y no es un proceso tan sencillo, pudiendo obtenerse resultados desiguales. 
 
