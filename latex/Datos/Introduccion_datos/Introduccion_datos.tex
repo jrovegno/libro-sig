@@ -187,19 +187,4 @@ No existe un modelo de representación idóneo de forma global, sino que esta idon
 Existen procedimientos para \textbf{convertir} entre los formatos ráster y vectorial, de forma que el disponer de datos en un modelo de representación particular no implica que debamos desarrollar nuestro trabajo sobre dichos datos directamente, sino que podemos efectuar previamente una conversión. Los capítulos \ref{Creacion_capas_raster} y \ref{Creacion_capas_vectoriales} tratan estos temas en profundidad.
 
 
-\subsection{Modelos de almacenamiento}
-
-
-
-Por último, un aspecto importante de los archivos de imagen es el tipo de compresión que utilizan. Las imágenes con las que se trabaja en un SIG pueden ser muy voluminosas, y para almacenarlas es necesaria gran cantidad de espacio (puede ser del orden de \emph{gigabytes} para el caso de imágenes de alta resolución). Por esta razón, los formatos de imagen, especialmente los que han sido creados  específicamente para imágenes SIG, incluyen algún método de compresión para disminuir el volumen del archivo.
-
-En el apartado relativo a los modelos de almacenamiento vimos algunas ideas sobre compresión, presentando la codificación \emph{run--length}. Esta es una estrategia para almacenar la información de forma que se minimice el tamaño de los datos necesarios, y en base a los datos recogidos puede recuperarse toda la imagen de forma exacta. Es decir, la utilización de estas formas de compresión no supone una degradación de la información contenida en la imagen, y nada de esta se pierde en el proceso. Podemos comprimir y descomprimir la imagen tantas veces como queramos, y el resultado siempre será el mismo, fiel a la imagen original. Un formato de archivo que cumple esto se dice que emplea un método de compresión \emph{sin pérdidas}.\index{Compresión!sin pérdidas}\index{Run--Length Encoding}	
-
-Por el contrario, existen otros métodos de compresión \emph{con pérdidas}, en los cuales se pierde información y la imagen resultante, además de ocupar menos espacio, tiene una menor calidad y no es exactamente igual a la original, sino simplemente muy similar a esta. Los algoritmos de compresión con pérdidas toman de la imagen original la información más importante para después recrear esta, ignorando la menos relevante, que se pierde en aras de obtener un menor volumen de almacenamiento.\index{Compresión!con pérdidas}
-
-Siempre que sea posible, los formatos de compresión sin pérdidas deben preferirse frente a los que utilizan algoritmos de compresión son pérdidas, ya que no se pierde información alguna con ellos. En función de las necesidades que se tenga con respecto a las imágenes a almacenar, debe elegirse el formato adecuado, considerando siempre la degradación que la compresión con pérdidas implica.
-
-Algunos formatos de imagen que emplean compresión con pérdidas son altamente populares, ya que se emplean para tareas donde la reducción de tamaño de los ficheros es prioritaria, y este tipo de compresión ofrece una reducción en general mayor que la de los algoritmos sin pérdidas. Así, por ejemplo, las imágenes que se incorporan en paginas Web han de ser de pequeño tamaño para agilizar su carga, y ese tamaño resulta un factor decisivo, especialmente donde la velocidad de conexión es limitada. Para el trabajo con un SIG, no obstante, la calidad de la imagen es de mucho mayor importancia que su tamaño, y los formatos de compresión sin pérdidas responden mejor a las necesidades del almacenamiento de datos SIG.
-
-
 \pagestyle{empty}
