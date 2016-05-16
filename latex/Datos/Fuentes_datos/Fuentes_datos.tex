@@ -2,7 +2,7 @@
 \chapter{Fuentes principales de datos espaciales}
 \label{Fuentes_datos}
 
-
+\pagestyle{fancy}
 
 
 No hace tanto tiempo, toda la información que se manejaba dentro de un SIG tenía su origen en un mapa en papel, el cual debía \emph{prepararse} para adaptarse a la naturaleza propia del SIG. El dato geográfico se obtenía a partir de la \textbf{digitalización} de cartografía, es decir, convertir los datos geográficos en formato impreso en datos en formato digital que un SIG pudiera manejar. 
@@ -24,7 +24,7 @@ Un sistema de teledetección cuenta con los siguientes elementos (Figura \ref{Fig
 
 \begin{figure}[!hbt]   
 \centering
-\includegraphics[width=.4\textwidth]{Fuentes_datos/Elementos_teledeteccion.pdf}
+\includegraphics[width=.6\textwidth]{Fuentes_datos/Elementos_teledeteccion.pdf}
 \caption{\small Esquema de un sistema de teledetección.}
 \label{Fig:Elementos_teledeteccion} 
 \end{figure}
@@ -51,7 +51,7 @@ La radiación emitida por una fuente de radiación es alterada por la presencia de
 
 Estos tres fenómenos se dan en diferente proporción en función de las características del objeto y de la radiación. La parte que  interesa a efectos de la teledetección es aquella que se refleja en el objeto, ya que esta es la que posteriormente puede recogerse y emplearse para la generación de las imágenes.
 
-Como ya se dijo en el capítulo \ref{Introduccion_datos}, las imágenes como capas ráster presentan habitualmente la particularidad de tener varias bandas. En lugar de un único valor para cada celda, existen $n$ valores, uno por cada banda. La imagen recoge la intensidad de la radiación dentro de una amplitud dada del espectro, y a su vez subdivide esta en distintas franjas. Los Niveles Digitales de cada banda corresponden a la intensidad dentro de una de esas franjas del espectro en particular.
+Como ya se dijo en el capítulo \ref{Introduccion_datos}, las imágenes como capas ráster presentan habitualmente la particularidad de tener varias bandas. En lugar de un único valor para cada celda, existen $n$ valores, uno por cada banda. La imagen recoge la \textbf{intensidad de la radiación} dentro de una amplitud dada del espectro, y a su vez subdivide esta en distintas franjas. Los Niveles Digitales de cada banda corresponden a la intensidad dentro de una de esas franjas del espectro en particular.
 
 Puesto que cada objeto refleja la radiación de diferentes longitudes de onda de modo distinto, esto puede considerarse como una propiedad del objeto. Se tiene así el concepto de \textbf{firma espectral}, que es la respuesta característica de un tipo de objeto dentro del espectro electromagnético. 
 
@@ -67,15 +67,15 @@ Los sensores se denominan \textbf{pasivos} aprovechan las fuentes de radiación e
 Tecnologías como el \textbf{radar} o el \textbf{LiDAR} (similar al radar pero con pulsos de laser en lugar de ondas de radio), se basan en sensores activos. En el caso del LiDAR, permite obtener imagenes que no tiene un caracter visual, sino que contienen en sus valores la elevación de los objetos, pudiendo así emplearse para cartografiar el relieve.
 
 
-La plataforma, por su parte, es el medio en el que se sitúa el sensor y desde el cual se realiza la observación.  A bordo de una plataforma pueden montarse varios sensores.
+La plataforma, por su parte, es el medio en el que se sitúa el sensor y desde el cual se realiza la observación.  A bordo de una plataforma pueden montarse \textbf{varios sensores}.
 
-Los dos tipos principales de plataformas son aquellas situadas \textbf{{dentro de la atmósfera} terrestre (aviones en su mayoría) y aquellas situadas \textbf{fuera de la atmósfera} (a bordo de satélites).
+Los dos tipos principales de plataformas son aquellas situadas \textbf{dentro de la atmósfera} terrestre (aviones en su mayoría) y aquellas situadas \textbf{fuera de la atmósfera} (a bordo de satélites).
 
-Los aviones tienen la ventaja de su \texbtf{disponibilidad}, ya que pueden pilotarse y de este modo permiten cubrir cualquier lugar de la tierra en cualquier momento.
+Los aviones tienen la ventaja de su \textbf{disponibilidad}, ya que pueden pilotarse y de este modo permiten cubrir cualquier lugar de la tierra en cualquier momento.
 
-A diferencia de un avión, un satélite no puede dirigirse a voluntad (no puede pilotarse), y su movimiento es una característica inherente que viene definida por una serie de parámetros. Estos parámetros se conocen como \textbf{{parámetros orbitales} pues definen la órbita descrita por el satélite en torno a la Tierra. 
+A diferencia de un avión, un satélite no puede dirigirse a voluntad (no puede pilotarse), y su movimiento es una característica inherente que viene definida por una serie de parámetros. Estos parámetros se conocen como \textbf{parámetros orbitales} pues definen la órbita descrita por el satélite en torno a la Tierra. 
 
-Las órbitas pueden clasificarse en función de su eje de rotación así como en función de su movimientos. En este último caso tenemos órbitas \textbf{geosíncronas} (el satélite se sitúa sobre un punto fijo de la Tierra y su movimiento sigue al de rotación de esta) o \textbf{heliosíncronas} (mientras el satélite recorre la órbita, la Tierra efectúa su movimiento de rotación, lo cual hace que a cada vuelta de la órbita se cubran zonas distintas) 
+Las órbitas pueden clasificarse en función de su \textbf{eje de rotación} así como en función de su \textbf{movimientos}. En este último caso tenemos órbitas \textbf{geosíncronas} (el satélite se sitúa sobre un punto fijo de la Tierra y su movimiento sigue al de rotación de esta) o \textbf{heliosíncronas} (mientras el satélite recorre la órbita, la Tierra efectúa su movimiento de rotación, lo cual hace que a cada vuelta de la órbita se cubran zonas distintas) 
 	
 	
 
@@ -106,9 +106,9 @@ A la hora de utilizar imágenes de teledetección, debe considerarse qué tipo de r
 
 Relacionada con la teledetección, encontramos la \textbf{fotogrametría}. La fotogrametría es la técnica para estudiar y definir con precisión la forma, dimensiones y posición en el espacio de un objeto cualquiera, utilizando medidas realizadas sobre una o varias fotografías. En el campo del SIG, es de especial interés la \textbf{fotogrametría aérea}, cuya base de trabajo tradicional son las fotografías aéreas, y que sirve principalmente para la creación de cartografía de elevaciones a partir de un proceso de \textbf{restitución}.
 
-En lugar de imágenes individuales, la fotogrametría emplea pares de imágenes, cada una de ellas tomada desde un punto distinto. Mediate estereoscopía, resulta posible recrear el efecto que ambas imágenes tendrían para la reconstrucción tridimensional de la escena, y <<engañar>> al cerebro del observador para que este pueda observar la escena con volumen y profundidad. Esto permite posteriormente conocer las formas del terreno, y a partir de ello crear las capas correspondientes, con informacion de elevaciones.
+En lugar de imágenes individuales, la fotogrametría emplea pares de imágenes, cada una de ellas tomada desde un punto distinto. Mediate estereoscopía, resulta posible recrear el efecto que ambas imágenes tendrían para la reconstrucción tridimensional de la escena, y <<engañar>> al cerebro del observador para que este pueda observar la escena con \textbf{volumen y profundidad}. Esto permite posteriormente conocer las formas del terreno, y a partir de ello crear las capas correspondientes, con informacion de elevaciones.
 
-Cuando se emplean imágenes de satélite, los pares se pueden obtener con aquellas plataformas y sensores que permiten variar el ángulo de visión, de modo que en la misma pasada del satélite se toman imágenes de una zona desde distintos puntos. 
+Cuando se emplean imágenes de satélite, los pares se pueden obtener con aquellas plataformas y sensores que permiten \textbf{variar el ángulo de visión}, de modo que en la misma pasada del satélite se toman imágenes de una zona desde distintos puntos. 
 
 Según su enfoque, la fotogrametría puede ser \textbf{analógica}, \textbf{analítica} o  \textbf{digital}, siendo esta última la que se basa en el trabajo con imágenes digitales dentro de un entorno computerizado, y la que mayor relación tiene con los SIG. 
 
@@ -132,19 +132,17 @@ El escaneo es el proceso de digitalización que convierte una imagen impresa (ana
 Aunque existen escáneres específicamente diseñados para el trabajo con documentos cartográficos, estos son dispositivos muy especializados y de muy elevado coste. Los escáneres más genéricos, pensados para el trabajo con todo tipo de imágenes y para todo tipo de usos, pueden no obstante emplearse de igual modo para escanear tanto mapas como imágenes aéreas con resultados aceptables, utilizándose con frecuencia.
 
 
-Los parámetros básicos que definen las características de un escáner son la resolución espacial y la resolución radiométrica. La primera de estas de mide habitualmente en \textbf{puntos por pulgada} y nos indica el número de puntos (celdas) que el sensor es capaz de tomar por cada unidad de longitud sobre el papel. La resolución radiométrica, por su parte, indica la capacidad del sensor para distinguir entre dos colores distintos. 
+Los parámetros básicos que definen las características de un escáner son la \textbf{resolución espacial} y la \textbf{resolución radiométrica}. La primera de estas se mide habitualmente en \textbf{puntos por pulgada} y nos indica el número de puntos (celdas) que el sensor es capaz de tomar por cada unidad de longitud sobre el papel. La resolución radiométrica, por su parte, indica la capacidad del sensor para distinguir entre dos colores distintos. 
 
 En relación con las resoluciones de escaneo, no deben olvidarse los fundamentos cartográficos que se explicaron en el capítulo \ref{Fundamentos_cartograficos}. Trabajando con una resolución más elevada no hace necesariamente que estemos incorporando más información, ya que esta puede no existir en el documento original. Tendríamos un volumen de datos más elevado que el necesario para recoger toda la información del mapa.
 
-En el caso de capas vectoriales, es más habitual la digitalización manual. En ella, un operario va definiendo las entidades, trazando las forma de estas o, en caso de ser una entidad de tipo punto, indicando su localización. 
+En el caso de capas vectoriales, es más habitual la \textbf{digitalización manual}. En ella, un operario va definiendo las entidades, trazando las forma de estas o, en caso de ser una entidad de tipo punto, indicando su localización. 
 
 Para llevar a cabo ese trazado de la entidad, se necesita emplear algún equipo que recoja la información introducida por el operador. Existen dos alternativas principales: utilizar una \textbf{tableta digitalizadora} diseñada específicamente para la digitalización, o bien digitalizar utilizando las \textbf{funciones de edición} de un SIG, realizando todo el proceso dentro de este y sin más herramientas que el propio ordenador y un dispositivo señalador como el ratón. En este segundo caso, la digitalización se produce sobre la pantalla, por lo que es necesario tener ya una versión  digital del documento (aunque no en forma de capa vectorial), la cual puede obtenerse mediante escaneo.
 
-La digitalización automática de entidades para formar una capa vectorial, conocida como \textbf{vectorización}, resulta también posible, aunque presenta más dificultades. El principal problema reside en la necesidad de preparar adecuadamente el documento a digitalizar, ya que las condiciones de este afectan notablemente a la calidad del resultado. La vectorización, al igual que la digitalización manual, puede llevarse a cabo mediante dispositivos especializados, o bien mediante el software apropiado, el cual se ejecuta en un ordenador y trabaja con una imagen escaneada del documento original.
+La digitalización automática de entidades para formar una capa vectorial, conocida como \textbf{vectorización}, resulta también posible, aunque presenta más dificultades. El principal problema reside en la necesidad de una \textbf{adecuada preparación} del documento a digitalizar, ya que las condiciones de este afectan notablemente a la calidad del resultado. La vectorización, al igual que la digitalización manual, puede llevarse a cabo mediante dispositivos especializados, o bien mediante el software apropiado, el cual se ejecuta en un ordenador y trabaja con una imagen escaneada del documento original.
 
-Un caso particular de digitalización es la creación de capas a partir de valores o coordenadas. Es decir, cuando no existe un mapa o documento cartográfico, sino simplemente una serie de datos espaciales expresados de forma alfanumérica que son susceptibles de convertirse en una capa y emplearse así dentro de un SIG.
-
-Este proceso se conoce como \textbf{geocodificación}  e implica la asignación de coordenadas a puntos de interés tales como muestreos de campo levantamientos topográficos, inventarios de lugares donde tiene lugar un determinado fenómeno  o existe un determinado elemento, u otros como el \emph{geotagging} de fotografías, para asociar a estas la posición del enclave en el que se han tomado.
+Un caso particular de digitalización es la creación de \textbf{capas a partir de valores o coordenadas}. Es decir, cuando no existe un mapa o documento cartográfico, sino simplemente una serie de datos espaciales expresados de forma alfanumérica que son susceptibles de convertirse en una capa y emplearse así dentro de un SIG. Este proceso se conoce como \textbf{geocodificación}  e implica la asignación de coordenadas a puntos de interés tales como muestreos de campo levantamientos topográficos, inventarios de lugares donde tiene lugar un determinado fenómeno  o existe un determinado elemento, u otros como el \emph{geotagging} de fotografías, para asociar a estas la posición del enclave en el que se han tomado.
 
 En el caso de encontrarse en formato analógico, estos datos pueden digitalizarse mediante la simple introducción manual de coordenadas a través del teclado o bien mediante algún sistema más específico como el escaneo del documento y el empleo de algún software de reconocimiento de caracteres (OCR).
 
@@ -155,15 +153,14 @@ En el caso de encontrarse ya en formato digital, estos datos pueden presentarse 
 \subsection{Calidad de la digitalización}
 \label{Condiciones_digitalizacion}
 
-\index{Digitalización!calidad}
 
-Uno de los aspectos más importantes del proceso de digitalización es la calidad del resultado obtenido, que debe tratar de ser lo más cercano posible a la calidad original de la información que se digitaliza, es decir, del mapa o imagen original. Independientemente de la precisión del equipo utilizado o la habilidad y experiencia del operario, la digitalización no es por completo perfecta, conteniendo siempre ciertas deficiencias y errores. 
+Uno de los aspectos más importantes del proceso de digitalización es la \textbf{calidad del resultado} obtenido, que debe tratar de ser lo más cercano posible a la calidad original de la información que se digitaliza, es decir, del mapa o imagen original. Independientemente de la precisión del equipo utilizado o la habilidad y experiencia del operario, la digitalización no es por completo perfecta, conteniendo siempre ciertas deficiencias y errores. 
 
 Además de los errores que puedan incorporarse en las distintas fases del proceso de digitalización (sea este del tipo que sea), hay que considerar que las fuentes originales a digitalizar también pueden incluir los suyos propios. Así, el proceso de escaneado puede incorporar distorsiones geométricas, pero es posible que el mapa o fotografía aérea de partida también presente alguna distorsión como consecuencia de su deterioro, más patente cuanto más antigua sea esta. 
 
 La información contenida en el documento cartográfico puede también contener elementos problemáticos de cara a obtener un producto de calidad, que pueden ir desde líneas borradas total o parcialmente a manchas en el propio mapa derivadas de su uso habitual.
 
-Dentro de los errores que aparecen como consecuencia de la digitalización en sí, un tipo importante de ellos son las discrepancias y coincidencias imperfectas entre las distintas entidades, tal como las que se muestran en la figura \ref{Fig:Imprecisiones_digitalizacion}
+Dentro de los errores que aparecen como consecuencia de la digitalización en sí, un tipo importante de ellos son las \textbf{discrepancias y coincidencias imperfectas} entre las distintas entidades, tal como las que se muestran en la figura \ref{Fig:Imprecisiones_digitalizacion}
 
 \begin{figure}[!hbt]   
 \centering
@@ -176,15 +173,15 @@ Dentro de los errores que aparecen como consecuencia de la digitalización en sí,
 Debido a esto, las capacidades de edición de los SIG incorporan funcionalidades que permiten evitar estos errores en el momento de la digitalización, ayudando al operario en su tarea y permitiéndole alcanzar una exactitud y precisión imposible de lograr sin estas funcionalidades. Entre ellas, es especialmente importante el establecimiento de tolerancias y ajuste automático en función de ellas (esto se conoce con el término ingles \textbf{snapping}), que ayudan a garantizar la coincidencia entre los distintos vértices. 
 
 
-El hecho de que exista una completa coincidencia es especialmente importante cuando la capa vectorial que se digitaliza contiene información topológica. La topología exige que la coincidencia sea correcta y defina perfectamente la relación entre las entidades. La digitalización de entidades, en caso de querer recoger su topología, debe realizarse siguiendo reglas adicionales tales como la digitalización una única vez de los lados comunes de polígonos. Debe, asimismo, recoger información adicional, como por ejemplo la necesaria para la definición de nodos en los cruces entre líneas cuando existe relación entre estas.
+El hecho de que exista una completa coincidencia es especialmente importante cuando la capa vectorial que se digitaliza contiene \textbf{información topológica}. La topología exige que la coincidencia sea correcta y defina perfectamente la relación entre las entidades. La digitalización de entidades, en caso de querer recoger su topología, debe realizarse siguiendo reglas adicionales tales como la digitalización una única vez de los lados comunes de polígonos. Debe, asimismo, recoger información adicional, como por ejemplo la necesaria para la definición de nodos en los cruces entre líneas cuando existe relación entre estas.
 
 
 \section{GPS}
 \label{GPS}
 
-Uno de los hitos en la aparición de nuevas fuentes de datos geográficos es la aparición de los \emph{Sistemas Globales de Navegación por Satélite}. Un GNSS es un sistema que permite conocer en todo momento y en cualquier punto del globo la localización exacta de dicho punto con un margen de error del orden de unos pocos metros o menos. Para ello, se basan en el envío de señales entre un dispositivo situado en el punto concreto y una red de satélites, pudiendo establecerse la posición exacta mediante las características de dicha transmisión.
+Uno de los hitos en la aparición de nuevas fuentes de datos geográficos es la aparición de los \textbf{Sistemas Globales de Navegación por Satélite}. Se trata de sistemas que permiten \textbf{conocer en todo momento y en cualquier punto del globo la localización exacta de dicho punto} con un margen de error del orden de unos pocos metros o menos. Para ello, se basan en el envío de señales entre un dispositivo situado en el punto concreto y una red de satélites, pudiendo establecerse la posición exacta mediante las características de dicha transmisión.
 
-El ejemplo más extendido de un GNSS es el \textbf{Sistema de Posicionamiento Global} (Global Positioning System, o \textbf{GPS}). El GPS cuenta con una constelacion de 24 satélites activos, así como estaciones terrestres que los controlan, y su funcionamiento se basa en la triangulación de la posición de una unidad receptora, mediante las señales procedentes de un cierto número de satélites. Esta triangulación se basa en distancias entre la unidad receptora y dichos satelites, las cuales se calculan mediante diversos mecanismos. La posición se calcula no únicamente en sus coordenadas \emph{x} e \emph{y}, sino también en \emph{z}, es decir en elevación. El sistema GPS emplea como sistema geodésico de referencia el WGS84.
+El ejemplo más extendido de estos sistemas es el \textbf{Sistema de Posicionamiento Global} (Global Positioning System, o \textbf{GPS}). El GPS cuenta con una constelacion de 24 satélites activos, así como estaciones terrestres que los controlan, y su funcionamiento se basa en la \textbf{triangulación de la posición} de una unidad receptora, mediante las señales procedentes de un cierto número de satélites. Esta triangulación se basa en distancias entre la unidad receptora y dichos satelites, las cuales se calculan mediante diversos mecanismos. La posición se calcula no únicamente en sus coordenadas \emph{x} e \emph{y}, sino también en \emph{z}, es decir en elevación. El sistema GPS emplea como sistema geodésico de referencia el WGS84.
 
 .
 
@@ -192,26 +189,26 @@ El ejemplo más extendido de un GNSS es el \textbf{Sistema de Posicionamiento Glo
 
 El diseño de la red de satélites está pensado para garantizar que en cualquier punto de la superficie terrestre y en cualquier momento, un receptor puede localizar el número necesario de satélites para obtener con exactitud su precisión. 
 
-Existen numerosas fuentes de error que causa desviaciones apreciables en el calculo de coordenadas mediante GPS. Entre ellas destacan los errores en la posición de los satélites, errores por el rebote de la señal en otros con anterioridad a alcanzar el receptor, errores por el paso de la señal por la atmósfera, así como los de precisión de los relojes empleados para el cálculo de distancias. La \textbf{disponibilidad selectiva} era un error aleatorio introducido en la señal GPS con fines militares, pero fue eliminada en el año 2000.
+Existen \textbf{numerosas fuentes de error} que causa desviaciones apreciables en el calculo de coordenadas mediante GPS. Entre ellas destacan los errores en la posición de los satélites, errores por el rebote de la señal en otros con anterioridad a alcanzar el receptor, errores por el paso de la señal por la atmósfera, así como los de precisión de los relojes empleados para el cálculo de distancias. La \textbf{disponibilidad selectiva} era un error aleatorio introducido en la señal GPS con fines militares, pero fue eliminada en el año 2000.
 
-Entre las técnicas empleadas para corregir estas desviaciones, destaca el denominado \emph{GPS diferencial}, pensado en origen para eliminar el error de la disponibilidad selectiva, aunque también eficaz para corregir una buena parte los restantes errores citados anteriormente.
+Entre las técnicas empleadas para corregir estas desviaciones, destaca el denominado \textbf{GPS diferencial}, pensado en origen para eliminar el error de la disponibilidad selectiva, aunque también eficaz para corregir una buena parte los restantes errores citados anteriormente.
 
-Para la aplicación del GPS diferencial se requiere no solo un receptor único (aquel del cual se quiere calcular su posición), sino también otro receptor fijo de referencia cuyas coordenadas se conocen con alta precisión. Este receptor fijo es, a su vez, un receptor de alta precisión y, además de calcular su propia posición, emite información que las unidades receptoras pueden aprovechar para corregir sus mediciones. El receptor móvil, lógicamente, tiene que soportar este tipo de correcciones, para poder hacer uso de la señal de la estación de referencia.
+Para la aplicación del GPS diferencial se requiere no solo un receptor único (aquel del cual se quiere calcular su posición), sino también otro \textbf{receptor fijo} de referencia cuyas coordenadas se conocen con alta precisión. Este receptor fijo es, a su vez, un receptor de alta precisión y, además de calcular su propia posición, emite información que las unidades receptoras pueden aprovechar para corregir sus mediciones. El receptor móvil, lógicamente, tiene que estar capacitado para este tipo de correcciones, para así poder hacer uso de la señal de la estación de referencia.
 
-El fundamento de esta técnica es que los errores que afectan al receptor móvil también afectan al de referencia. No obstante, la magnitud del error que afecta al receptor de referencia puede conocerse, ya que se conoce la coordenada exacta de este, y en base a eso puede eliminarse el error que afecta al receptor móvil, asumiendo que ambos errores son de similar índole.
+El fundamento de esta técnica es que los errores que afectan al receptor móvil \textbf{también afectan al de referencia}. No obstante, la magnitud del error que afecta al receptor de referencia puede conocerse, ya que se conoce la coordenada exacta de este, y en base a eso puede eliminarse el error que afecta al receptor móvil, asumiendo que ambos errores son de similar índole.
 
 En la actualidad, aplicando estas técnicas de corrección diferencial, un GPS puede obtener precisiones del orden de 2 metros en latitud y longitud, y 3 en altitud\cite{wikipediaGPS}. Sin corrección diferencial, esta precisión es de unos 10--20 metros.
 
 
 La precisión del sistema GPS depende del tipo de receptor GPS (o, en el lenguaje común, GPS a secas) que se emplee, obteniéndose mayores precisiones con receptores más avanzados, siempre dentro de las posibilidades del propio sistema GPS. Existen muchas clases de receptores GPS, siendo dos de ellas las principales en relación con los SIG:
 \begin{itemize}
-	\item GPS para uso general. Unidades pequeñas y portátiles, de bajo coste, para actividades al aire libre, donde no se requiere una precisión elevada sino simplemente un conocimiento de la posición aproximada. Se emplean, por ejemplo, para recoger rutas en senderismo o navegación. 
-	\item GPS para la medición topográfica. Unidades de medio tamaño, generalmente con una antena independiente que se conecta a la unidad y que el propio operario carga a la espalda. La antena garantiza mayor precisión y una mejor localización de satélites en condiciones tales como zonas bajo arbolado. Están pensados para un uso profesional en levantamientos o replanteos, ofreciendo buena precisión en todas las coordenadas. 
+	\item \textbf{GPS para uso general}. Unidades \textbf{pequeñas y portátiles}, de bajo coste, para actividades al aire libre, donde no se requiere una precisión elevada sino simplemente un conocimiento de la posición aproximada. Se emplean, por ejemplo, para recoger rutas en senderismo o navegación. 
+	\item GPS para la medición topográfica. Unidades de medio tamaño, generalmente con una antena independiente que se conecta a la unidad y que el propio operario carga a la espalda. La antena garantiza \textbf{mayor precisión} y una mejor localización de satélites en condiciones tales como zonas bajo arbolado. Están pensados para un uso profesional en levantamientos o replanteos, ofreciendo buena precisión en todas las coordenadas. 
 	
-	
+\end{itemize}	
 
 
-La capacidad principal de una unidad GPS en relación con un SIG es la de recoger coordenadas. Esta funcionalidad permite almacenar puntos o trazados completos, encontrándose el operario inmóvil o bien en movimiento a lo largo de dicho trazado. Es habitual utilizar los vocablos ingleses de la terminología GPS para denotar los distintos elementos que pueden recogerse, conociéndose a un punto de interés aislado como \textbf{waypoint} y un trazado como \textbf{track}. Una serie ordenada de \emph{waypoints} se conoce como \textbf{route} (ruta).
+La capacidad principal de una unidad GPS en relación con un SIG es la de \textbf{recoger coordenadas}. Esta funcionalidad permite almacenar puntos o trazados completos, encontrándose el operario inmóvil o bien en movimiento a lo largo de dicho trazado. Es habitual utilizar los vocablos ingleses de la terminología GPS para denotar los distintos elementos que pueden recogerse, conociéndose a un punto de interés aislado como \textbf{waypoint} y un trazado como \textbf{track}. Una serie ordenada de \emph{waypoints} se conoce como \textbf{route} (ruta).
 
 En el trabajo con el receptor GPS, el operario se puede detener en un punto cualquiera y memorizar las coordenadas del mismo, añadiendo así un \emph{waypoint} a la lista de los ya almacenados. Para crear un trazado, se suele disponer de funcionalidades de recogida automática de puntos, de tal modo que el receptor memoriza estos a intervalos fijos de tiempo. El operario simplemente ha de desplazarse por el trazado y dejar que el receptor haga su trabajo mientras tanto. 
 
@@ -219,9 +216,9 @@ En el trabajo con el receptor GPS, el operario se puede detener en un punto cual
 \section{Información Geográfica Voluntaria}
 \label{VGI}
 
-Hemos mencionado ya que los dispositivos tales como receptores GPS de bajo coste pueden emplearse para recoger información geográfica y crear datos geográficos, y que cuando esto se une a los conceptos participativos de la denominada Web 2.0, surgen iniciativas de gran interés en las que el usuario de a pie, sin necesidad de una formación específica como cartógrafo, puede aportar sus datos para que otros los exploten posteriormente. Aunque no se trata de una fuente de datos como tal, y los elementos y dispositivos empleados ya los hemos visto a lo largo de este capítulo, el cambio que supone la inclusión de una filosofía acorde con las ideas de la Web 2.0 es tan notable que merece ser tratado por separado. No se trata de un cambio en la propia toma o preparación de datos, o de una tecnología nueva que se aplique a estos, sino de un cambio social y filosófico que redefine el propio concepto de la información geográfica en lo que a la creación del dato geográfico respecta, y cuyas consecuencias son ciertamente importantes, ya que abren el ámbito de la creación cartográfica a un nuevo y amplio grupo de personas.
+Hemos mencionado ya que los dispositivos tales como receptores GPS de bajo coste pueden emplearse para recoger información geográfica y crear datos geográficos, y que cuando esto se une a los conceptos participativos de la denominada \textbf{Web 2.0}, surgen iniciativas de gran interés en las que el usuario de a pie, sin necesidad de una formación específica como cartógrafo, puede aportar sus datos para que otros los exploten posteriormente. Aunque no se trata de una fuente de datos como tal, y los elementos y dispositivos empleados ya los hemos visto a lo largo de este capítulo, el cambio que supone la inclusión de una filosofía acorde con las ideas de la Web 2.0 es tan notable que merece ser tratado por separado. No se trata de un cambio en la propia toma o preparación de datos, o de una tecnología nueva que se aplique a estos, sino de un \textbf{cambio social y filosófico} que redefine el propio concepto de la información geográfica en lo que a la creación del dato geográfico respecta, y cuyas consecuencias son ciertamente importantes, ya que abren el ámbito de la creación cartográfica a un nuevo y amplio grupo de personas.
 
-Se conoce como \emph{Información Geográfica Voluntaria o Participativa} (en inglés Volunteered Geographical Information, VGI) al uso de Internet para crear, gestionar y difundir información geográfica aportada voluntariamente por usuarios de la propia red. El conjunto de herramientas y técnicas que emplean esos usuarios para aportar su información conforma lo que se ha dado en llamar \textbf{neogeografía}. La comparación entre proyectos de creación de VGI y la bien conocida Wikipedia sirve perfectamente para ilustrar qué es lo que entendemos por VGI y neogeografía, ya que lal VGI es el resultado de aplicar los conceptos de la \textbf{Web 2.0} al ámbito de la información geográfica. 
+Se conoce como \emph{Información Geográfica Voluntaria o Participativa} (en inglés Volunteered Geographical Information, VGI) al uso de Internet para crear, gestionar y difundir información geográfica aportada voluntariamente por usuarios de la propia red. El conjunto de herramientas y técnicas que emplean esos usuarios para aportar su información conforma lo que se ha dado en llamar \textbf{neogeografía}. La comparación entre proyectos de creación de VGI y la bien conocida Wikipedia sirve perfectamente para ilustrar qué es lo que entendemos por VGI y neogeografía, ya que lal VGI es el resultado de aplicar los conceptos de la Web 2.0 al ámbito de la información geográfica. 
 
 En el caso particular de esta última, la neogeografía ha supuesto un profundo cambio en algunas de las ideas básicas de la cartografía, modificando asimismo la concepción tradicional de la información geográfica, sus características o el papel que esta venía desempeñando en muchos ámbitos (o incluso dándole un papel en campos donde con anterioridad el uso de información geográfica era escaso). Algunas de las ideas principales sobre la neogeografía son las siguientes:
 
@@ -235,6 +232,44 @@ En el caso particular de esta última, la neogeografía ha supuesto un profundo ca
 la neogeografía es en la actualidad un fenómeno que no debe dejarse de lado, ya que los proyectos que aglutina se están convirtiendo paulatinamente en proveedores fundamentales de datos cuya calidad en muchos casos es excelente.
 
 El proyecto de VGI de mayor relevancia es \textbf{OpenStreetMap} (OSM), un <<proyecto colaborativo para crear mapas libres y editables>>.
+
+
+\section{Metadatos}
+
+
+Con independencia de la forma en que se hayan obtenido, los datos pueden requerir otros datos adicionales para interpretarse. Por ejemplo, si tenemos las coordenadas de un punto, para interpretarlo correctamente necesitamos conocer, entre otras cosas, el sistema de coordenadas en que vienen expresadas esas coordenadas. El dato con el que trabajamos (las coordenadas), requiere unos datos adicionales (por ejemplo, el código EPSG del sistema de referencia empleado) para cobrar verdadero sentido.
+
+Surge así el concepto de \textbf{metadatos}. Los metadatos son \textbf{datos acerca de los datos}, y su misión es \textbf{explicar} el significado de los datos. Es decir, ayudan a los usuarios de los datos a entender mejor el significado que estos tienen y la información que guardan. Los metadatos son un documento adicional que acompaña a los datos, y que permite una mejor gestión y una utilización más precisa de ellos.
+
+Trabajando en el entorno de un SIG, los metadatos pueden \textbf{referirse a ambas componentes} (temática y espacial)
+
+
+El concepto de metadato no es algo nuevo y exclusivo de los datos digitales, ya que un mapa impreso también contiene metadatos en cierta forma. Una leyenda o un texto en un margen del mapa con información sobre la fecha en que se ha creado son también metadatos. En el caso de los datos geográficos digitales, los metadatos no forman parte del dato directamente sino que son independientes de este. Ello permitirá \textbf{realizar operaciones separadamente} con los metadatos, tales como búsquedas, que abren nuevas posibilidades y dan un gran valor a estos.
+
+Dos de las funciones principales de los metadatos son garantizar el uso correcto y adecuado de los datos y facilitar su gestión, localización y consulta.
+
+Los datos espaciales, como muchos otros datos, son creados habitualmente para un determinado objetivo, y este objetivo no ha de ser necesariamente evidente o contenerse como tal en los datos mismos. Cuando se emplean esos datos para un objetivo distinto a aquel para el que fueron diseñados, pueden surgir problemas debido a que se está realizando un proceso para el que los datos con los que se trabaja presentan carencias.  Por ejemplo, consultar los metadatso puede \textbf{evitar el trabajo con datos desfasados o de precisión insuficiente}, ya que conociendo estos parámetros es posible juzgar si los datos son adecuados al fin que se persigue con ellos.
+
+Los creadores de datos deben procurar acompañar estos de metadatos precisos y suficientes, y los usuarios deben consultar estos antes de utilizar dichos datos. De este modo, se puede garantizar que un dato no es empleado de forma errónea y que los resultados que se obtendrán tendrán validez.
+
+Los metadatos son un elemento muy importante en relación con la \textbf{calidad de los datos espaciales}.
+
+Respecto a la gestion de los datos, los metadatos facilitan la organización y la realización de tareas tales como la busqueda de datos dentro de una colección de estos. Los metadatos constituyen un <<resumen>> de las características principales de los datos, y pueden ser empleados para labores de búsqueda y localización de datos de un tipo dado. Los metadatos \textbf{facilitan y agilizan la localización} de los datos cuando estos se buscan \textbf{por criterios geográficos}. Añadiendo a los metadatos elementos como la extensión del área cubierta por los datos, este tipo de búsquedas se efectúan de forma más ágil y efectiva. En este sentido, el uso de metadatos es fundamental para el establecimiento de \textbf{catalogos} de datos, los cuales ya que responden a las peticiones del usuario del catálogo en función de la información que los metadatos contienen.
+
+\subsection{Contenido y creación de metadatos}
+
+La información que contienen los metadatos para una capa de datos espaciales depende de factores tales como el \textbf{modelo de representación} empleado, el \textbf{formato} en que se almacenan los datos (formato de archivo, base de datos, etc.), la \textbf{organización, entidad o individuo responsable} o el \textbf{elemento al que se asocian} (conjunto de capas, capa individual, entidad\ldots).
+
+En el apartado \ref{Estandares} veremos las formas estandarizadas que existen para los metadatos geográficos, las cuales define directamente su contenido.  
+ 
+Algunos de los elementos comunes que se incorporan a los metadatos geográficos son la información \textbf{de identificación} (para identificarlo de forma única y distinguirlo de otros), la información \textbf{sobre la calidad de los datos} (incluyendo su origen y el de los datos de los que deriva, apareciendo asi el concepto de \textbf{linaje} de los datos), la información \textbf{sobre la componente no espacial} o la información \textbf{sobre la distribución} (acceso, licencias, etc.)
+
+Los metadatos puede \textbf{crearse en el origen} mismo de los datos, recogiendo la información al mismo tiempo que se producen los datos en sí. Tambien pueden \textbf{extenderse posteriormente} por parte de distribuidores, organizadores o usuarios.
+
+La creación de los metadatos se realiza en su mayor parte \textbf{de forma manual}, existiendo aplicaciones específicas para ello. Los metadatos que pueden extraerse de las capas de datos directamente, tales como la extension cubierta por estos, pueden crearse de forma automática.
+
+Los metadatos se almacenan en general como \textbf{ficheros adicionales} a los ficheros de datos, o bien como \textbf{parte de una base de datos}.
+
 
 
 
