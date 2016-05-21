@@ -9,8 +9,7 @@
 Las bases de datos son un elemento fundamental en el entorno informático hoy en día y tienen aplicación en la práctica totalidad de campos. Concebidas con un propósito general, son de utilidad para toda disciplina o área de aplicación en la que exista una necesidad de gestionar datos, tanto más cuanto más voluminosos sean estos. En el ámbito particular de los SIG, los datos son cada día más voluminosos, debido no solo a una mayor cantidad de información, sino también a una mayor precisión en esta, la cual implica un mayor volumen de datos. Además, presentan otra serie de características (uso múltiple, necesidad de acceso eficiente para análisis, necesidad de indexación, etc.), haciendo todas ellas que sea recomendable el uso de bases de datos y tecnologías específicas para su manejo.
 
 
-Entendemos como \emph{Base de Datos} un \textbf{conjunto de datos estructurado y almacenado de forma sistemática} con objeto de facilitar su posterior utilización. Una base de datos puede, por tanto, constituirse con cualquier tipo de datos, incluyendo los de tipo puramente espacial (geometrías, etc.) tales como los que se utilizan en un SIG, así como, por supuesto, datos numéricos y alfanuméricos como los que constituyen la componente temática de la información geoespacial. Los elementos clave de la base de datos son esa estructuración y sistematicidad, pues ambas son las responsables de las características que hacen de la base de datos un enfoque superior a la hora de gestionar datos.
-
+Entendemos como \emph{Base de Datos} un \textbf{conjunto de datos estructurado y almacenado de forma sistemática} con objeto de facilitar su posterior utilización. Los elementos clave de la base de datos son esa estructuración y sistematicidad, pues ambas son las responsables de las características que hacen de la base de datos un enfoque superior a la hora de gestionar datos.
 
 Las ventajas de utilizar una base de datos frente a una gestión no organizada de estos las encontramos tanto en los propios datos como en el uso que se hace de ellos. Algunas ventajas que afectan directamente a los datos son las siguientes:
 
@@ -58,7 +57,7 @@ Las interrelaciones entre tablas pueden ser de distintos tipos, según el número 
 
 \section{Sistemas gestores de bases de datos}
 
-Junto con las bases de datos, el elemento fundamental para el aprovechamiento de estas son los \textbf{Sistemas Gestores de Bases de Datos} (SGDB o DBMS, del inglés \emph{DataBase Management System}). Estos sistemas representan un elemento intermedio entre los propios datos y los programas que van a hacer uso de ellos, facilitando las operaciones a realizar sobre aquellos. Los programas tales como un SIG no acceden directamente a la base de datos, sino que lo hacen a través de un SGBD.
+Junto con las bases de datos, el elemento fundamental para el aprovechamiento de estas son los \textbf{Sistemas Gestores de Bases de Datos} (SGDB o DBMS, del inglés \emph{DataBase Management System}). Estos sistemas representan un \textbf{elemento intermedio entre los propios datos y los programas} que van a hacer uso de ellos, facilitando las operaciones a realizar sobre aquellos. Los programas tales como un SIG no acceden directamente a la base de datos, sino que lo hacen \textbf{a través de un SGBD}.
 
 
 Algunas características que ha de tener un SGBD son las siguientes:
@@ -81,7 +80,7 @@ Todo cuanto hemos visto en los puntos anteriores constituye el conjunto de ideas
 
 En primer lugar, el dato espacial debe poder \textbf{almacenarse de forma nativa} en la base de datos. Esto quiere decir que una geometría debe poder almacenarse asociada a una entidad en una tabla, del mismo modo que sucede con otros tipos de datos tales como valores numéricos o cadenas de texto. El dato no solo debe poder almacenarse, sino tambien \textbf{entenderse} por parte del SGBD, para así comprender la naturaleza su naturaleza espacial y poder responder a peticiones relativas a esta por parte del usuario. Esto se denomina \textbf{almacenamiento transparente}, frente al almacenamiento \textbf{opaco}, en el cual la base de datos es capaz de recoger cualquier tipo de valor, pero sin ser capaz de entender su naturaleza y utilizarlo.
 
-Aunque existen planteamientos para almacenar datos raster en bases de datos, en general \textbf{son los datos vectoriales los que se emplean} y aquellos para los que las bases de datos actuales están mejor adaptadas. Las geometrías del dato vectorial se incluyen, como ya se ha dicho, dentro de los valores de un registro de la tabla (que se corresponde con una entidad en el modelo de datos vectoriales). Por su parte, la componente temática del dato espacial puede almacenarse sin problema en la base de datos, sin necesidad de ningún tipo de adaptación.
+Aunque existen planteamientos para almacenar datos raster en bases de datos, en general \textbf{las bases de datos espaciales trabajan con datos vectoriales} y están mejor adaptadas a estos. Las geometrías del dato vectorial se incluyen, como ya se ha dicho, dentro de los valores de un registro de la tabla (que se corresponde con una entidad en el modelo de datos vectoriales). Por su parte, la componente temática del dato espacial puede almacenarse sin problema en la base de datos, sin necesidad de ningún tipo de adaptación.
 
 Cuando la base de datos está preparada para almacenar y trabajar con los datos espaciales, es necesario \textbf{adaptar el lenguaje de consulta}. A las operaciones habituales que un SGBD es capaz de realizar en función de los datos, se añaden otras que utilizan las propiedades espaciales del dato espacial. Se tiene así un \textbf{lenguaje de consulta espacial}, que permite consultas con componente espacial.
 
@@ -97,7 +96,7 @@ Aunque las consultas no son algo exclusivo de las bases de datos, es mediante el
 En el contexto espacial, una consulta representa un uso similar al que damos a un mapa clásico, cuando en base a este respondemos a preguntas como \emph{¿qué hay en la localización X?} o \emph{¿qué ríos pasan por la provincia Y?} No obstante, no debemos olvidar que los datos espaciales tienen dos componentes: una espacial y otra temática. Preguntas como las anteriores hacen referencia a la componente espacial, pero igualmente pueden efectuarse consultas que se apliquen sobre la parte temática. Y más aún, pueden efectuarse consultas conjuntas que interroguen a los datos geográficos acerca de los atributos espaciales y temáticos que estos contienen.
 
 
-El resultado de una consulta en un SIG generalmente es lo que conocemos como \emph{selección}. De todos los registros de la tabla de datos, aquellos que cumplen el criterio indicado se marcan como seleccionados, y posteriormente pueden utilizarse únicamente estos como base de otro análisis, o simplemente el usuario puede ver cuáles han sido los seleccionados para así obtener la respuesta a su consulta. La figura \ref{Fig:Seleccion} muestra un ejemplo típico de esto, en el que el usuario define un rectángulo y se seleccionan las entidades que cumplen la condición de intersecar con él.
+Un ejemplo muy sencillo de consulta es lo que conocemos en un SIG como \textbf{selección}. De todos los registros de la tabla de datos, aquellos que cumplen el criterio indicado se marcan como seleccionados, y posteriormente pueden utilizarse únicamente estos como base de otro análisis, o simplemente el usuario puede ver cuáles han sido los seleccionados para así obtener la respuesta a su consulta. La figura \ref{Fig:Seleccion} muestra un ejemplo típico de esto, en el que el usuario define un area rectangular y se seleccionan las entidades que cumplen la condición de intersecar con él. Los criterios de selección pueden ser sencillos como este, o más elaborados y complejos.
 
 \begin{figure}[!hbt]   
 \centering
@@ -137,7 +136,7 @@ Para expresar esas consultas se han de incluir elementos de la denominada \textb
 
 Los lenguajes de consulta que se emplean para transmitir estas operaciones a un SGBD, permiten el uso de tales operadores para formular consultas.
 
-Si el SGBD es de tipo espacial y \emph{entiende} que algunas de las columnas de una tabla continene informacion espacial (es decir, que cada entidad no solo tiene informacion temática), pueden plantearse consultas que hacen uso de esta, tales como las siguientes.
+Si el SGBD es de tipo espacial y \emph{entiende} que algunas de las columnas de una tabla contiene información espacial (es decir, que cada entidad no solo tiene información temática), pueden plantearse consultas que hacen uso de esta, tales como las siguientes.
 
 \begin{itemize}
 \item ¿Qué países comparten frontera con Alemania?
@@ -171,21 +170,21 @@ Si realizamos una consulta a una base de datos, el resultado es un subconjunto d
 
 Los índices nos permiten \emph{alcanzar} los elementos que constituyen la respuesta a nuestra consulta, haciéndolo de la forma más rápida y llegando hasta ellos sin tener que pasar por todos los restantes.
 
-Un ejemplo fácil de entender es el de una guía telefónica en la que los nombre están ordenados alfabéticamente. Gracias a ese orden y a que se conoce el alfabeto, se puede buscar rapidamente un nombre sin necesidad de leer todos ellos.
+Un ejemplo fácil de entender es el de una guía telefónica en la que los nombre están ordenados alfabéticamente. Gracias a ese orden y a que se conoce el alfabeto, se puede buscar rápidamente un nombre sin necesidad de leer todos ellos.
 
-Al utilizar una base de datos, si no disponemos de un índice deberemos recorrer toda ella para dar respuesta a nuestras consultas. No sabemos \emph{dónde} buscar las respuestas a nuestras consultas, del mismo modo que si en una guia telefónica no supiéramos que carece de sentido buscar en la letra F el número telefónico del señor Pérez.
+Al utilizar una base de datos, si no disponemos de un índice deberemos recorrer toda ella para dar respuesta a nuestras consultas. No sabemos \emph{dónde} buscar las respuestas a nuestras consultas, del mismo modo que si en una guía telefónica no supiéramos que carece de sentido buscar en la letra F el número telefónico del señor Pérez.
 
-Ademas de índices para datos de tipo numérico o texto, en los que resulta obvio establecer un orden natural, en el ámbito de los SIG tienen importancia los denominados \textbf{índices especiales}. Aunque sus fundamentos teóricos son distintos, el concepto es similar al de índices de bases de datos no espaciales: elementos que permiten optimizar las consultas mediante una correcta estructuración de los datos, en particular en este caso de su componente espacial.
+Ademas de índices para datos de tipo numérico o texto, en los que resulta obvio establecer un orden natural, en el ámbito de los SIG tienen importancia los denominados \textbf{índices espaciales}. Aunque sus fundamentos teóricos son distintos, el concepto es similar al de índices de bases de datos no espaciales: elementos que permiten \textbf{optimizar las consultas mediante una correcta estructuración} de los datos, en particular en este caso de su componente espacial.
 
-Puede enterderse la idea de un índice espacial mediante un sencillo ejemplo de cómo empleamos ideas parecidas a los índices espaciales de forma natural cuando tratamos de resolver una consulta espacial sin la ayuda de un SIG. Supongamos que tenemos nuestro mapa de países del mundo y queremos averiguar qué países tienen su frontera a menos de 3000 kilómetros de la frontera de España. ¿Cómo operaríamos de manera natural para dar respuesta a esta consulta?
+Puede entenderse la idea de un índice espacial mediante un sencillo ejemplo de cómo empleamos ideas parecidas a los índices espaciales de forma natural cuando tratamos de resolver una consulta espacial sin la ayuda de un SIG. Supongamos que tenemos nuestro mapa de países del mundo y queremos averiguar qué países tienen su frontera a menos de 3000 kilómetros de la frontera de España. ¿Cómo operaríamos de manera natural para dar respuesta a esta consulta?
 
 La solución más inmediata es medir la distancia entre España y todos los países restantes, y después tomar aquellos que hayan arrojado un resultado de distancia menor a 3000. La operación daría el resultado esperado, pero implicaría un gran número de mediciones, y no sería una forma óptima de operar. Más probable es que no efectuemos mediciones con los países de América, pues un conocimiento básico de geografía basta para saber que todos ellos se encuentran a más de 3000 kilómetros. No sabemos exactamente a qué distancia se encuentran, pero sabemos que no van a cumplir el criterio establecido en la consulta. 
 
-Ese conocimiento básico de geografía que tenemos es en realidad una especie de índice espacial. No sirve para saber las distancias exactas ni resolver la consulta por completo, pero sirve para dar una aproximación y facilitar el trabajo. Descartamos un buen numero de países de forma casi inmediata, y luego solo realizamos las operaciones costosas (la medición) con un subconjunto del total. 
+Ese conocimiento básico de geografía que tenemos es en realidad una especie de índice espacial. No sirve para saber las distancias exactas ni resolver la consulta por completo, pero sirve para \textbf{dar una aproximación y facilitar el trabajo}. Descartamos un buen numero de países de forma casi inmediata, y luego solo realizamos las operaciones costosas (la medición) con un subconjunto del total. 
 
 De modo similar, los índices espaciales nos permiten obtener resultados en un área concreta sin necesidad de analizar todo el espacio ocupado por el total de los datos. Gracias a ello, hacen las consultas mas efectivas y permiten trabajar con grandes volúmenes de datos.
 
-Los índices espaciales se almacenan junto con los datos a los que hacen referencia, bien en ficheros adicionales o dentro de la propia base de datos, en case de utilizarse una. Los SGBD espaciales tienen capacidades para calcular estos índices espaciales y almacenarlos en la base de datos, recurriendo a ellos cuando se realiza una consulta que requiera su uso.
+Los índices espaciales se almacenan junto con los datos a los que hacen referencia, bien en ficheros adicionales o dentro de la propia base de datos, en case de utilizarse una. Los SGBD espaciales tienen \textbf{capacidades para calcular estos índices espaciales} y almacenarlos en la base de datos, recurriendo a ellos cuando se realiza una consulta que requiera su uso.
 
 
 \pagestyle{empty}
