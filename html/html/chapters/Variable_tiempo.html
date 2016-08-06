@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title></title>	
+<link rel="stylesheet" href="../reset.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="../typography.css" type="text/css" media="screen, projection">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]},
+    TeX: { equationNumbers: {autoNumber: "all"} } 
+  });
+</script>	
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="../generated_toc.js"></script>
+</head>
+<body lang="es">
+<div class="main">
+<div class="g960" id="chapter">
+<h1>Análisis multidimensional</h1>
+
+
+<p>
+<a name="Analisis_multidimensional"></a></p><hr/><p><i>
+Aunque el análisis que hemos visto hasta ahora es fundamentalmente bidimensional y estático en el tiempo, considerar otras dimensiones (fundamentalmente considerar un espacio tridimensional e incorporar la variable tiempo) amplia notablemente la gama de posibles análisis que podemos llevar a cabo, así como la potencialidad de estos para brindarnos nueva información. En este capítulo veremos algunas características asociadas al análisis de datos multidimensionales, y veremos algunos ejemplos de las principales aplicaciones de estos.
+</i></p><hr/></p><h2 id="Introducción">Introducción</h2><p>Tanto el análisis tridimensional como el análisis temporal son dos de las incorporaciones más recientes a los SIG, no sólo en lo que al análisis respecta, sino también en lo relativo a otras tareas como la propia representación de los datos. A día de hoy, el manejo de datos espaciales con alguna componente distinta de las habituales coordenadas $x$ e $y$ es irregular en cuanto a su implementación en los SIG más habituales, no existiendo soluciones tan desarrolladas como en el caso de trabajar con coordenadas planas y correspondientes a un único instante de tiempo, y encontrándose entre las existentes una gran heterogeneidad de enfoques. </p><p>La representación 3D es el único ámbito donde se ha alcanzado un avanzado nivel de desarrollo (veremos más acerca de esto en el apartado <a href="SIGs_escritorio.html#VisoresYExploradores">VisoresYExploradores</a>), así como aquel más extendido y que comienza a ser considerado por sí mismo como parte básica de las aplicaciones SIG actuales, del mismo modo que lo es su equivalente 2D. El análisis 3D, no obstante, es mucho más limitado, incluso en las aplicaciones más avanzadas y que disponen de elementos de representación 3D. </p><p>En lo que respecta al tiempo, su presencia es menor y se encuentra más restringida a aplicaciones concretas. La falta de un mecanismo genérico para trabajar con este tipo de datos supone un notable impedimento para la implementación generalizada de elementos que permitan su manejo, ya sea de cara a su representación, su análisis o cualquier otra tarea que pueda realizarse en base a ellos.</p><p>Las razones por las que el uso de esta clase de datos es limitado en los SIG actuales las debemos buscar en la idea clásica del SIG como versión informatizada del mapa tradicional. Siendo este último un elemento plano y temporalmente estático, los SIG heredan esa concepción. Tan sólo recientemente, cuando ya se han constituido en herramientas completas desde ese punto de vista, la ampliación lógica de sus capacidades trae asociada la incorporación de datos multidimensionales y sus formulaciones particulares.</p><p>Encontrándonos dentro de esta parte dedicada a los procesos, en este capítulo veremos exclusivamente ideas relativas al análisis multidimensional, a pesar de que, como se ha dicho, los algoritmos correspondientes no se encuentran por regla general implementados en las aplicaciones SIG habituales. No obstante, existen abundantes formulaciones de este tipo que son de gran utilidad para extender las posibilidades analíticas de un SIG y que merecen presentarse para dar una visión más global de lo que puede llevarse a cabo con este.</p><h2 id="Problemas y limitaciones">Problemas y limitaciones</h2><p>Varias son las limitaciones que encontramos en los SIG a la hora de manejar datos multidimensionales. Como ya se ha comentado, estas obedecen a la concepción fundamentalmente bidimensional que los SIG tienen originalmente, que ha de ser extendida para acomodar este nuevo tipo de datos. Los modelos geográficos, de representación y almacenamiento que veíamos con detalle en el capítulo <a href="Tipos_datos.html#Tipos_datos">Tipos_datos</a> se deben adaptar adecuadamente, siendo esta la principal dificultad que aparece a la hora de diseñar un SIG con capacidades de manejo de datos multidimensionales que pueda así disponer de todas las capacidades de análisis que son posibles sobre este tipo de datos.</p><p>En lo que respecta a la incorporación de la tercera dimensión, esta presenta una distinta dificultad conceptual si tratamos capas ráster o vectoriales, conceptos ambos que pueden extenderse al ámbito 3D para ser utilizados como modelos de representación principales. Para el caso vectorial basta, en principio, con que cada punto se recoja con 3 coordenadas en lugar de 2. Independientemente de que sea bidimensional o tridimensional, las geometrías se expresan en última instancia como conjuntos de puntos, por lo que este hecho no representa un problema en sí. Aparecen, eso sí, nuevos tipos de geometrías (poliedros) que no existían en 2D, y las geometrías que conocemos ahora van a tener una localización espacial en lugar de plana. Aunque pueda parecer sencillo el paso de 2D a 3D, en realidad las operaciones sobre los datos 3D resultan más complejas de implementar, lo que constituye una dificultad a la hora de diseñar un SIG con capacidades 3D.</p><p>En el caso de capas ráster, la extensión lógica de su planteamiento a 3D sería mediante una matriz de tres dimensiones. Esta metodología de por sí no plantea problemas en lo que respecta al mero almacenamiento y manejo, pero sí que aparecen, no obstante, algunos aspectos a considerar. Uno de ellos es el hecho de que las dos dimensiones que recogemos en una capa ráster habitual se comportan de un modo parecido en lo que a la variación de los valores recogidos se refiere, y por ello es asumible el trabajar con una misma resolución en ambos ejes X e Y. La tercera dimensión, no obstante, puede presentar un comportamiento muy distinto y hacer necesario el uso de un tamaño de celda distinto. Es decir, que si las celdas solían ser cuadradas y no rectangulares, al pasar a un entorno 3D esto no se va necesariamente a traducir en unidades de volumen regulares (cubos), sino que lo habitual será que sean paralelepípedos cuyo tamaño en el eje Z sea distinto del tamaño en los ejes X e Y.</p><p>Imaginemos una capa con alguna propiedad del suelo tal como el pH o la humedad. Para cubrir una zona de una extensión media, un tamaño de celda de 20 metros es una opción adecuada y habitual. Este tamaño, sin embargo, carece de utilidad a la hora de registrar la componente en el eje Z, ya que la información de que vamos a disponer va a ser de una profundidad menor, con lo que dispondríamos de una única celda de alto. No sólo la variabilidad es diferente (el cambio en la humedad es más notable si profundizamos 1 o 2 metros que si nos desplazamos en la superficie esa misma distancia), sino que en este caso incluso la zona de estudio tiene unas dimensiones menores en este eje. Acomodar el modelo de representación a estas circunstancias exige la consideración, como hemos dicho, de tamaños de celda distintos para las distintas componentes.</p><p>Si incorporamos el tiempo como dimensión adicional, las consideraciones son bien distintas, ya que la naturaleza de esta nueva componente es por completo diferente a las anteriores. Una opción sencilla es tomar un conjunto de capas, ya sean estas ráster o vectoriales, como distintas &laquo;versiones&raquo; de una misma realidad para distintos instantes de tiempo. De este modo, se pueden utilizar los modelos de almacenamiento habituales para recoger cada una de esas realidades, relacionándolas entre sí mediante la adición de una etiqueta de tiempo.</p><p>Para el caso de capas raster, y puesto que en cada elemento recogemos un único valor, podremos estudiar el cambio de este valor a lo largo de los distintos instantes. En el caso de capas vectoriales, sin embargo, son múltiples los valores que pueden recogerse asociados a una geometría, y tanto esos valores como la propia geometría pueden variar a los largo del tiempo o bien permanecer sin modificación alguna. ES posible, por tanto, estudiar las variaciones de la componente espacial (por ejemplo, cómo ha variado el perímetro de una ciudad a lo largo de los años) y de la componente temática (por ejemplo, la evolución de la población de esa misma ciudad).</p><p>La forma en que cada capa, e independientemente del tipo de ésta, se relaciona con su tiempo correspondiente puede corresponderse con un planteamiento parecido al del modelo vectorial, o bien similar al empleado en el modelo ráster. En el primer caso, se asocia a la capa un valor de tiempo cualquiera, mientras que en el segundo se divide el intervalo de tiempo que engloba a todas las capas en bloques y se asocia cada capa al bloque correspondiente. Como se puede ver, este segundo modo supone una discretización del tiempo similar a la discretización del espacio que implica una capa raster, y se crean &laquo;celdas&raquo; temporales, a cada una de las cuales se le asocia como valor no un número simple sino toda una capa que representa la realidad en ese instante.</p><p>Como ya se ha mencionado al inicio del capítulo, la representación y almacenamiento de datos multidimensionales es un tema complejo y resuelto de formas diversas en los SIG actuales, por lo que no entraremos más en detalle. El objetivo de esta sección es únicamente mostrar algunas ideas al respecto, para que estas ayuden a la comprensión de los algoritmos de análisis 3D y temporal que presentaremos a continuación.</p><p>Para obtener más información sobre ideas generales de SIG 3D y SIG temporal, puede consultarse [<a href="../bib.htm#****">****</a>] y [<a href="../bib.htm#***">***</a>] respectivamente.</p><h2 id="Análisis 3D">Análisis 3D</h2><p>Veremos en esta sección algunos procesos que pueden llevarse a cabo sobre datos tridimensionales y los resultados que estos producen. El número de tales procesos que podemos encontrar es, como parece lógico pensar, muy amplio, y un capítulo como este es insuficiente para detallarlos. En realidad, la practica totalidad de los algoritmos que hemos visto en los capítulos previos de esta parte pueden adaptarse en cierto modo a un entorno 3D, además de existir algunos nuevos que solo cobran sentido cuando los datos de partida de que disponemos son tridimensionales. De todos esos procesos, describiremos únicamente aquellos que resulten más representativos, así como aquellos que permitan en mayor medida apreciar las particularidades del entorno 3D y las ventajas que este aporta desde el punto de vista del análisis espacial.</p><p>En ocasiones, resulta conceptualmente muy sencillo plantear formulaciones 3D equivalentes a las de los algoritmos 2D, aunque la implementación de esas versiones 3D puede ser sumamente más compleja. En otros casos, los planteamientos son por completo distintos, o incluso carecen de sentido en alguno de los supuestos. Existe así una distinta <i>escalabilidad</i> de los algoritmos para aplicarse en un contexto tridimensional, lo que va a requerir uno u otro enfoque en el manejo los datos de entrada, así como un planteamiento diferente a la hora de generar los resultados correspondientes.</p><p>Un ejemplo claro para comenzar lo encontramos en el cálculo de un área de influencia, según vimos en el apartado <a href="Costes.html#Zonas_influencia_dimension_fija">Zonas_influencia_dimension_fija</a>. Todo lo que vimos entonces se encuadraba dentro de un marco bidimensional en el que, por ejemplo, la zona de influencia asociada a un segmento rectilíneo era un rectángulo. Si situamos ahora ese segmento rectilíneo en el espacio tridimensional, su zona de influencia correspondiente ha de ser también un objeto tridimensional, en este caso un cilindro. Para el caso más simple de calcular la zona de influencia de un punto con una distancia $d$, el círculo de radio $d$ que obteníamos entonces se convierte en una esfera con ese mismo radio $d$. La figura \ref{Fig:Buffer3D} muestra gráficamente lo anterior.</p><p>El algoritmo debe, por tanto, considerar la información adicional que los datos de entrada presentan (el segmento ahora tiene como extremos dos puntos en el espacio en lugar de dos puntos en el plano), y el resultado es un objeto de naturaleza completamente distinta, cuyo cálculo debe efectuarse de un modo diferente.</p><p>Otros algoritmos que presentan una escalabilidad similar son los correspondientes al análisis de puntos que vimos en el capítulo <a href="Estadistica_espacial.html#Estadistica_espacial">Estadistica_espacial</a>. Las formulaciones aplicadas entonces pueden modificarse sin demasiada dificultad para adecuarse a la presencia de una coordenada adicional.</p><p>La interpolación es también otro de los procesos que pueden escalarse ventajosamente a un entorno tridimensional. Si antes, en el caso 2D, partíamos de puntos $(x,y)$ con una serie de valores y en función de ellos obteníamos una capa raster, ahora partiremos de puntos situados en el espacio y el resultado sera una capa raster tridimensional, a cada una de cuyas unidades de volumen se le asociara un valor en función de los valores de los puntos de su entorno (este entorno sera ahora de tipo tridimensional, en lugar de plano).</p><p>Como comentamos en el apartado anterior al tratar algunos de los problemas de los datos 3D y su almacenamiento según un modelo ráster, es posible que aparezca una marcada anisotropía al añadir la componente $z$, lo cual debe considerarse a la hora de plantear un algoritmo de interpolación en tres dimensiones, de forma más acusada que en el caso bidimensional.</p><p>***formuals de inteprolacion y referencias</p><p>Añadir una componente adicional a los datos puede suponer no sólo un cambio en el algoritmo como tal, sino también en el significado de este y en lo que representa como modelo de un proceso real. Este hecho resulta muy patente en el caso, por ejemplo, de algoritmos de análisis hidrológico. Todos los algoritmos que se han descrito en este campo en capítulos anteriores tratan exclusivamente el movimiento del agua sobre la superficie terrestre. Aunque es necesario conocer la elevación de esa superficie, el dato de partida (el MDE) no es tridimensional, sino que se trata de un dato de los que denominábamos 2.5D. Por ello, otros procesos hidrológicos no pueden modelizarse.</p><p>Trabajar en un entorno 3D permite no sólo extender los algoritmos, sino incorporar procesos físicos distintos que conduzcan a un análisis más real de la realidad hidrológica que estudiamos. Así, procesos tales como la infiltración y los movimientos de aguas subsuperficiales y subterraneas, que no podían estudiarse con ese MDE como único dato, sí que es posible estudiarlos si disponemos de información 3D que contenga tanto las formas del relieve como las características del suelo que influyen en esos procesos de percolación, infiltración y flujos no superficiales.</p><p>En cierta medida, puede considerarse que cualquier modelo que realicemos sobre datos 2D es una simplificación, ya que el proceso real tiene lugar sobre una realidad tridimensional. Esa simplificación es asumible en la medida que los procesos que estamos ignorando afecten más o menos notablemente a la realidad que pretendemos analizar.</p><p>La adaptación de las formulaciones al ámbito 3D no solo tiene lugar en los algoritmos en sí, sino también en otros elementos que se emplean en estos para facilitar su funcionamiento. Un caso particular lo encontramos en los índices espaciales, que como sabemos son vitales para obtener buenos rendimientos en algoritmos de análisis vectorial tales como los de interpolación que acabamos de citar. La interpolación requiere conocer para cada localización sus $n$ puntos más cercanos, y esta necesidad sigue presente cuando aplicamos el algoritmo en un entorno 3D y obtenemos un resultado también 3D.</p><p>Vimos en el capítulo <a href="Tipos_datos.html#Tipos_datos">Tipos_datos</a> que los árboles cuaternarios (<i>quadtrees</i>) eran de gran importancia para la creación de estos índices.  Trasladando su planteamiento al ámbito 3D, encontramos los denominados <i>Octrees</i>, que cumplen una misma tarea y sustituyen a los <i>quadtrees</i> como elementos análogos dentro de este nuevo entorno tridimensional.</p><p>De igual modo, los TIN, sobre los que hemos hablado en diversos puntos de este libro, se traducen en un entorno 3D en redes de tetraedros (TEN, Tetrahedron Network), con unos fundamentos similares basados en la selección de los puntos más significativos.</p><h2 id="Análisis temporal">Análisis temporal</h2><p>El análisis del tiempo dentro de un SIG permite estudiar los distintos elementos que incorporamos a éste como entidades dinámicas que presentan una evolución y experimentan transformaciones en un intervalo temporal dado.</p><p>Al igual que sucedía con los análisis estadísticos básicos que vimos en el capítulo <a href="Estadistica_espacial.html#Estadistica_espacial">Estadistica_espacial</a>, podemos analizar los datos temporales empleando herramientas de cálculo no espaciales, sin más que aplicar estas sobre el conjunto de valores. El análisis de series temporales, un campo con un notable desarrollo dentro del campo de la estadística, es de gran utilidad en este sentido y nos permitirá extraer mucha información acerca de los datos de que disponemos. Un ámbito en el que se ha empleado con intensidad este tipo de análisis es la climatología, la cual estudia las series de observaciones de variables tales como temperatura o precipitación, recogidas en una estación meteorológica. A pesar de que esa estación dispone de una localización conocida, esta no se usa, y el analisis de la serie correspondiente no tiene componente espacial alguna.</p><p>****</p><h2 id="Resumen">Resumen</h2>
+</div>
+</div>
+<div id="toindex"><a href="../index.html">Portada</a></div>
+<div id="slideout_chapter">
+	Índice<br>capítulo
+    <div id="slideout_inner_chapter">       
+        <div id="generated-toc"></div>
+	</div>
+</div>
+<div id="slideout_general">
+  	Índice<br>general
+    <div id="slideout_inner_general">    
+    		<p><b>ÍNDICE GENERAL</b><br>   	
+    		<ul>
+			<li><a href="Intro.html">Introducción</a></li>
+			<li>Parte 1. Fundamentos</li>
+			<ul>
+			<li><a href="Introduccion_fundamentos.html">Introducción. ¿Qué es un SIG?</a>
+			<li><a href="Historia.html">Historia de los SIG</a>
+			<li><a href="Fundamentos_cartograficos.html">Fundamentos cartográficos y geodésicos</a>
+			</ul>
+			<li>Parte 2. Datos</li>
+			<ul>
+			<li><a href="Introduccion_datos.html">Introducción. ¿Con qué trabajo en un SIG?</a>
+			<li><a href="Tipos_datos.html">Modelos para la información geográfica</a>
+			<li><a href="Fuentes_datos.html">Fuentes principales de datos espaciales</a>
+			<li><a href="Calidad_datos.html">La calidad de los datos espaciales</a>
+			<li><a href="Bases_datos.html">Bases de datos</a>
+			</ul>
+			<li>Parte 3. Analisis</li>
+			<ul>
+			<li><a href="Introduccion_procesos.html">Introducción. ¿Qué puedo hacer con un SIG?</a>
+			<li><a href="Analisis_espacial.html">Conceptos básicos para el análisis espacial</a>
+			<li><a href="Consultas.html">Consultas y operaciones con bases de datos</a>
+			<li><a href="Estadistica_espacial.html">Estadísticas espaciales</a>
+			<li><a href="Creacion_capas_raster.html">Creación de capas raster</a>
+			<li><a href="Algebra_de_mapas.html">Álgebra de mapas</a>
+			<li><a href="Geomorfometria.html">Geomorfometría y análisis del terreno</a>
+			<li><a href="Imagenes.html">Procesado de imágenes</a>
+			<li><a href="Creacion_capas_vectoriales.html">Creación de capas vectoriales</a>
+			<li><a href="Operaciones_geometricas.html">Operaciones geométricas con capas vectoriales</a>
+			<li><a href="Costes.html">Costes, distancias y áreas de influencia</a>
+			<li><a href="Estadistica_avanzada.html">Más estadística espacial</a>
+			</ul>
+			<li>Parte 4. Tecnología</li>
+			<ul>
+			<li><a href="Introduccion_tecnologia.html">Introducción. ¿Cómo son las aplicaciones SIG?</a>
+			<li><a href="SIGs_escritorio.html">Herramientas de escritorio</a>
+			<li><a href="Cliente_servidor.html">Clientes y servidores remotos. Web mapping</a>
+			<li><a href="SIG_movil.html">SIG movil</a>
+			</ul>
+			<li>Parte 5. Visualización</li>
+			<ul>
+			<li><a href="Introduccion_visualizacion.html">Introducción. Los SIG como herramientas de visualización</a>
+			<li><a href="Conceptos_basicos.html">Conceptos básicos de visualización y representación</a>
+			<li><a href="Mapas.html">El mapa y la comunicación cartográfica</a>
+			<li><a href="Visualizacion_SIG.html">La visualización en términos SIG</a>
+			</ul>
+			<li>Parte 6. Factor organizativo</li>
+			<ul>
+			<li><a href="Introduccion_factor_organizativo.html">Introducción. ¿Cómo se organiza un SIG?</a>
+			<li><a href="IDE.html">Infraestructuras de Datos Espaciales</a>
+			<li><a href="Metadatos.html">Metadatos</a>
+			<li><a href="Estandares.html">Estándares</a>
+			</ul>  
+			</ul>                 
+    </div>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10103997; 
+var sc_invisible=1; 
+var sc_security="fb93e088"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="free web stats"
+href="http://statcounter.com/free-web-stats/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/10103997/0/fb93e088/1/"
+alt="free web stats"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+</body>
